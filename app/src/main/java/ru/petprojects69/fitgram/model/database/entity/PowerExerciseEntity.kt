@@ -5,10 +5,10 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "power_exercise_table")
 data class PowerExerciseEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "powerExercise") val id: Int,
+    @ColumnInfo(name = "power_exercise_id") val id: Int,
     @Embedded val exercise: ExerciseEntity,
-    val numberOfRepetitions: Int = 0,
+    @ColumnInfo(name = "number_repetitions") val numberOfRepetitions: Int = 0,
 )

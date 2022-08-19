@@ -5,10 +5,10 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "aerobic_exercise_table")
 data class AerobicExerciseEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "exercise_id") val id: Int,
+    @ColumnInfo(name = "aerobic_exercise_id") val id: Int,
     @Embedded val exercise: ExerciseEntity,
-    @ColumnInfo(name = "lead_time")val leadTime: Float = 0.0f,
+    @ColumnInfo(name = "lead_time") val leadTime: Float = 0.0f,
 )

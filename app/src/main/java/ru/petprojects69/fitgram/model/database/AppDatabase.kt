@@ -15,6 +15,7 @@ private const val DB_NAME = "FitgramDatabase"
     AerobicExerciseEntity::class,
     PowerExerciseEntity::class],
     version = 1, exportSchema = false)
+
 abstract class AppDatabase : RoomDatabase() {
     abstract fun appDatabaseDao(): AppDatabaseDao
 

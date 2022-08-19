@@ -12,5 +12,5 @@ data class UserEntity(
     val age: Int? = null,
     val weight: Float? = null,
     val height: Float? = null,
-
-    )
+    val completed: Boolean = false,
+)
