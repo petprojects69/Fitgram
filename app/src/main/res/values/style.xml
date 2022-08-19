@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // Text Style
+    <style name="FitgramTextStyle" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">monospace</item>
+    </style>
+
+    <style name="ItemTitleTextStyle" parent="FitgramTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ItemSecondaryTextStyle" parent="FitgramTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    // FAB
+    <style name="ExtendedFABStyle" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="android:backgroundTint">@color/primaryColor</item>
+        <item name="android:textAppearance">@style/FitgramTextStyle</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    // Bottom Navigation View
+    <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
+        <item name="backgroundTint">@color/primaryColor</item>
+        <item name="itemIconTint">@color/selector_bottom_navigation_item</item>
+        <item name="itemTextColor">@color/selector_bottom_navigation_item</item>
+    </style>
+
+    // AppBar
+    <style name="LabelStyle" parent="FitgramTextStyle">
+        <item name="android:textSize">22sp</item>
+    </style>
+</resources>
