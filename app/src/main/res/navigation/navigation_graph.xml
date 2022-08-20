@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/fragment_timetable">
+
+    <fragment
+        android:id="@+id/fragment_timetable"
+        android:name="ru.petprojects69.fitgram.ui.timeTableFragment.TimeTableFragment"
+        android:label="TimeTableFragment"
+        tools:layout="@layout/fragment_timetable" />
+
+    <fragment
+        android:id="@+id/item2Fragment"
+        android:name="ru.petprojects69.fitgram.ui.Item2Fragment.Item2Fragment"
+        android:label="fragment_item2"
+        tools:layout="@layout/fragment_item2" />
+
+    <fragment
+        android:id="@+id/item3Fragment"
+        android:name="ru.petprojects69.fitgram.ui.Item3Fragment"
+        android:label="Item3Fragment"
+        tools:layout="@layout/fragment_item3"/>
+
+    <fragment
+        android:id="@+id/item4Fragment"
+        android:name="ru.petprojects69.fitgram.ui.Item4Fragment.Item4Fragment"
+        android:label="fragment_item4"
+        tools:layout="@layout/fragment_item4" />
+
+</navigation>
