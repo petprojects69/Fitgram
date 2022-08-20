@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.model.database.entity
+package ru.petprojects69.fitgram.domain.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

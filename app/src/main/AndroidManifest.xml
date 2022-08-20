@@ -4,6 +4,7 @@
     package="ru.petprojects69.fitgram">
 
     <application
+        android:name=".AppFitgram"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
