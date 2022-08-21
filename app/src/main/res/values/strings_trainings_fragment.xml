@@ -5,4 +5,7 @@
 
     // FAB
     <string name="fab_create_training_text">Создать тренировку</string>
+
+    // Empty Text
+    <string name="empty_trainings_text">Создайте новую тренировку</string>
 </resources>
