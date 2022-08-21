@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "925768303344",
+    "project_id": "fitgram-38a5c",
+    "storage_bucket": "fitgram-38a5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925768303344:android:9e816380845f5ef801f835",
+        "android_client_info": {
+          "package_name": "ru.petprojects69.fitgram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925768303344-tr64v6s0sjm8ahh009urgfkm88etlt14.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8bNzfU4gPjzxCJDZrXw1Dy9ER10gCWmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925768303344-tr64v6s0sjm8ahh009urgfkm88etlt14.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
