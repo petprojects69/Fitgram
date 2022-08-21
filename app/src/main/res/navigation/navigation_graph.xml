@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_timetable" />
 
     <fragment
-        android:id="@+id/item2Fragment"
-        android:name="ru.petprojects69.fitgram.ui.Item2Fragment.Item2Fragment"
-        android:label="fragment_item2"
-        tools:layout="@layout/fragment_item2" />
+        android:id="@+id/TrainingsFragment"
+        android:name="ru.petprojects69.fitgram.ui.trainingsFragment.TrainingsFragment"
+        android:label="TrainingsFragment"
+        tools:layout="@layout/fragment_trainings" />
 
     <fragment
         android:id="@+id/item3Fragment"
         android:name="ru.petprojects69.fitgram.ui.Item3Fragment"
         android:label="Item3Fragment"
-        tools:layout="@layout/fragment_item3"/>
+        tools:layout="@layout/fragment_item3" />
 
     <fragment
         android:id="@+id/item4Fragment"

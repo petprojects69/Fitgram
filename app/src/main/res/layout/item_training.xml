@@ -1,67 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/root_margin_top"
-    android:paddingHorizontal="@dimen/root_padding_horizontal">
+    android:layout_marginHorizontal="@dimen/root_padding_horizontal">
 
-    <TextView
-        android:id="@+id/data_textView"
-        style="@style/ItemSecondaryTextStyle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/child_margin"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="10 августа" />
+        android:padding="@dimen/inner_content_padding">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/child_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/data_textView">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="@dimen/inner_content_padding">
+            android:layout_marginEnd="@dimen/between_content_and_btn_margin"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@id/details_btn_image_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/title_textView"
+                style="@style/ItemTitleTextStyle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/between_content_and_btn_margin"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toStartOf="@id/details_btn_image_view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                tools:text="Название тренировки" />
 
-                <TextView
-                    android:id="@+id/title_textView"
-                    style="@style/ItemTitleTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Название тренировки" />
-
-                <TextView
-                    android:id="@+id/time_textView"
-                    style="@style/ItemSecondaryTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Время: 15 минут" />
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/details_btn_image_view"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/time_textView"
+                style="@style/ItemSecondaryTextStyle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:src="@drawable/ic_baseline_expand_more_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                tools:text="Время: 15 минут" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/details_btn_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_expand_more_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

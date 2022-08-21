@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
-import ru.petprojects69.fitgram.databinding.ItemTrainingBinding
+import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
 import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
 import ru.petprojects69.fitgram.ui.timeTableFragment.TimeTableAdapter.TimeTableHolder
 
@@ -18,7 +18,7 @@ class TimeTableAdapter : RecyclerView.Adapter<TimeTableHolder>() {
         }
 
     inner class TimeTableHolder(item: View) : RecyclerView.ViewHolder(item) {
-        private val binding = ItemTrainingBinding.bind(item)
+        private val binding = ItemTimetableBinding.bind(item)
         fun bind(exercise: PowerExerciseEntity) {
             binding.titleTextView.text = exercise.exercise.name
             binding.timeTextView.text = exercise.numberOfRepetitions.toString()
@@ -28,7 +28,7 @@ class TimeTableAdapter : RecyclerView.Adapter<TimeTableHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeTableHolder =
         TimeTableHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_training, parent, false)
+                .inflate(R.layout.item_timetable, parent, false)
         )
 
     override fun onBindViewHolder(holder: TimeTableHolder, position: Int) {
