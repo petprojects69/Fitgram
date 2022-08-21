@@ -1,37 +1,25 @@
 package ru.petprojects69.fitgram.ui.timeTableFragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.petprojects69.fitgram.AppFitgram
+import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTimetableBinding
-
 
 /** Фрагмент отображает рассписание запланированных тренировок, FAB открывает фрагмент добавления тренировки*/
 
-class TimeTableFragment : Fragment() {
+class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
 
-    private var _binding: FragmentTimetableBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentTimetableBinding by viewBinding()
 
     private val viewModel: TimeTableViewModel by viewModels {
         TimeTableViewModel.TimeTableViewModelFactory((activity?.application as AppFitgram).repository)
     }
 
     private val adapter = TimeTableAdapter()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentTimetableBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,11 +30,5 @@ class TimeTableFragment : Fragment() {
                 adapter.exerciseList = exercises
             }
         }
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

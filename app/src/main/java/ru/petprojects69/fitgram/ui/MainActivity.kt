@@ -5,21 +5,21 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
 
-    private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding: ActivityMainBinding by viewBinding()
     private val bottomNavigationPanel: BottomNavigationView by lazy { binding.bottomNavigationView }
     private val navigationController by lazy { findNavController(R.id.navigation_fragment_container) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
         decorStatusBar()
         bottomNavigationPanel.setupWithNavController(navigationController)
     }
