@@ -43,6 +43,9 @@ class TrainingsAdapter(private val trainingCallback: TrainingCallback) :
         holder.onChangeClick = {
             onItemUpdate(holder.absoluteAdapterPosition)
         }
+        holder.onDeleteClick = {
+            onItemRemove(holder.absoluteAdapterPosition)
+        }
         holder.bind(trainingsList[position])
     }
 

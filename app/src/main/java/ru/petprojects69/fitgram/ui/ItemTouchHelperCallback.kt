@@ -5,9 +5,11 @@ import android.graphics.Canvas
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemTouchHelperCallback(private val resources: Resources) : ItemTouchHelper.Callback() {
+private const val WIDTH_SCROLL_X = 68f
 
-    private val limitScrollX = dpTpPx(68f, resources)
+class ItemTouchHelperCallback(resources: Resources) : ItemTouchHelper.Callback() {
+
+    private val limitScrollX = dpTpPx(WIDTH_SCROLL_X, resources)
     private var currentScrollX = 0
     private var currentScrollXWhenIsActive = 0
     private var initXWhenIsActive = 0f
@@ -61,36 +63,38 @@ class ItemTouchHelperCallback(private val resources: Resources) : ItemTouchHelpe
             }
 
             if (isCurrentlyActive) {
+                /** здесь отрисовывается swipe когда пользователь держит палец на экране*/
                 var scrollOffset = currentScrollX + (-dX).toInt()
                 if (scrollOffset > limitScrollX) {
                     scrollOffset = limitScrollX
-                } else if (scrollOffset < 0) {
-                    scrollOffset = 0
+                } else if (scrollOffset < -limitScrollX) {
+                    scrollOffset = -limitScrollX
                 }
                 viewHolder.itemView.scrollTo(scrollOffset, 0)
 
             } else {
+                /** здесь происходит отрисовка item когда пользователь убрал палец*/
                 if (firstInActive) {
                     firstInActive = false
                     currentScrollXWhenIsActive = viewHolder.itemView.scrollX
                     initXWhenIsActive = dX
                 }
-                if (viewHolder.itemView.scrollX < limitScrollX) {
+
+                /** если swipe left недостаточной длины, возвращаем item в исходное положение */
+                if (viewHolder.itemView.scrollX in 1 until limitScrollX) {
+                    viewHolder.itemView.scrollTo(
+                        (currentScrollXWhenIsActive * dX / initXWhenIsActive).toInt(),
+                        0
+                    )
+                }
+                /** если swipe right недостаточной длины, возвращаем item в исходное положение */
+                if (viewHolder.itemView.scrollX in (-limitScrollX + 1) until -1) {
                     viewHolder.itemView.scrollTo(
                         (currentScrollXWhenIsActive * dX / initXWhenIsActive).toInt(),
                         0
                     )
                 }
             }
-        }
-    }
-
-    override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
-        super.clearView(recyclerView, viewHolder)
-        if (viewHolder.itemView.scrollX > limitScrollX) {
-            viewHolder.itemView.scrollTo(limitScrollX, 0)
-        } else if (viewHolder.itemView.scrollX < 0) {
-            viewHolder.itemView.scrollTo(0, 0)
         }
     }
 

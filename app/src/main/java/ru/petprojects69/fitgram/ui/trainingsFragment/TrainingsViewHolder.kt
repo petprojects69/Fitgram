@@ -25,7 +25,14 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding) :
                 onChangeClick?.let { onChangeClick ->
                     onChangeClick(this)
                 }
-                view.get()?.scrollTo(0,0)
+                view.get()?.scrollTo(0, 0)
+            }
+
+            binding.btnDelete.setOnClickListener {
+                onDeleteClick?.let { onDeleteClick ->
+                    onDeleteClick(this)
+                }
+                view.get()?.scrollTo(0, 0)
             }
         }
     }
