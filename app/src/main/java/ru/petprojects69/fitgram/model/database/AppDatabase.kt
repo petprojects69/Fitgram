@@ -7,10 +7,10 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.domain.entity.AerobicExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.ExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.UserEntity
+import ru.petprojects69.fitgram.domain.entity.exercise.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercise.ExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercise.PowerExerciseEntity
 
 private const val DB_NAME = "FitgramDatabase"
 
@@ -42,20 +42,22 @@ abstract class AppDatabase : RoomDatabase() {
             appDatabaseDao.deleteAllPowerExercises()
 
             val testData1 = PowerExerciseEntity(
-                id = 0,
-                exercise = ExerciseEntity(id = 0, name = "Первое"),
-                numberOfRepetitions = 6
-
+                exercise = ExerciseEntity(name = "первое упражнение"),
+                numberOfRepetitions = 14
             )
 
             val testData2 = PowerExerciseEntity(
-                id = 2,
-                exercise = ExerciseEntity(id = 2, name = "Второе"),
+                exercise = ExerciseEntity(name = "Второе"),
                 numberOfRepetitions = 25
+            )
+            val testData3 = AerobicExerciseEntity(
+                exercise = ExerciseEntity(name = "Aerobic"),
+                leadTime = 25.7f
             )
 
             appDatabaseDao.insertPowerExercise(testData1)
             appDatabaseDao.insertPowerExercise(testData2)
+            appDatabaseDao.insertAerobicExercise(testData3)
         }
     }
 

@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemTrainingBinding
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercise.PowerExerciseEntity
 import ru.petprojects69.fitgram.ui.timeTableFragment.TimeTableAdapter.TimeTableHolder
 
 class TimeTableAdapter : RecyclerView.Adapter<TimeTableHolder>() {
 
-    var exerciseList: MutableList<PowerExerciseEntity> = mutableListOf()
+    var exercisePowerList: MutableList<PowerExerciseEntity> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -20,8 +20,8 @@ class TimeTableAdapter : RecyclerView.Adapter<TimeTableHolder>() {
     inner class TimeTableHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemTrainingBinding.bind(item)
         fun bind(exercise: PowerExerciseEntity) {
-            binding.titleTextView.text = exercise.exercise.name
-            binding.timeTextView.text = exercise.numberOfRepetitions.toString()
+                    binding.titleTextView.text = exercise.exercise.name
+                    binding.timeTextView.text = exercise.numberOfRepetitions.toString()
         }
     }
 
@@ -32,10 +32,10 @@ class TimeTableAdapter : RecyclerView.Adapter<TimeTableHolder>() {
         )
 
     override fun onBindViewHolder(holder: TimeTableHolder, position: Int) {
-        holder.bind(exerciseList[position])
+        holder.bind(exercisePowerList[position])
     }
 
     override fun getItemCount(): Int {
-        return exerciseList.size
+        return exercisePowerList.size
     }
 }

@@ -1,14 +1,11 @@
-package ru.petprojects69.fitgram.domain.entity
+package ru.petprojects69.fitgram.domain.entity.exercise
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 @Entity(tableName = "power_exercise_table")
 data class PowerExerciseEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "power_exercise_id") val id: Int,
+    @ColumnInfo(name = "power_exercise_id") val idPowerExercise: Int = 0,
     @Embedded val exercise: ExerciseEntity,
     @ColumnInfo(name = "number_repetitions") val numberOfRepetitions: Int = 0,
 )

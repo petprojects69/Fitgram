@@ -1,15 +1,8 @@
-package ru.petprojects69.fitgram.domain.entity
+package ru.petprojects69.fitgram.domain.entity.exercise
 
 import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(
-    tableName = "Exercise"
-)
 data class ExerciseEntity(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "exercise_id") val id: Int,
     @ColumnInfo(name = "exercise_name") val name: String? = null,
     @ColumnInfo(name = "exercise_description") val description: String? = null,
     @ColumnInfo(name = "exercise_poster") val poster: String? = null,

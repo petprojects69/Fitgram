@@ -39,7 +39,7 @@ class TimeTableFragment : Fragment() {
         binding.exerciseRecyclerView.adapter = adapter
         viewModel.allPowerExercise.observe(viewLifecycleOwner) { exercises ->
             exercises?.let {
-                adapter.exerciseList = exercises
+                adapter.exercisePowerList = exercises.toMutableList()
             }
         }
 
