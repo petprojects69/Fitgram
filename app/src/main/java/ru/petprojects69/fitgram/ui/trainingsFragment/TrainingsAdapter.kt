@@ -5,8 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemTrainingBinding
 import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
+import ru.petprojects69.fitgram.ui.ItemTouchHelperAdapter
+import ru.petprojects69.fitgram.ui.TrainingCallback
 
-class TrainingsAdapter : RecyclerView.Adapter<TrainingsViewHolder>() {
+class TrainingsAdapter(private val trainingCallback: TrainingCallback) :
+    RecyclerView.Adapter<TrainingsViewHolder>(), ItemTouchHelperAdapter {
 
     var trainingsList: MutableList<PowerExerciseEntity> = mutableListOf()
 
@@ -37,8 +40,22 @@ class TrainingsAdapter : RecyclerView.Adapter<TrainingsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: TrainingsViewHolder, position: Int) {
+        holder.onChangeClick = {
+            onItemUpdate(holder.absoluteAdapterPosition)
+        }
         holder.bind(trainingsList[position])
     }
 
     override fun getItemCount(): Int = trainingsList.size
+
+    override fun onItemRemove(position: Int) {
+        trainingCallback.deleteTraining()
+        trainingsList.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    override fun onItemUpdate(position: Int) {
+        trainingCallback.updateTraining()
+        notifyItemChanged(position)
+    }
 }
