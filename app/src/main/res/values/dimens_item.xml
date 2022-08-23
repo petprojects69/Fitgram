@@ -8,4 +8,6 @@
     <dimen name="between_content_and_btn_margin">10dp</dimen>
 
     <dimen name="width_btn_item">63dp</dimen>
+
+    <dimen name="inner_recycler_margin">2dp</dimen>
 </resources>

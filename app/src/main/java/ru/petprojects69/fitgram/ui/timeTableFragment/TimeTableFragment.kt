@@ -42,7 +42,7 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
 
         viewModel.allPowerExercise.observe(viewLifecycleOwner) { exercises ->
             exercises?.let {
-                adapter.exerciseList = exercises
+                adapter.initData(exercises)
             }
         }
     }

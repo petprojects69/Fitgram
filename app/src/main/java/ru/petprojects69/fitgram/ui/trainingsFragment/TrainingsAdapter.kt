@@ -61,4 +61,8 @@ class TrainingsAdapter(private val trainingCallback: TrainingCallback) :
         trainingCallback.updateTraining()
         notifyItemChanged(position)
     }
+
+    override fun detailsClick(position: Int) {
+        TODO("Not yet implemented")
+    }
 }

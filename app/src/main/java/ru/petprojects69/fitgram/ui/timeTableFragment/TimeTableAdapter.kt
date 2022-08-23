@@ -11,11 +11,15 @@ import ru.petprojects69.fitgram.ui.TrainingCallback
 class TimeTableAdapter(private val trainingCallback: TrainingCallback) :
     RecyclerView.Adapter<TimeTableHolder>(), ItemTouchHelperAdapter {
 
-    var exerciseList: MutableList<PowerExerciseEntity> = mutableListOf()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
+    var exerciseList: MutableList<Pair<PowerExerciseEntity, Boolean>> = mutableListOf()
+
+
+    fun initData(exercise: List<PowerExerciseEntity>) {
+        for (item in exercise) {
+            exerciseList.add(Pair(first = item, second = false))
+            notifyItemInserted(exercise.size)
         }
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeTableHolder {
@@ -24,7 +28,7 @@ class TimeTableAdapter(private val trainingCallback: TrainingCallback) :
             parent,
             false
         )
-        return TimeTableHolder(binding)
+        return TimeTableHolder(binding, parent.context)
     }
 
     override fun onBindViewHolder(holder: TimeTableHolder, position: Int) {
@@ -33,6 +37,9 @@ class TimeTableAdapter(private val trainingCallback: TrainingCallback) :
         }
         holder.onDeleteClick = {
             onItemRemove(holder.absoluteAdapterPosition)
+        }
+        holder.detailsClick = {
+            detailsClick(holder.absoluteAdapterPosition)
         }
         holder.bind(exerciseList[position])
     }
@@ -49,6 +56,14 @@ class TimeTableAdapter(private val trainingCallback: TrainingCallback) :
 
     override fun onItemUpdate(position: Int) {
         trainingCallback.updateTraining()
+        notifyItemChanged(position)
+    }
+
+    override fun detailsClick(position: Int) {
+        exerciseList[position] =
+            exerciseList[position].let {
+                it.first to !it.second
+            }
         notifyItemChanged(position)
     }
 }
