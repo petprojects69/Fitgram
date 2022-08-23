@@ -42,16 +42,16 @@ abstract class AppDatabase : RoomDatabase() {
             appDatabaseDao.deleteAllPowerExercises()
 
             val testData1 = PowerExerciseEntity(
-                exercise = ExerciseEntity(name = "первое упражнение"),
+                exerciseBase = ExerciseEntity(name = "первое упражнение"),
                 numberOfRepetitions = 14
             )
 
             val testData2 = PowerExerciseEntity(
-                exercise = ExerciseEntity(name = "Второе"),
+                exerciseBase = ExerciseEntity(name = "Второе"),
                 numberOfRepetitions = 25
             )
             val testData3 = AerobicExerciseEntity(
-                exercise = ExerciseEntity(name = "Aerobic"),
+                exerciseBase = ExerciseEntity(name = "Aerobic"),
                 leadTime = 25.7f
             )
 

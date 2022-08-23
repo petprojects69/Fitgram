@@ -37,12 +37,12 @@ class TimeTableFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.exerciseRecyclerView.adapter = adapter
-        viewModel.allPowerExercise.observe(viewLifecycleOwner) { exercises ->
+
+        viewModel.allExercise.observe(viewLifecycleOwner) { exercises ->
             exercises?.let {
-                adapter.exercisePowerList = exercises.toMutableList()
+                adapter.exerciseList = exercises.toMutableList()
             }
         }
-
     }
 
     override fun onDestroyView() {

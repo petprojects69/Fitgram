@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 data class AerobicExerciseEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "aerobic_exercise_id") val idAerobicExercise: Int = 0,
-    @Embedded val exercise: ExerciseEntity,
+    @Embedded val exerciseBase: ExerciseEntity,
     @ColumnInfo(name = "lead_time") val leadTime: Float = 0.0f,
 )
 

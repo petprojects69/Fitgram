@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import ru.petprojects69.fitgram.domain.entity.exercise.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercise.ExerciseList
 import ru.petprojects69.fitgram.domain.entity.exercise.PowerExerciseEntity
 
 @Dao

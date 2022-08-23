@@ -6,6 +6,6 @@ import androidx.room.*
 data class PowerExerciseEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "power_exercise_id") val idPowerExercise: Int = 0,
-    @Embedded val exercise: ExerciseEntity,
+    @Embedded val exerciseBase: ExerciseEntity,
     @ColumnInfo(name = "number_repetitions") val numberOfRepetitions: Int = 0,
 )
