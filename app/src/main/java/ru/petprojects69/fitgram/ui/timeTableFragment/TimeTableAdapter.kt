@@ -11,10 +11,10 @@ import ru.petprojects69.fitgram.ui.TrainingCallback
 class TimeTableAdapter(private val trainingCallback: TrainingCallback) :
     RecyclerView.Adapter<TimeTableHolder>(), ItemTouchHelperAdapter {
 
-    var exerciseList: MutableList<Pair<PowerExerciseEntity, Boolean>> = mutableListOf()
-
+    private var exerciseList: MutableList<Pair<PowerExerciseEntity, Boolean>> = mutableListOf()
 
     fun initData(exercise: List<PowerExerciseEntity>) {
+        exerciseList.clear()
         for (item in exercise) {
             exerciseList.add(Pair(first = item, second = false))
             notifyItemInserted(exercise.size)

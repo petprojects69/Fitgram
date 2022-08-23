@@ -1,9 +1,11 @@
 package ru.petprojects69.fitgram.ui.timeTableFragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
 import ru.petprojects69.fitgram.domain.entity.ExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
@@ -51,8 +53,19 @@ class TimeTableHolder(private val binding: ItemTimetableBinding, private val con
     }
 
     // TODO innerAdapter.initData()
+    @SuppressLint("UseCompatLoadingForDrawables")
     fun bind(exercise: Pair<PowerExerciseEntity, Boolean>) {
-        binding.detailsRecyclerView.visibility = if (exercise.second) View.VISIBLE else View.GONE
+        if (exercise.second){
+            binding.detailsRecyclerView.visibility = View.VISIBLE
+            binding.detailsBtnImageView.setImageDrawable(
+                context.getDrawable(R.drawable.ic_baseline_expand_less_24)
+            )
+        } else {
+            binding.detailsRecyclerView.visibility = View.GONE
+            binding.detailsBtnImageView.setImageDrawable(
+                context.getDrawable(R.drawable.ic_baseline_expand_more_24)
+            )
+        }
         binding.titleTextView.text = exercise.first.exercise.name
         binding.timeTextView.text = exercise.first.numberOfRepetitions.toString()
         innerAdapter.initData(
