@@ -1,7 +1,8 @@
 package ru.petprojects69.fitgram.ui
 
-interface TrainingCallback {
+interface ItemActionCallback {
     // TODO в параметры передать объект Тренировка
-    fun deleteTraining()
-    fun updateTraining()
+    fun delete()
+    fun update()
+    fun itemClick()
 }

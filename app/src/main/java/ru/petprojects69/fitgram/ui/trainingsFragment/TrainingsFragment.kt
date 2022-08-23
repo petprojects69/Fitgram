@@ -12,17 +12,21 @@ import ru.petprojects69.fitgram.AppFitgram
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTrainingsBinding
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
-import ru.petprojects69.fitgram.ui.TrainingCallback
+import ru.petprojects69.fitgram.ui.ItemActionCallback
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     private val binding: FragmentTrainingsBinding by viewBinding()
-    private val adapter = TrainingsAdapter(object : TrainingCallback{
-        override fun deleteTraining() {
+    private val adapter = TrainingsAdapter(object : ItemActionCallback{
+        override fun delete() {
             deleteTrainingFromStorage()
         }
 
-        override fun updateTraining() {
+        override fun update() {
             updateTrainingFromStorage()
+        }
+
+        override fun itemClick() {
+            onItemClick()
         }
     })
 
@@ -52,6 +56,10 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     // TODO Написать реализацию во viewModel
     private fun deleteTrainingFromStorage(){
         Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun onItemClick(){
+        Toast.makeText(requireContext(), "Добавить тренировку в расписание", Toast.LENGTH_SHORT).show()
     }
 
     private fun initAdapter() {

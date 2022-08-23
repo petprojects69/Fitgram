@@ -21,10 +21,14 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding, private val 
     var onChangeClick: ((RecyclerView.ViewHolder) -> Unit)? = null
     var onDeleteClick: ((RecyclerView.ViewHolder) -> Unit)? = null
     var detailsClick: ((RecyclerView.ViewHolder) -> Unit)? = null
+    var itemClick: ((RecyclerView.ViewHolder) -> Unit)? = null
 
     init {
         view.get()?.let {
             it.setOnClickListener {
+                itemClick?.let { itemClick ->
+                    itemClick(this)
+                }
                 if (view.get()?.scrollX != 0) {
                     view.get()?.scrollTo(0, 0)
                 }

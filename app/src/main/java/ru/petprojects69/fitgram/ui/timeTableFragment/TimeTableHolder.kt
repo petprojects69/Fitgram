@@ -19,12 +19,16 @@ class TimeTableHolder(private val binding: ItemTimetableBinding, private val con
     var onChangeClick: ((RecyclerView.ViewHolder) -> Unit)? = null
     var onDeleteClick: ((RecyclerView.ViewHolder) -> Unit)? = null
     var detailsClick: ((RecyclerView.ViewHolder) -> Unit)? = null
+    var onItemClick: ((RecyclerView.ViewHolder) -> Unit)? = null
 
     private val innerAdapter = InnerTimeTableAdapter()
 
     init {
         view.get()?.let {
             it.setOnClickListener {
+                onItemClick?.let { onItemClick ->
+                    onItemClick(this)
+                }
                 if (view.get()?.scrollX != 0) {
                     view.get()?.scrollTo(0, 0)
                 }

@@ -12,7 +12,7 @@ import ru.petprojects69.fitgram.AppFitgram
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTimetableBinding
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
-import ru.petprojects69.fitgram.ui.TrainingCallback
+import ru.petprojects69.fitgram.ui.ItemActionCallback
 
 /** Фрагмент отображает рассписание запланированных тренировок, FAB открывает фрагмент добавления тренировки*/
 
@@ -24,13 +24,17 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
         TimeTableViewModel.TimeTableViewModelFactory((activity?.application as AppFitgram).repository)
     }
 
-    private val trainingCallback = object : TrainingCallback {
-        override fun deleteTraining() {
+    private val trainingCallback = object : ItemActionCallback {
+        override fun delete() {
             Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
         }
 
-        override fun updateTraining() {
+        override fun update() {
             Toast.makeText(requireContext(), "Тренировка изменена", Toast.LENGTH_SHORT).show()
+        }
+
+        override fun itemClick() {
+            Toast.makeText(requireContext(), "Начинаем тренировку", Toast.LENGTH_SHORT).show()
         }
     }
 
