@@ -9,7 +9,7 @@ import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
 import ru.petprojects69.fitgram.domain.entity.ExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
-import ru.petprojects69.fitgram.ui.timeTableFragment.innerAdapter.InnerTimeTableAdapter
+import ru.petprojects69.fitgram.ui.innerAdapter.InnerTimeTableAdapter
 import java.lang.ref.WeakReference
 
 class TimeTableHolder(private val binding: ItemTimetableBinding, private val context: Context) :

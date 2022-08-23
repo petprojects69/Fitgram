@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.ui.timeTableFragment.innerAdapter
+package ru.petprojects69.fitgram.ui.innerAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

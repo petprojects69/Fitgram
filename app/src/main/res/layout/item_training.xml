@@ -36,6 +36,15 @@
                     android:layout_height="wrap_content"
                     tools:text="Название тренировки" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/details_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:visibility="visible"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/inner_item_training" />
+
                 <TextView
                     android:id="@+id/time_textView"
                     style="@style/ItemSecondaryTextStyle"
@@ -52,8 +61,7 @@
                 android:focusable="true"
                 android:src="@drawable/ic_baseline_expand_more_24"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

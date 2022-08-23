@@ -11,14 +11,14 @@ import ru.petprojects69.fitgram.ui.TrainingCallback
 class TrainingsAdapter(private val trainingCallback: TrainingCallback) :
     RecyclerView.Adapter<TrainingsViewHolder>(), ItemTouchHelperAdapter {
 
-    var trainingsList: MutableList<PowerExerciseEntity> = mutableListOf()
+    private var trainingsList: MutableList<Pair<PowerExerciseEntity, Boolean>> = mutableListOf()
 
     // TODO изменить ExerciseEntity на Тренировка
     fun initialList(list: MutableList<PowerExerciseEntity>) {
         trainingsList.clear()
         for (item in list) {
             val position = trainingsList.size
-            trainingsList.add(position, item)
+            trainingsList.add(position, Pair(first = item, second = false))
             notifyItemInserted(position)
         }
     }
@@ -26,7 +26,7 @@ class TrainingsAdapter(private val trainingCallback: TrainingCallback) :
     // TODO изменить ExerciseEntity на Тренировка
     fun addTraining(training: PowerExerciseEntity) {
         val position = trainingsList.size
-        trainingsList.add(position, training)
+        trainingsList.add(position, Pair(first = training, second = false))
         notifyItemInserted(position)
     }
 
@@ -36,7 +36,7 @@ class TrainingsAdapter(private val trainingCallback: TrainingCallback) :
             parent,
             false
         )
-        return TrainingsViewHolder(binding)
+        return TrainingsViewHolder(binding, parent.context)
     }
 
     override fun onBindViewHolder(holder: TrainingsViewHolder, position: Int) {
@@ -45,6 +45,9 @@ class TrainingsAdapter(private val trainingCallback: TrainingCallback) :
         }
         holder.onDeleteClick = {
             onItemRemove(holder.absoluteAdapterPosition)
+        }
+        holder.detailsClick = {
+            detailsClick(holder.absoluteAdapterPosition)
         }
         holder.bind(trainingsList[position])
     }
@@ -63,6 +66,10 @@ class TrainingsAdapter(private val trainingCallback: TrainingCallback) :
     }
 
     override fun detailsClick(position: Int) {
-        TODO("Not yet implemented")
+        trainingsList[position] =
+            trainingsList[position].let {
+                it.first to !it.second
+            }
+        notifyItemChanged(position)
     }
 }
