@@ -4,22 +4,23 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.domain.entity.AerobicExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.ExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.UserEntity
+import ru.petprojects69.fitgram.domain.TypeConverterExerciseList
+import ru.petprojects69.fitgram.domain.entity.*
 
 private const val DB_NAME = "FitgramDatabase"
 
-@Database(entities = [
-    UserEntity::class,
-    AerobicExerciseEntity::class,
-    PowerExerciseEntity::class],
-    version = 1, exportSchema = false)
-
+@Database(
+    entities = [
+        Training::class,
+        UserEntity::class,
+        AerobicExerciseEntity::class,
+        PowerExerciseEntity::class],
+    version = 1, exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun appDatabaseDao(): AppDatabaseDao
@@ -41,21 +42,27 @@ abstract class AppDatabase : RoomDatabase() {
         suspend fun populateDatabase(appDatabaseDao: AppDatabaseDao) {
             appDatabaseDao.deleteAllPowerExercises()
 
-            val testData1 = PowerExerciseEntity(
-                id = 0,
-                exercise = ExerciseEntity(id = 0, name = "Первое"),
-                numberOfRepetitions = 6
-
+            val testData1 = Training(
+                label = "Тренировка ОФП v.1",
+                exerciseList = mutableListOf(
+                    AerobicEx(labelAerobic = "Бег", type = AerobicType.RUN),
+                    PowerEx(labelPower = "Жим"),
+                    PowerEx(labelPower = "Тяга"),
+                    PowerEx(labelPower = "Присед"),
+                )
             )
 
-            val testData2 = PowerExerciseEntity(
-                id = 2,
-                exercise = ExerciseEntity(id = 2, name = "Второе"),
-                numberOfRepetitions = 25
+            val testData2 = Training(
+                label = "Тренировка ОФП v.2",
+                exerciseList = mutableListOf(
+                    AerobicEx(labelAerobic = "Плавание"),
+                    PowerEx(labelPower = "Жим"),
+                    PowerEx(labelPower = "Тяга", count = 5, )
+                )
             )
 
-            appDatabaseDao.insertPowerExercise(testData1)
-            appDatabaseDao.insertPowerExercise(testData2)
+            appDatabaseDao.insertTraining(testData1)
+            appDatabaseDao.insertTraining(testData2)
         }
     }
 

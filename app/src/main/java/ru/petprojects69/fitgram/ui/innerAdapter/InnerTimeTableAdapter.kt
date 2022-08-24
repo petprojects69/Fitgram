@@ -4,18 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.InnerItemTrainingBinding
-import ru.petprojects69.fitgram.domain.entity.ExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.BasicExercise
 
-class InnerTimeTableAdapter: RecyclerView.Adapter<InnerTimeTableViewHolder>() {
-    private val exerciseList: MutableList<ExerciseEntity> = mutableListOf()
+class InnerTimeTableAdapter : RecyclerView.Adapter<InnerTimeTableViewHolder>() {
+    private val exerciseList: MutableList<BasicExercise> = mutableListOf()
 
-    fun initData(list: MutableList<ExerciseEntity>){
+    fun initData(list: MutableList<BasicExercise>) {
         exerciseList.clear()
-        for (item in list){
+        for (item in list) {
             exerciseList.add(exerciseList.size, item)
             notifyItemInserted(exerciseList.size)
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerTimeTableViewHolder {
         val binding = InnerItemTrainingBinding.inflate(
             LayoutInflater.from(parent.context),
