@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.data.FakeUser
@@ -16,7 +17,6 @@ class UserProfileFragment : Fragment() {
             requireView()
         )
     }
-    private val fakeUser = FakeUser()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +28,7 @@ class UserProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val fakeUser = FakeUser()
         val userNameSurname = listOf(fakeUser.name, fakeUser.surname)
 
         binding.apply {
@@ -39,5 +40,17 @@ class UserProfileFragment : Fragment() {
             userAgeTextView.append(fakeUser.age.toString())
             userCaloriesTextView.append(fakeUser.calories.toString())
         }
+
+        binding.gradeInfoImageView.setOnClickListener {
+            showGradeInfo()
+        }
+    }
+
+    private fun showGradeInfo() {
+        Toast.makeText(
+            context,
+            R.string.grade_info,
+            Toast.LENGTH_LONG
+        ).show()
     }
 }
