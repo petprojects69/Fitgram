@@ -3,14 +3,15 @@ package ru.petprojects69.fitgram.ui.timeTableFragment
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.Training
 import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
 
 class TimeTableViewModel(private val repository: ExerciseRepositoryImpl) : ViewModel() {
 
-    val allPowerExercise: LiveData<MutableList<PowerExerciseEntity>> =
+    val allPowerExercise: LiveData<MutableList<Training>> =
         repository.allPowerExercise.asLiveData()
 
-    fun insertPowerExercise(powerExercise: PowerExerciseEntity) = viewModelScope.launch {
+    fun insertPowerExercise(powerExercise: Training) = viewModelScope.launch {
         repository.insertPowerExercise(powerExercise)
     }
 

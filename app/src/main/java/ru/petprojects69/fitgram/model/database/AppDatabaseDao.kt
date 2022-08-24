@@ -6,16 +6,17 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.Training
 
 @Dao
 interface AppDatabaseDao {
 
-    @Query("SELECT * FROM power_exercise_table")
-    fun getAllPowerExercises(): Flow<MutableList<PowerExerciseEntity>>
+    @Query("SELECT * FROM training")
+    fun getAllTraining(): Flow<MutableList<Training>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertPowerExercise(powerExercise: PowerExerciseEntity)
+    suspend fun insertTraining(powerExercise: Training)
 
-    @Query("DELETE FROM power_exercise_table")
+    @Query("DELETE FROM training")
     suspend fun deleteAllPowerExercises()
 }

@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
-import ru.petprojects69.fitgram.domain.entity.ExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.Training
 import ru.petprojects69.fitgram.ui.innerAdapter.InnerTimeTableAdapter
 import java.lang.ref.WeakReference
 
@@ -58,28 +57,24 @@ class TimeTableHolder(private val binding: ItemTimetableBinding, private val con
 
     // TODO innerAdapter.initData()
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun bind(exercise: Pair<PowerExerciseEntity, Boolean>) {
-        if (exercise.second){
+    fun bind(exercise: Pair<Training, Boolean>) {
+
+        if (exercise.second) {
             binding.detailsRecyclerView.visibility = View.VISIBLE
             binding.detailsBtnImageView.setImageDrawable(
                 context.getDrawable(R.drawable.ic_baseline_expand_less_24)
             )
+            exercise.first.exerciseList?.let {
+                val k = it
+                innerAdapter.initData(it)
+            }
         } else {
             binding.detailsRecyclerView.visibility = View.GONE
             binding.detailsBtnImageView.setImageDrawable(
                 context.getDrawable(R.drawable.ic_baseline_expand_more_24)
             )
         }
-        binding.titleTextView.text = exercise.first.exercise.name
-        binding.timeTextView.text = exercise.first.numberOfRepetitions.toString()
-        innerAdapter.initData(
-            // Test data
-            mutableListOf(
-                ExerciseEntity(0, "Упражнение 1", null, null, null, null, null, null, null),
-                ExerciseEntity(0, "Упражнение 2", null, null, null, null, null, null, null),
-                ExerciseEntity(0, "Упражнение 3", null, null, null, null, null, null, null),
-            )
-        )
+        binding.titleTextView.text = exercise.first.label.toString()
     }
 
     private fun initInnerRecyclerView() {

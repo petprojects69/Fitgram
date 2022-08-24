@@ -5,11 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.Training
 import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
 
 class TrainingsViewModel(private val repository: ExerciseRepositoryImpl) : ViewModel() {
     // TODO изменить ExerciseEntity на Тренировка
-    val allTrainings: LiveData<MutableList<PowerExerciseEntity>> =
+    val allTrainings: LiveData<MutableList<Training>> =
         repository.allPowerExercise.asLiveData()
 }
 
