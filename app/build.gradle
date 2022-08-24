@@ -80,4 +80,9 @@ dependencies {
 
     // ViewBindingPropertyDelegate
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
+
+    // Koin
+    def koin_version = "3.2.0-beta-1"
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 }
