@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.userProfileFragment.UserProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/user_imageView"
+            android:layout_width="@dimen/image_view_size"
+            android:layout_height="@dimen/image_view_size"
+            android:layout_marginTop="@dimen/user_image_margin_top"
+            android:background="@drawable/ic_user_info" />
+
+        <TextView
+            android:id="@+id/user_name_textView"
+            style="@style/UserNameStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Арнольд Шварценеггер" />
+
+        <TextView
+            android:id="@+id/user_grade_textView"
+            style="@style/UserInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ранг: Терминатор" />
+
+        <TextView
+            android:id="@+id/gender_textView"
+            style="@style/UserInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="пол: Мужской" />
+
+        <TextView
+            android:id="@+id/height_textView"
+            style="@style/UserInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="рост: 188" />
+
+        <TextView
+            android:id="@+id/weight_textView"
+            style="@style/UserInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="вес: 180" />
+
+        <TextView
+            android:id="@+id/age_textView"
+            style="@style/UserInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="возраст: 3000" />
+
+        <TextView
+            android:id="@+id/calories_textView"
+            style="@style/UserInfoStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="необходимо калорий: 55000" />
+
+        <ImageView
+            android:id="@+id/trains_pieChart"
+            android:layout_width="@dimen/image_view_size"
+            android:layout_height="@dimen/image_view_size"
+            android:layout_margin="@dimen/user_image_margin_top"
+            android:background="@drawable/ic_launcher_background" />
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Сменить пользователя"
+            android:layout_marginHorizontal="@dimen/logout_button_margin_horizontal"/>
+
+    </LinearLayout>
+
+</ScrollView>

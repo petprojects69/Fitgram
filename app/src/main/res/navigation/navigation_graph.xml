@@ -24,9 +24,9 @@
         tools:layout="@layout/fragment_item3"/>
 
     <fragment
-        android:id="@+id/item4Fragment"
-        android:name="ru.petprojects69.fitgram.ui.Item4Fragment.Item4Fragment"
-        android:label="fragment_item4"
-        tools:layout="@layout/fragment_item4" />
+        android:id="@+id/userProfileFragment"
+        android:name="ru.petprojects69.fitgram.ui.userProfileFragment.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
 
 </navigation>
