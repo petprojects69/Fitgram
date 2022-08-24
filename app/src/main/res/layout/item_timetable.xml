@@ -3,17 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/root_margin_top"
+    android:paddingHorizontal="@dimen/root_padding_horizontal">
+
+    <TextView
+        android:id="@+id/data_textView"
+        style="@style/ItemSecondaryTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/child_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="10 августа" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/content_cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/root_padding_horizontal"
-        android:layout_marginTop="@dimen/root_margin_top"
-        android:layout_marginBottom="@dimen/child_margin"
+        android:layout_margin="@dimen/child_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/data_textView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     tools:itemCount="4"
                     tools:listitem="@layout/inner_item_training" />
 

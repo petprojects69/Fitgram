@@ -76,4 +76,7 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.1"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     androidTestImplementation "androidx.navigation:navigation-testing:2.5.1"
+
+    // ViewBindingPropertyDelegate
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
 }
