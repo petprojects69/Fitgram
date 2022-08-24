@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.Training
 import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
 

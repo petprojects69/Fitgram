@@ -2,7 +2,6 @@ package ru.petprojects69.fitgram.ui.timeTableFragment
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.Training
 import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
 

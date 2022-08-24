@@ -4,7 +4,7 @@
     <string name="label_timetable">Расписание</string>
 
     // bottom navigation_view
-    <string name="item_3">item_3</string>
+    <string name="exercises">Упражнения</string>
     <string name="user_profile">Профиль</string>
 
     // FAB

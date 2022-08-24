@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_trainings" />
 
     <fragment
-        android:id="@+id/item3Fragment"
-        android:name="ru.petprojects69.fitgram.ui.Item3Fragment"
-        android:label="Item3Fragment"
-        tools:layout="@layout/fragment_item3" />
+        android:id="@+id/ExercisesFragment"
+        android:name="ru.petprojects69.fitgram.ui.ExercisesFragment"
+        android:label="ExercisesFragment"
+        tools:layout="@layout/fragment_exercises" />
 
     <fragment
         android:id="@+id/userProfileFragment"

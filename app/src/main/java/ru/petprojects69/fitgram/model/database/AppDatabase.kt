@@ -4,12 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.domain.TypeConverterExerciseList
 import ru.petprojects69.fitgram.domain.entity.*
+import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercises.ExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 
 private const val DB_NAME = "FitgramDatabase"
 
@@ -57,12 +58,32 @@ abstract class AppDatabase : RoomDatabase() {
                 exerciseList = mutableListOf(
                     AerobicEx(labelAerobic = "Плавание"),
                     PowerEx(labelPower = "Жим"),
-                    PowerEx(labelPower = "Тяга", count = 5, )
+                    PowerEx(labelPower = "Тяга", count = 5)
                 )
+            )
+
+
+
+
+            val exTest1 = PowerExerciseEntity(
+                exercise = ExerciseEntity(
+                    name = "Отжимания"
+                ),
+                numberOfRepetitions = 25
+            )
+
+            val exTest2 = PowerExerciseEntity(
+                exercise = ExerciseEntity(
+                    name = "Приседания"
+                ),
+                numberOfRepetitions = 10
             )
 
             appDatabaseDao.insertTraining(testData1)
             appDatabaseDao.insertTraining(testData2)
+
+            appDatabaseDao.insertPowerEx(exTest1)
+            appDatabaseDao.insertPowerEx(exTest2)
         }
     }
 
