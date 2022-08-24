@@ -5,7 +5,7 @@
 
     // bottom navigation_view
     <string name="item_3">item_3</string>
-    <string name="item_4">item_4</string>
+    <string name="user_profile">Профиль</string>
 
     // FAB
     <string name="fab_text">Добавить тренировку</string>
