@@ -31,15 +31,15 @@ class SliderExercisesFragment : Fragment() {
         binding.pager.adapter = adapter
         binding.pager.setPageTransformer(ZoomOutPageTransformer())
 
-        TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
-            tab.text = tabNames(position)
+        TabLayoutMediator(binding.tabLayout, binding.pager) { tab, type ->
+            tab.text = tabNames(type)
         }.attach()
     }
 
-    private fun tabNames(position: Int): String? {
-        when (position) {
-            0 -> return getString(R.string.tab_name_power)
-            1 -> return getString(R.string.tab_name_aerobic)
+    private fun tabNames(type: Int): String? {
+        when (type) {
+            ExerciseNumber.POWER.number -> return getString(R.string.tab_name_power)
+            ExerciseNumber.AEROBIC.number -> return getString(R.string.tab_name_aerobic)
         }
         return null
     }

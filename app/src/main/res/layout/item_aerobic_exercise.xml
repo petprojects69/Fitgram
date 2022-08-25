@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/child_margin"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Аэробное упражнение" />
+        android:text="@string/item_title_exercise_aerobic"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/exercise_cardView"

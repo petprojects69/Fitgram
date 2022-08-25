@@ -6,19 +6,21 @@ import ru.petprojects69.fitgram.ui.exercisesFragment.aerobic.AerobicExercisesFra
 import ru.petprojects69.fitgram.ui.exercisesFragment.power.PowerExercisesFragment
 
 class SliderExerciseAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
-    companion object {
-        private const val ITEM_COUNT = 2
-    }
 
-    override fun createFragment(position: Int): Fragment {
-        when (position) {
-            0 -> return PowerExercisesFragment.newInstance(position)
-            1 -> return AerobicExercisesFragment.newInstance(position)
+    override fun createFragment(type: Int): Fragment {
+        when (type) {
+            ExerciseNumber.POWER.number -> return PowerExercisesFragment.newInstance(type)
+            ExerciseNumber.AEROBIC.number -> return AerobicExercisesFragment.newInstance(type)
         }
-        return PowerExercisesFragment.newInstance(position)
+        return PowerExercisesFragment.newInstance(type)
     }
 
     override fun getItemCount(): Int {
-        return ITEM_COUNT
+        return ExerciseNumber.values().size
     }
+}
+
+enum class ExerciseNumber(val number: Int) {
+    POWER(0),
+    AEROBIC(1)
 }

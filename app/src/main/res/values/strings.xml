@@ -11,4 +11,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_name_aerobic">Аэробные</string>
     <string name="tab_name_power">Силовые</string>
+    <string name="item_title_exercise_aerobic">Аэробное упражнение</string>
 </resources>
