@@ -1,8 +1,10 @@
 package ru.petprojects69.fitgram.ui.timeTableFragment
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.Training
 import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
 
@@ -13,17 +15,5 @@ class TimeTableViewModel(private val repository: ExerciseRepositoryImpl) : ViewM
 
     fun insertPowerExercise(powerExercise: Training) = viewModelScope.launch {
         repository.insertPowerExercise(powerExercise)
-    }
-
-    //Потом убирается в DI
-    class TimeTableViewModelFactory(private val repository: ExerciseRepositoryImpl) :
-        ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(TimeTableViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return TimeTableViewModel(repository) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
     }
 }
