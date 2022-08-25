@@ -1,15 +1,14 @@
 package ru.petprojects69.fitgram.ui.exercisesFragment.aerobic
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import ru.petprojects69.fitgram.AppFitgram
+import by.kirich1409.viewbindingdelegate.viewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentAerobicExercisesBinding
 
-class AerobicExercisesFragment : Fragment() {
+class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises) {
 
     companion object {
         private const val ARG_COUNT = "aerobicEx"
@@ -22,22 +21,9 @@ class AerobicExercisesFragment : Fragment() {
         }
     }
 
-    private var _binding: FragmentAerobicExercisesBinding? = null
-    private val binding get() = _binding!!
-
-    private val viewModel: AerobicExerciseFragmentViewModel by viewModels {
-        AerobicExerciseFragmentViewModel.ExerciseFragmentViewModelFactory((activity?.application as AppFitgram).repository)
-    }
-
+    private val binding: FragmentAerobicExercisesBinding by viewBinding()
+    private val viewModel: AerobicExerciseFragmentViewModel by viewModel()
     private val adapter = AerobicExerciseFragmentAdapter()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentAerobicExercisesBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,10 +34,5 @@ class AerobicExercisesFragment : Fragment() {
                 adapter.exerciseAerobicList = exercises.toMutableList()
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

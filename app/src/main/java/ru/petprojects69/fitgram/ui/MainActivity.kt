@@ -11,9 +11,15 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ActivityMainBinding
+import ru.petprojects69.fitgram.di.PRESET_AEROBIC
+import ru.petprojects69.fitgram.di.PRESET_POWER
+import ru.petprojects69.fitgram.di.PRESET_TRAINING
 import ru.petprojects69.fitgram.domain.entity.Training
+import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 import ru.petprojects69.fitgram.model.database.AppDatabaseDao
 
 private const val FIRST_RUN = "firstRun"
@@ -49,8 +55,12 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun dataPreset() {
         val dao: AppDatabaseDao by inject()
-        val trainingData: List<Training> by inject()
+        val trainingData: List<Training> by inject(named(PRESET_TRAINING))
+        val aerobicExercise: List<AerobicExerciseEntity> by inject(named(PRESET_AEROBIC))
+        val powerExercise: List<PowerExerciseEntity> by inject(named(PRESET_POWER))
         dao.presetTraining(trainingData)
+        dao.presetAerobicEx(aerobicExercise)
+        dao.presetPowerEx(powerExercise)
     }
 
     private fun decorStatusBar() {
