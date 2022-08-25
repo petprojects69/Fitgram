@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.Training
 import ru.petprojects69.fitgram.ui.ItemTouchHelperAdapter
 import ru.petprojects69.fitgram.ui.ItemActionCallback

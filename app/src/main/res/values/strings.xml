@@ -7,4 +7,9 @@
     \n * 100-200 - Опытный спортсменюга
     \n * 200-300 - Терминатор
     \n * 300+ - Наталья Трухина"</string>
+    <string name="item_title_exercise_power">Силовое упражнение</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_name_aerobic">Аэробные</string>
+    <string name="tab_name_power">Силовые</string>
+    <string name="item_title_exercise_aerobic">Аэробное упражнение</string>
 </resources>
