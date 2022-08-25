@@ -7,24 +7,52 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ActivityMainBinding
+import ru.petprojects69.fitgram.domain.entity.Training
+import ru.petprojects69.fitgram.model.database.AppDatabaseDao
+
+private const val FIRST_RUN = "firstRun"
 
 class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by viewBinding()
     private val bottomNavigationPanel: BottomNavigationView by lazy { binding.bottomNavigationView }
     private val navigationController by lazy { findNavController(R.id.navigation_fragment_container) }
-
+    private val scope = CoroutineScope(SupervisorJob())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         decorStatusBar()
         bottomNavigationPanel.setupWithNavController(navigationController)
+        checkingFirstLaunch()
     }
 
-    /** метод делает сроку состояния полупрозрачной*/
+    private fun checkingFirstLaunch() {
+        val preferences = getPreferences(MODE_PRIVATE)
+        val editor = preferences.edit()
+
+        if (!preferences.getBoolean(FIRST_RUN, false)) {
+            editor.putBoolean(FIRST_RUN, true).also {
+                it.apply()
+            }
+            scope.launch {
+                dataPreset()
+            }
+        }
+    }
+
+    private suspend fun dataPreset() {
+        val dao: AppDatabaseDao by inject()
+        val trainingData: List<Training> by inject()
+        dao.presetTraining(trainingData)
+    }
+
     private fun decorStatusBar() {
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

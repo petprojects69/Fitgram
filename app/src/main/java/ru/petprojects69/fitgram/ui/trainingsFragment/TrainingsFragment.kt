@@ -4,19 +4,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
-import ru.petprojects69.fitgram.AppFitgram
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTrainingsBinding
-import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
 import ru.petprojects69.fitgram.ui.ItemActionCallback
+import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     private val binding: FragmentTrainingsBinding by viewBinding()
-    private val adapter = TrainingsAdapter(object : ItemActionCallback{
+    private val adapter = TrainingsAdapter(object : ItemActionCallback {
         override fun delete() {
             deleteTrainingFromStorage()
         }
@@ -30,9 +29,7 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
         }
     })
 
-    private val viewModel: TrainingsViewModel by viewModels {
-        TrainingsViewModelFactory((activity?.application as AppFitgram).repository)
-    }
+    private val viewModel: TrainingsViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,17 +46,18 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     }
 
     // TODO Написать реализацию во viewModel
-    private fun updateTrainingFromStorage(){
+    private fun updateTrainingFromStorage() {
         Toast.makeText(requireContext(), "Тренировка изменена", Toast.LENGTH_SHORT).show()
     }
 
     // TODO Написать реализацию во viewModel
-    private fun deleteTrainingFromStorage(){
+    private fun deleteTrainingFromStorage() {
         Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
     }
 
-    private fun onItemClick(){
-        Toast.makeText(requireContext(), "Добавить тренировку в расписание", Toast.LENGTH_SHORT).show()
+    private fun onItemClick() {
+        Toast.makeText(requireContext(), "Добавить тренировку в расписание", Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun initAdapter() {

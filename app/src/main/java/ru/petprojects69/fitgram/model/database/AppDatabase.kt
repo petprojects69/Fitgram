@@ -1,9 +1,13 @@
 package ru.petprojects69.fitgram.model.database
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
+
+import ru.petprojects69.fitgram.domain.entity.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.Training
+import ru.petprojects69.fitgram.domain.entity.UserEntity
+
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
