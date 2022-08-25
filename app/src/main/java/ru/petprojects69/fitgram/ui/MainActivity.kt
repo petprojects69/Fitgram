@@ -1,6 +1,7 @@
 package ru.petprojects69.fitgram.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -35,8 +36,44 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         decorStatusBar()
-        bottomNavigationPanel.setupWithNavController(navigationController)
         checkingFirstLaunch()
+        initBottomNavigation()
+    }
+
+    private fun initBottomNavigation() {
+        bottomNavigationPanel.setupWithNavController(navigationController)
+        bottomNavigationPanel.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.timetable_item -> {
+                    binding.labelFragmentTextView.text =
+                        resources.getString(R.string.label_timetable)
+                    navigationController.navigate(R.id.timetable_item)
+                    true
+                }
+                R.id.training_item -> {
+                    binding.labelFragmentTextView.text =
+                        resources.getString(R.string.label_trainings)
+                    navigationController.navigate(R.id.training_item)
+                    true
+                }
+                R.id.exercise_item -> {
+                    binding.labelFragmentTextView.text =
+                        resources.getString(R.string.label_exercises)
+                    navigationController.navigate(R.id.exercise_item)
+                    true
+                }
+
+                R.id.profile_item -> {
+                    binding.labelFragmentTextView.text =
+                        resources.getString(R.string.label_profile)
+                    navigationController.navigate(R.id.profile_item)
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
     }
 
     private fun checkingFirstLaunch() {

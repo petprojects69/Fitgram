@@ -3,27 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/fragment_timetable">
+    app:startDestination="@id/timetable_item">
 
     <fragment
-        android:id="@+id/fragment_timetable"
+        android:id="@+id/timetable_item"
         android:name="ru.petprojects69.fitgram.ui.timeTableFragment.TimeTableFragment"
         android:label="TimeTableFragment"
         tools:layout="@layout/fragment_timetable" />
 
     <fragment
-        android:id="@+id/TrainingsFragment"
+        android:id="@+id/training_item"
         android:name="ru.petprojects69.fitgram.ui.trainingsFragment.TrainingsFragment"
         android:label="TrainingsFragment"
         tools:layout="@layout/fragment_trainings" />
 
     <fragment
-        android:id="@+id/userProfileFragment"
+        android:id="@+id/profile_item"
         android:name="ru.petprojects69.fitgram.ui.userProfileFragment.UserProfileFragment"
         android:label="userProfileFragment"
         tools:layout="@layout/fragment_user_profile" />
     <fragment
-        android:id="@+id/sliderExercisesFragment"
+        android:id="@+id/exercise_item"
         android:name="ru.petprojects69.fitgram.ui.exercisesFragment.SliderExercisesFragment"
         android:label="fragment_slider_exercises"
         tools:layout="@layout/fragment_slider_exercises" />

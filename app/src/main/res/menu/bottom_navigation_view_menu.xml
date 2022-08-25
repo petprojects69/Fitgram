@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/fragment_timetable"
+        android:id="@+id/timetable_item"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_access_time_24"
         android:title="@string/label_timetable"/>
     <item
-        android:id="@+id/TrainingsFragment"
+        android:id="@+id/training_item"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_fitness_center_24"
         android:title="@string/label_trainings"/>
     <item
-        android:id="@+id/sliderExercisesFragment"
+        android:id="@+id/exercise_item"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@string/exercises"/>
     <item
-        android:id="@+id/userProfileFragment"
+        android:id="@+id/profile_item"
         android:enabled="true"
         android:icon="@drawable/ic_user_info"
         android:title="@string/user_profile"/>
