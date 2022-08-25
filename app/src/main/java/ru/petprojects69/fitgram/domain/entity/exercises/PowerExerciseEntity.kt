@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.domain.entity
+package ru.petprojects69.fitgram.domain.entity.exercises
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "power_exercise_table")
 data class PowerExerciseEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "power_exercise_id") val id: Int,
+    @ColumnInfo(name = "power_exercise_id") val id: Int = 0,
     @Embedded val exercise: ExerciseEntity,
     @ColumnInfo(name = "number_repetitions") val numberOfRepetitions: Int = 0,
 )

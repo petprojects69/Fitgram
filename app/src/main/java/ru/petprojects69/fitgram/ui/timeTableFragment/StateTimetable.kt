@@ -1,6 +1,6 @@
 package ru.petprojects69.fitgram.ui.timeTableFragment
 
-import ru.petprojects69.fitgram.domain.entity.ExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercises.ExerciseEntity
 
 sealed class StateTimetable{
     object Loading: StateTimetable()
