@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.ui.exercisesFragment
+package ru.petprojects69.fitgram.ui.exercisesFragment.power
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemPowerExerciseBinding
 import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 
-class ExerciseFragmentAdapter :
-    RecyclerView.Adapter<ExerciseFragmentAdapter.ExerciseFragmentHolder>() {
+class PowerExerciseFragmentAdapter :
+    RecyclerView.Adapter<PowerExerciseFragmentAdapter.ExerciseFragmentHolder>() {
 
     var exercisePowerList: MutableList<PowerExerciseEntity> = mutableListOf()
         set(value) {

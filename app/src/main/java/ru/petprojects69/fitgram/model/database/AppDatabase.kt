@@ -63,8 +63,6 @@ abstract class AppDatabase : RoomDatabase() {
             )
 
 
-
-
             val exTest1 = PowerExerciseEntity(
                 exercise = ExerciseEntity(
                     name = "Отжимания"
@@ -79,11 +77,29 @@ abstract class AppDatabase : RoomDatabase() {
                 numberOfRepetitions = 10
             )
 
+
+            val exTest3 = AerobicExerciseEntity(
+                exercise = ExerciseEntity(
+                    name = "Бег трусцой"
+                ),
+                leadTime = 25f
+            )
+
+            val exTest4 = AerobicExerciseEntity(
+                exercise = ExerciseEntity(
+                    name = "Плавание"
+                ),
+                leadTime = 100f
+            )
+
             appDatabaseDao.insertTraining(testData1)
             appDatabaseDao.insertTraining(testData2)
 
             appDatabaseDao.insertPowerEx(exTest1)
             appDatabaseDao.insertPowerEx(exTest2)
+
+            appDatabaseDao.insertAerobicEx(exTest3)
+            appDatabaseDao.insertAerobicEx(exTest4)
         }
     }
 

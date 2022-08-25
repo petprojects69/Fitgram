@@ -18,15 +18,14 @@
         tools:layout="@layout/fragment_trainings" />
 
     <fragment
-        android:id="@+id/ExercisesFragment"
-        android:name="ru.petprojects69.fitgram.ui.ExercisesFragment"
-        android:label="ExercisesFragment"
-        tools:layout="@layout/fragment_exercises" />
-
-    <fragment
         android:id="@+id/userProfileFragment"
         android:name="ru.petprojects69.fitgram.ui.userProfileFragment.UserProfileFragment"
-        android:label="fragment_user_profile"
+        android:label="userProfileFragment"
         tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/sliderExercisesFragment"
+        android:name="ru.petprojects69.fitgram.ui.exercisesFragment.SliderExercisesFragment"
+        android:label="fragment_slider_exercises"
+        tools:layout="@layout/fragment_slider_exercises" />
 
 </navigation>

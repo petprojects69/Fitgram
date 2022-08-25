@@ -14,6 +14,9 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     val allPowerEx: Flow<MutableList<PowerExerciseEntity>> =
         appDatabaseDao.getAllPowerEx()
 
+    val allAerobicEx: Flow<MutableList<AerobicExerciseEntity>> =
+        appDatabaseDao.getAllAerobicEx()
+
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     override suspend fun insertPowerExercise(training: Training) {

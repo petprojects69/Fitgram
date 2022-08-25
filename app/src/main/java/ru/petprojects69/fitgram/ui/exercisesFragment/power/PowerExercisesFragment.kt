@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.ui
+package ru.petprojects69.fitgram.ui.exercisesFragment.power
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,26 +7,35 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import ru.petprojects69.fitgram.AppFitgram
-import ru.petprojects69.fitgram.databinding.FragmentExercisesBinding
-import ru.petprojects69.fitgram.ui.exercisesFragment.ExerciseFragmentAdapter
-import ru.petprojects69.fitgram.ui.exercisesFragment.ExerciseFragmentViewModel
+import ru.petprojects69.fitgram.databinding.FragmentPowerExercisesBinding
 
-class ExercisesFragment : Fragment() {
+class PowerExercisesFragment : Fragment() {
 
-    private var _binding: FragmentExercisesBinding? = null
-    private val binding get() = _binding!!
-
-    private val viewModel: ExerciseFragmentViewModel by viewModels {
-        ExerciseFragmentViewModel.ExerciseFragmentViewModelFactory((activity?.application as AppFitgram).repository)
+    companion object {
+        private const val ARG_COUNT = "powerEx"
+        fun newInstance(counter: Int?): PowerExercisesFragment {
+            val fragment = PowerExercisesFragment()
+            val args = Bundle()
+            args.putInt(ARG_COUNT, counter!!)
+            fragment.arguments = args
+            return fragment
+        }
     }
 
-    private val adapter = ExerciseFragmentAdapter()
+    private var _binding: FragmentPowerExercisesBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: PowerExerciseFragmentViewModel by viewModels {
+        PowerExerciseFragmentViewModel.ExerciseFragmentViewModelFactory((activity?.application as AppFitgram).repository)
+    }
+
+    private val adapter = PowerExerciseFragmentAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentExercisesBinding.inflate(inflater, container, false)
+        _binding = FragmentPowerExercisesBinding.inflate(inflater, container, false)
         return binding.root
     }
 

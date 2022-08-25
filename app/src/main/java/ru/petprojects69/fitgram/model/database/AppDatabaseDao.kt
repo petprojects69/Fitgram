@@ -19,6 +19,9 @@ interface AppDatabaseDao {
     @Query("SELECT * FROM power_exercise_table")
     fun getAllPowerEx(): Flow<MutableList<PowerExerciseEntity>>
 
+    @Query("SELECT * FROM aerobic_exercise_table")
+    fun getAllAerobicEx(): Flow<MutableList<AerobicExerciseEntity>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertTraining(powerExercise: Training)
 
