@@ -32,8 +32,14 @@ interface AppDatabaseDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertPowerEx(powerExercise: PowerExerciseEntity)
 
+    @Insert(onConflict = REPLACE)
+    suspend fun presetPowerEx(data: List<PowerExerciseEntity>)
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAerobicEx(aerobicExercise: AerobicExerciseEntity)
+
+    @Insert(onConflict = REPLACE)
+    suspend fun presetAerobicEx(data: List<AerobicExerciseEntity>)
 
     @Query("DELETE FROM training")
     suspend fun deleteAllPowerExercises()

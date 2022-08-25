@@ -1,6 +1,7 @@
 package ru.petprojects69.fitgram.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -11,9 +12,15 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ActivityMainBinding
+import ru.petprojects69.fitgram.di.PRESET_AEROBIC
+import ru.petprojects69.fitgram.di.PRESET_POWER
+import ru.petprojects69.fitgram.di.PRESET_TRAINING
 import ru.petprojects69.fitgram.domain.entity.Training
+import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 import ru.petprojects69.fitgram.model.database.AppDatabaseDao
 
 private const val FIRST_RUN = "firstRun"
@@ -29,8 +36,44 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         decorStatusBar()
-        bottomNavigationPanel.setupWithNavController(navigationController)
         checkingFirstLaunch()
+        initBottomNavigation()
+    }
+
+    private fun initBottomNavigation() {
+        bottomNavigationPanel.setupWithNavController(navigationController)
+        bottomNavigationPanel.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.timetable_item -> {
+                    binding.labelFragmentTextView.text =
+                        resources.getString(R.string.label_timetable)
+                    navigationController.navigate(R.id.timetable_item)
+                    true
+                }
+                R.id.training_item -> {
+                    binding.labelFragmentTextView.text =
+                        resources.getString(R.string.label_trainings)
+                    navigationController.navigate(R.id.training_item)
+                    true
+                }
+                R.id.exercise_item -> {
+                    binding.labelFragmentTextView.text =
+                        resources.getString(R.string.label_exercises)
+                    navigationController.navigate(R.id.exercise_item)
+                    true
+                }
+
+                R.id.profile_item -> {
+                    binding.labelFragmentTextView.text =
+                        resources.getString(R.string.label_profile)
+                    navigationController.navigate(R.id.profile_item)
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
     }
 
     private fun checkingFirstLaunch() {
@@ -49,8 +92,12 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun dataPreset() {
         val dao: AppDatabaseDao by inject()
-        val trainingData: List<Training> by inject()
+        val trainingData: List<Training> by inject(named(PRESET_TRAINING))
+        val aerobicExercise: List<AerobicExerciseEntity> by inject(named(PRESET_AEROBIC))
+        val powerExercise: List<PowerExerciseEntity> by inject(named(PRESET_POWER))
         dao.presetTraining(trainingData)
+        dao.presetAerobicEx(aerobicExercise)
+        dao.presetPowerEx(powerExercise)
     }
 
     private fun decorStatusBar() {

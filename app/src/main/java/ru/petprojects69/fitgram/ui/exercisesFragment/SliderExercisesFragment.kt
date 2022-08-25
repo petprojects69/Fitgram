@@ -1,29 +1,18 @@
 package ru.petprojects69.fitgram.ui.exercisesFragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentSliderExercisesBinding
 import ru.petprojects69.fitgram.ui.utils.ZoomOutPageTransformer
 
-class SliderExercisesFragment : Fragment() {
+class SliderExercisesFragment : Fragment(R.layout.fragment_slider_exercises) {
 
     private lateinit var adapter: SliderExerciseAdapter
-
-    private var _binding: FragmentSliderExercisesBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentSliderExercisesBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private val binding: FragmentSliderExercisesBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,10 +31,5 @@ class SliderExercisesFragment : Fragment() {
             ExerciseNumber.AEROBIC.number -> return getString(R.string.tab_name_aerobic)
         }
         return null
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

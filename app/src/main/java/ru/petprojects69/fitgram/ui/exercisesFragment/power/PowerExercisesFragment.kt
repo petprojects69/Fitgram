@@ -1,15 +1,14 @@
 package ru.petprojects69.fitgram.ui.exercisesFragment.power
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import ru.petprojects69.fitgram.AppFitgram
+import by.kirich1409.viewbindingdelegate.viewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentPowerExercisesBinding
 
-class PowerExercisesFragment : Fragment() {
+class PowerExercisesFragment : Fragment(R.layout.fragment_power_exercises) {
 
     companion object {
         private const val ARG_COUNT = "powerEx"
@@ -22,22 +21,9 @@ class PowerExercisesFragment : Fragment() {
         }
     }
 
-    private var _binding: FragmentPowerExercisesBinding? = null
-    private val binding get() = _binding!!
-
-    private val viewModel: PowerExerciseFragmentViewModel by viewModels {
-        PowerExerciseFragmentViewModel.ExerciseFragmentViewModelFactory((activity?.application as AppFitgram).repository)
-    }
-
+    private val binding: FragmentPowerExercisesBinding by viewBinding()
+    private val viewModel: PowerExerciseFragmentViewModel by viewModel()
     private val adapter = PowerExerciseFragmentAdapter()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentPowerExercisesBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,10 +34,5 @@ class PowerExercisesFragment : Fragment() {
                 adapter.exercisePowerList = exercises.toMutableList()
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
