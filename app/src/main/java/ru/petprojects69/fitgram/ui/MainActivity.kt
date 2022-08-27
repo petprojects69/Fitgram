@@ -1,7 +1,7 @@
 package ru.petprojects69.fitgram.ui
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -23,6 +23,7 @@ import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 import ru.petprojects69.fitgram.model.database.AppDatabaseDao
 
+
 private const val FIRST_RUN = "firstRun"
 
 class MainActivity : AppCompatActivity() {
@@ -40,7 +41,16 @@ class MainActivity : AppCompatActivity() {
         initBottomNavigation()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val setIntent = Intent(Intent.ACTION_MAIN)
+        setIntent.addCategory(Intent.CATEGORY_HOME)
+        setIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(setIntent)
+    }
+
     private fun initBottomNavigation() {
+        binding.labelFragmentTextView.text = resources.getString(R.string.label_timetable)
         bottomNavigationPanel.setupWithNavController(navigationController)
         bottomNavigationPanel.setOnItemSelectedListener {
             when (it.itemId) {

@@ -13,4 +13,5 @@
     <color name="color_for_status_bar">#19000000</color>
     <color name="green">#75BD42</color>
     <color name="red">#ED4343</color>
+    <color name="blue">#0053B8</color>
 </resources>

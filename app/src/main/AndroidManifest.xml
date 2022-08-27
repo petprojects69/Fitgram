@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ru.petprojects69.fitgram">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".AppFitgram"
         android:allowBackup="true"
@@ -25,6 +27,11 @@
 
         <activity
             android:name=".ui.MainActivity"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".signIn.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

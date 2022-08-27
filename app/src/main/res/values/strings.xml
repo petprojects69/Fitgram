@@ -12,4 +12,7 @@
     <string name="tab_name_aerobic">Аэробные</string>
     <string name="tab_name_power">Силовые</string>
     <string name="item_title_exercise_aerobic">Аэробное упражнение</string>
+
+    <string name="login_label_text">Для работы приложения выполните вход</string>
+    <string name="login_without_authorization_text">Продолжить без регистрации</string>
 </resources>
