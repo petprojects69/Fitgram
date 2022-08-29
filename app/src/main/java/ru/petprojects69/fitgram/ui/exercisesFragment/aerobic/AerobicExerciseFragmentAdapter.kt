@@ -21,7 +21,6 @@ class AerobicExerciseFragmentAdapter :
         private val binding = ItemAerobicExerciseBinding.bind(item)
         fun bind(exercise: AerobicExerciseEntity) {
             binding.exerciseTitleTextView.text = exercise.exercise.name
-            binding.runtimeTextView.text = exercise.leadTime.toString()
         }
     }
 

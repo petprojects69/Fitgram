@@ -9,7 +9,7 @@ import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 
 class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : ExerciseRepository {
 
-    val allPowerExercise: Flow<MutableList<Training>> = appDatabaseDao.getAllTraining()
+    val allTraining: Flow<MutableList<Training>> = appDatabaseDao.getAllTraining()
 
     val allPowerEx: Flow<MutableList<PowerExerciseEntity>> =
         appDatabaseDao.getAllPowerEx()
@@ -19,7 +19,7 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override suspend fun insertPowerExercise(training: Training) {
+    override suspend fun insertTraining(training: Training) {
         appDatabaseDao.insertTraining(training)
     }
 

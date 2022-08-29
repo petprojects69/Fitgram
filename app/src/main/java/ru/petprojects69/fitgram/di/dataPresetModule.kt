@@ -2,8 +2,8 @@ package ru.petprojects69.fitgram.di
 
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import ru.petprojects69.fitgram.data.exercises.power.presetPowerExercise
-import ru.petprojects69.fitgram.domain.preset.presetAerobicExercise
+import ru.petprojects69.fitgram.data.preset.aerobic.presetAerobicExercise
+import ru.petprojects69.fitgram.data.preset.power.presetPowerExercise
 import ru.petprojects69.fitgram.domain.preset.presetTrainings
 
 const val PRESET_TRAINING = "presetTraining"

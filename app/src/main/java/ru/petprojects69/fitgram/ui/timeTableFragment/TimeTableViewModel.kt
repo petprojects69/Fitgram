@@ -11,9 +11,9 @@ import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
 class TimeTableViewModel(private val repository: ExerciseRepositoryImpl) : ViewModel() {
 
     val allPowerExercise: LiveData<MutableList<Training>> =
-        repository.allPowerExercise.asLiveData()
+        repository.allTraining.asLiveData()
 
     fun insertPowerExercise(powerExercise: Training) = viewModelScope.launch {
-        repository.insertPowerExercise(powerExercise)
+        repository.insertTraining(powerExercise)
     }
 }

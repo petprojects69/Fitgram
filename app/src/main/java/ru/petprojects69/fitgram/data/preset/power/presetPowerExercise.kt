@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.data.exercises.power
+package ru.petprojects69.fitgram.data.preset.power
 
 val presetPowerExercise = listOf(
     benchPress,

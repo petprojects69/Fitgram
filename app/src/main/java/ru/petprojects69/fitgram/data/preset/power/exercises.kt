@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.data.exercises.power
+package ru.petprojects69.fitgram.data.preset.power
 
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.domain.entity.exercises.ExerciseEntity
