@@ -10,5 +10,4 @@ data class PowerExerciseEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "power_exercise_id") val id: Int = 0,
     @Embedded val exercise: ExerciseEntity,
-    @ColumnInfo(name = "number_repetitions") val numberOfRepetitions: Int = 0,
 )

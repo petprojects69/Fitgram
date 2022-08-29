@@ -6,14 +6,14 @@ import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 val presetPowerExercise = listOf(
     PowerExerciseEntity(
         exercise = ExerciseEntity(
-            name = "Отжимания"
+            name = "Отжимания",
+            description = "Нужно чтобы грудь касалась пола/земли"
         ),
-        numberOfRepetitions = 25
     ),
     PowerExerciseEntity(
         exercise = ExerciseEntity(
-            name = "Приседания"
+            name = "Приседания",
+            description = "Колени сгибаем до острого угла"
         ),
-        numberOfRepetitions = 10
     )
 )

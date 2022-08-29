@@ -20,8 +20,8 @@ class PowerExerciseFragmentAdapter :
     inner class ExerciseFragmentHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemPowerExerciseBinding.bind(item)
         fun bind(exercise: PowerExerciseEntity) {
-            binding.exerciseTitleTextView.text = exercise.exercise.name
-            binding.numberRepetitionsTextView.text = exercise.numberOfRepetitions.toString()
+            binding.itemExerciseTitleTextView.text = exercise.exercise.name
+            binding.itemExerciseDescriptionTextView.text = exercise.exercise.description
         }
     }
 

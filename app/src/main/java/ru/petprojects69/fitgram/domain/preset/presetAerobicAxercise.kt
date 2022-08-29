@@ -6,14 +6,13 @@ import ru.petprojects69.fitgram.domain.entity.exercises.ExerciseEntity
 val presetAerobicExercise = listOf(
     AerobicExerciseEntity(
         exercise = ExerciseEntity(
-            name = "Бег трусцой"
+            name = "Бег трусцой",
+            description = "Главное - дыхание"
         ),
-        leadTime = 25f
     ),
     AerobicExerciseEntity(
         exercise = ExerciseEntity(
-            name = "Плавание"
-        ),
-        leadTime = 100f
-    )
+            name = "Плавание",
+            description = "Плавать нужно как рыбка!!"
+        ))
 )
