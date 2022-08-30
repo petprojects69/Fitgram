@@ -70,6 +70,7 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding, private val 
             )
         }
         binding.titleTextView.text = training.first.label.toString()
+
         training.first.exerciseList?.let {
             innerAdapter.initData(it)
         }
@@ -80,3 +81,9 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding, private val 
         binding.detailsRecyclerView.layoutManager = LinearLayoutManager(context)
     }
 }
+
+//private fun <E> fromJson(List) {
+//    fun jsonToList(value: String) =
+//        Gson().fromJson(value, Array<BasicExercise>::class.java).toMutableList()
+//}
+

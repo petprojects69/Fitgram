@@ -4,31 +4,24 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import ru.petprojects69.fitgram.domain.TypeConverterExerciseList
+import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 
 open class BasicExercise(
-    open val label: String? = null,
-    open val calories: Int? = null,
-    open val runTime: Int? = null
+    val name: String?,
 )
 
-class AerobicEx(
-    labelAerobic: String? = null,
-    caloriesAerobic: Int? = null,
-    runTimeAerobic: Int? = null,
-    val type: AerobicType? = null
-) : BasicExercise(labelAerobic, caloriesAerobic, runTimeAerobic)
+data class AerobicEx(
+    val exercise: AerobicExerciseEntity,
+    val duration: Int?
+) : BasicExercise(name = exercise.exercise.name)
 
-enum class AerobicType {
-    FREE, RUN, YOGA, PILATES
-}
+data class PowerEx(
+    val exercise: PowerExerciseEntity,
+    val sets: Int,
+    val reps: Int
+) : BasicExercise(name = exercise.exercise.name)
 
-class PowerEx(
-    labelPower: String? = null,
-    caloriesPower: Int? = null,
-    runTimePower: Int? = null,
-    val count: Int? = null,
-    val iteration: Int? = null
-) : BasicExercise(labelPower, caloriesPower, runTimePower)
 
 @Entity(tableName = "training")
 @TypeConverters(TypeConverterExerciseList::class)

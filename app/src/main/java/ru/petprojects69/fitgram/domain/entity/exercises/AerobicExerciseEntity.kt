@@ -10,5 +10,4 @@ data class AerobicExerciseEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "aerobic_exercise_id") val id: Int = 0,
     @Embedded val exercise: ExerciseEntity,
-    @ColumnInfo(name = "lead_time") val leadTime: Float = 0.0f,
 )

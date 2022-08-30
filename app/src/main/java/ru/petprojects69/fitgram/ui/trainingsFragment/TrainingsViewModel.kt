@@ -8,5 +8,5 @@ import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
 
 class TrainingsViewModel(private val repository: ExerciseRepositoryImpl) : ViewModel() {
     val allTrainings: LiveData<MutableList<Training>> =
-        repository.allPowerExercise.asLiveData()
+        repository.allTraining.asLiveData()
 }

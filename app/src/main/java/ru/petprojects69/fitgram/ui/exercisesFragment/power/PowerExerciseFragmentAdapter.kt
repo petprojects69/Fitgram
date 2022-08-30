@@ -21,7 +21,7 @@ class PowerExerciseFragmentAdapter :
         private val binding = ItemPowerExerciseBinding.bind(item)
         fun bind(exercise: PowerExerciseEntity) {
             binding.exerciseTitleTextView.text = exercise.exercise.name
-            binding.numberRepetitionsTextView.text = exercise.numberOfRepetitions.toString()
+            exercise.exercise.poster?.let { binding.exercisePoster.setImageResource(it) }
         }
     }
 
@@ -39,3 +39,4 @@ class PowerExerciseFragmentAdapter :
         return exercisePowerList.size
     }
 }
+
