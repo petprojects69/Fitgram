@@ -20,8 +20,8 @@ class PowerExerciseFragmentAdapter :
     inner class ExerciseFragmentHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemPowerExerciseBinding.bind(item)
         fun bind(exercise: PowerExerciseEntity) {
-            binding.exerciseTitleTextView.text = exercise.exercise.name
-            exercise.exercise.poster?.let { binding.exercisePoster.setImageResource(it) }
+            binding.itemExerciseTitleTextView.text = exercise.exercise.name
+            binding.itemExerciseDescriptionTextView.text = exercise.exercise.description
         }
     }
 
@@ -39,4 +39,3 @@ class PowerExerciseFragmentAdapter :
         return exercisePowerList.size
     }
 }
-

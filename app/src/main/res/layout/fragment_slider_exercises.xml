@@ -12,8 +12,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="@color/teal_200"
-        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorColor="@color/primaryTintColor"
+        app:tabIndicatorHeight="3dp"
+        app:tabSelectedTextColor="#FFd18c02"
         app:tabTextAppearance="@style/CustomTextAppearance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

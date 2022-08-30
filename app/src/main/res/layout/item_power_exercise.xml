@@ -1,84 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_exercise_base_card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/root_margin_top"
-    android:background="@color/green"
-    android:padding="@dimen/root_padding_horizontal">
+    android:layout_height="141dp"
+    android:layout_margin="6dp"
+    android:paddingHorizontal="@dimen/root_padding_horizontal"
+    app:cardCornerRadius="13dp"
+    app:cardElevation="4dp"
+    app:strokeColor="#FFAA1313"
+    app:strokeWidth="3dp">
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/exercise_cardView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/child_margin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/item_exercise_image_card_view"
+            android:layout_width="116dp"
+            android:layout_height="116dp"
+            android:layout_marginStart="15dp"
+            app:cardCornerRadius="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#CC671313"
+            app:strokeWidth="2dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/item_exercise_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/item_tmp_image"
+                tools:background="@color/black" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:id="@+id/item_exercise_title_text_view"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:padding="@dimen/inner_content_padding">
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="3dp"
+            android:lineSpacingExtra="11sp"
+            android:maxLines="2"
+            android:shadowColor="#40000000"
+            android:shadowDy="4"
+            android:shadowRadius="6"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/item_exercise_image_card_view"
+            app:layout_constraintTop_toTopOf="@id/item_exercise_image_card_view"
+            tools:text="Упражнение пресса №1" />
 
-            <TextView
-                android:id="@+id/exercise_title_textView"
-                style="@style/ItemTitleTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/exercise_poster"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Название упражнения" />
-
-            <ImageView
-                android:id="@+id/exercise_poster"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/ic_launcher_background"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/btn_change"
-        android:layout_width="@dimen/width_btn_item"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/root_padding_horizontal"
-        android:backgroundTint="@color/green"
-        app:layout_constraintBottom_toBottomOf="@id/exercise_cardView"
-        app:layout_constraintStart_toEndOf="@id/exercise_cardView"
-        app:layout_constraintTop_toTopOf="@id/exercise_cardView">
-
-        <ImageView
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/item_exercise_description_text_view"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_edit_24" />
-    </androidx.cardview.widget.CardView>
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="5dp"
+            android:lineSpacingExtra="-2sp"
+            android:maxLines="3"
+            android:textColor="#99000000"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/item_exercise_image_card_view"
+            app:layout_constraintTop_toBottomOf="@id/item_exercise_title_text_view"
+            tools:text="Описание бла-бла-бла бла-бла
+            бла-бла
+            бла..................вававававава..." />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/btn_delete"
-        android:layout_width="@dimen/width_btn_item"
-        android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/root_padding_horizontal"
-        android:backgroundTint="@color/red"
-        app:layout_constraintBottom_toBottomOf="@id/exercise_cardView"
-        app:layout_constraintEnd_toStartOf="@id/exercise_cardView"
-        app:layout_constraintTop_toTopOf="@id/exercise_cardView">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_delete_outline_24" />
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
