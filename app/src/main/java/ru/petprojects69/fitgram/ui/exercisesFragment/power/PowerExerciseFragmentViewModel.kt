@@ -1,14 +1,19 @@
 package ru.petprojects69.fitgram.ui.exercisesFragment.power
 
 import androidx.lifecycle.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
-import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
+import ru.petprojects69.fitgram.data.database.ExerciseRepositoryImpl
+import ru.petprojects69.fitgram.domain.ExerciseRepository
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
 
-class PowerExerciseFragmentViewModel(private val repository: ExerciseRepositoryImpl) : ViewModel() {
+class PowerExerciseFragmentViewModel(private val repository: ExerciseRepository) : ViewModel() {
 
-    val allPowerExercise: LiveData<MutableList<PowerExerciseEntity>> =
-        repository.allPowerEx.asLiveData()
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val allPowerExercise: LiveData<MutableList<PowerExerciseEntity>> = viewModelScope.async {
+        repository.getAllPowerEx().asLiveData()
+    }.getCompleted()
 
     fun insertPowerExercise(powerExercise: PowerExerciseEntity) = viewModelScope.launch {
         repository.insertPowerEx(powerExercise)

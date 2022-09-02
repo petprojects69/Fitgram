@@ -29,10 +29,8 @@ class PowerExercisesFragment : Fragment(R.layout.fragment_power_exercises) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.exerciseRecyclerView.adapter = adapter
-        viewModel.allPowerExercise.observe(viewLifecycleOwner) { exercises ->
-            exercises?.let {
-                adapter.exercisePowerList = exercises.toMutableList()
-            }
+        viewModel.allPowerExercise.observe(viewLifecycleOwner) {
+            adapter.exercisePowerList = it
         }
     }
 }

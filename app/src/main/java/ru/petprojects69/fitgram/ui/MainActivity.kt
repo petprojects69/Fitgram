@@ -1,7 +1,6 @@
 package ru.petprojects69.fitgram.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -18,10 +17,10 @@ import ru.petprojects69.fitgram.databinding.ActivityMainBinding
 import ru.petprojects69.fitgram.di.PRESET_AEROBIC
 import ru.petprojects69.fitgram.di.PRESET_POWER
 import ru.petprojects69.fitgram.di.PRESET_TRAINING
-import ru.petprojects69.fitgram.domain.entity.Training
-import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
-import ru.petprojects69.fitgram.model.database.AppDatabaseDao
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
+import ru.petprojects69.fitgram.data.database.AppDatabaseDao
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 
 private const val FIRST_RUN = "firstRun"
 
@@ -92,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun dataPreset() {
         val dao: AppDatabaseDao by inject()
-        val trainingData: List<Training> by inject(named(PRESET_TRAINING))
+        val trainingData: List<TrainingEntity> by inject(named(PRESET_TRAINING))
         val aerobicExercise: List<AerobicExerciseEntity> by inject(named(PRESET_AEROBIC))
         val powerExercise: List<PowerExerciseEntity> by inject(named(PRESET_POWER))
         dao.presetTraining(trainingData)

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemAerobicExerciseBinding
-import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
 
 class AerobicExerciseFragmentAdapter :
     RecyclerView.Adapter<AerobicExerciseFragmentAdapter.ExerciseFragmentHolder>() {

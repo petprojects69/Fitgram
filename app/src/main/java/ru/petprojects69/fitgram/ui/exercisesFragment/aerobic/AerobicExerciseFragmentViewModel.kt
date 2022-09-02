@@ -4,15 +4,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
-import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
+import ru.petprojects69.fitgram.domain.ExerciseRepository
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
 
-class AerobicExerciseFragmentViewModel(private val repository: ExerciseRepositoryImpl) :
+class AerobicExerciseFragmentViewModel(private val repository: ExerciseRepository) :
     ViewModel() {
 
-    val allAerobicExercise: LiveData<MutableList<AerobicExerciseEntity>> =
-        repository.allAerobicEx.asLiveData()
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val allAerobicExercise: LiveData<MutableList<AerobicExerciseEntity>> = viewModelScope.async {
+        repository.getAllAerobicEx().asLiveData()
+    }.getCompleted()
+
 
     fun insertAerobicExercise(aerobicExercise: AerobicExerciseEntity) = viewModelScope.launch {
         repository.insertAerobicEx(aerobicExercise)

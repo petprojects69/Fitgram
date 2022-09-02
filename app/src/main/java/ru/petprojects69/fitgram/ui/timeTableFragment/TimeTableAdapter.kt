@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
-import ru.petprojects69.fitgram.domain.entity.Training
-import ru.petprojects69.fitgram.ui.ItemTouchHelperAdapter
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.ui.ItemActionCallback
+import ru.petprojects69.fitgram.ui.ItemTouchHelperAdapter
 
 class TimeTableAdapter(private val itemActionCallback: ItemActionCallback) :
     RecyclerView.Adapter<TimeTableHolder>(), ItemTouchHelperAdapter {
 
-    private var exerciseList: MutableList<Pair<Training, Boolean>> = mutableListOf()
+    private var exerciseList: MutableList<Pair<TrainingEntity, Boolean>> = mutableListOf()
 
-    fun initData(exercise: List<Training>) {
+    fun initData(exercise: List<TrainingEntity>) {
         exerciseList.clear()
         for (item in exercise) {
             exerciseList.add(Pair(first = item, second = false))

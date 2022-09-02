@@ -1,8 +1,8 @@
 package ru.petprojects69.fitgram.data.preset.power
 
 import ru.petprojects69.fitgram.R
-import ru.petprojects69.fitgram.domain.entity.exercises.ExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
 
 val benchPress = PowerExerciseEntity(
     exercise = ExerciseEntity(

@@ -29,10 +29,8 @@ class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.exerciseRecyclerView.adapter = adapter
-        viewModel.allAerobicExercise.observe(viewLifecycleOwner) { exercises ->
-            exercises?.let {
-                adapter.exerciseAerobicList = exercises.toMutableList()
-            }
+        viewModel.allAerobicExercise.observe(viewLifecycleOwner) {
+            adapter.exerciseAerobicList = it
         }
     }
 }

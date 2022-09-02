@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding

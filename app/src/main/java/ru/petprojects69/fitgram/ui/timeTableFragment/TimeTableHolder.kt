@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
-import ru.petprojects69.fitgram.domain.entity.Training
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.ui.innerAdapter.InnerTimeTableAdapter
 import java.lang.ref.WeakReference
 
@@ -57,7 +57,7 @@ class TimeTableHolder(private val binding: ItemTimetableBinding, private val con
 
     // TODO innerAdapter.initData()
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun bind(exercise: Pair<Training, Boolean>) {
+    fun bind(exercise: Pair<TrainingEntity, Boolean>) {
 
         if (exercise.second) {
             binding.detailsRecyclerView.visibility = View.VISIBLE

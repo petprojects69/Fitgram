@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemPowerExerciseBinding
-import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
 
 class PowerExerciseFragmentAdapter :
     RecyclerView.Adapter<PowerExerciseFragmentAdapter.ExerciseFragmentHolder>() {

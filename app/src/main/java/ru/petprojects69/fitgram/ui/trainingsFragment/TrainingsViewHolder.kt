@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemTrainingBinding
-import ru.petprojects69.fitgram.domain.entity.Training
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.ui.innerAdapter.InnerTimeTableAdapter
 import java.lang.ref.WeakReference
 
@@ -57,7 +57,7 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding, private val 
 
     // TODO изменить ExerciseEntity на Тренировка
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun bind(training: Pair<Training, Boolean>) {
+    fun bind(training: Pair<TrainingEntity, Boolean>) {
         if (training.second) {
             binding.detailsRecyclerView.visibility = View.VISIBLE
             binding.detailsBtnImageView.setImageDrawable(

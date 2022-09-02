@@ -4,17 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemTrainingBinding
-import ru.petprojects69.fitgram.domain.entity.Training
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.ui.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperAdapter
 
 class TrainingsAdapter(private val itemActionCallback: ItemActionCallback) :
     RecyclerView.Adapter<TrainingsViewHolder>(), ItemTouchHelperAdapter {
 
-    private var trainingsList: MutableList<Pair<Training, Boolean>> = mutableListOf()
+    private var trainingsList: MutableList<Pair<TrainingEntity, Boolean>> = mutableListOf()
 
     // TODO изменить ExerciseEntity на Тренировка
-    fun initialList(list: MutableList<Training>) {
+    fun initialList(list: MutableList<TrainingEntity>) {
         trainingsList.clear()
         for (item in list) {
             val position = trainingsList.size
@@ -24,7 +24,7 @@ class TrainingsAdapter(private val itemActionCallback: ItemActionCallback) :
     }
 
     // TODO изменить ExerciseEntity на Тренировка
-    fun addTraining(training: Training) {
+    fun addTraining(training: TrainingEntity) {
         val position = trainingsList.size
         trainingsList.add(position, Pair(first = training, second = false))
         notifyItemInserted(position)
