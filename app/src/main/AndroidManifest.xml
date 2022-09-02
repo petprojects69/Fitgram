@@ -31,7 +31,7 @@
 
         </activity>
 
-        <activity android:name=".signIn.SignInActivity"
+        <activity android:name=".signIn.SignInFirebaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

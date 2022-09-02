@@ -13,7 +13,7 @@
     <string name="tab_name_power">Силовые</string>
     <string name="item_title_exercise_aerobic">Аэробное упражнение</string>
 
-    <string name="login_label_text">Для работы приложения выполните вход</string>
+    <string name="login_label_text">Fitgram</string>
     <string name="login_without_authorization_text">Продолжить без регистрации</string>
 
     <string name="label_google_sign_in">Firebase + Google Sign In</string>
@@ -121,5 +121,11 @@
 
     <string name="error_sign_in_failed">Sign in failed, see logs for details.</string>
     <string name="multi_factor_signed_out">You are not signed in. To use this sample, first navigate to the Email/Password example to sign in and then return here to enroll in multi-factor auth.</string>
+    <string name="your_web_client_id">925768303344-0cnjvn08pf4d3kb6d8kvnjlaktgdkg83.apps.googleusercontent.com</string>
+    <string name="slogan_text">твой верный помощник в мире фитнеса</string>
+    <string name="hint_edit_phone_number">+7</string>
+    <string name="get_code_btn_text">Получить код</string>
+    <string name="google_sign_in_text_btn">Войти с Google</string>
+    <string name="anonymous_sign_in_text_btn">войти анонимно</string>
 
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="login_label_textView_margin_top">86dp</dimen>
+    <dimen name="login_label_textView_margin_top">160dp</dimen>
     <dimen name="login_without_authorization_textView_margin_top">20dp</dimen>
 
     <dimen name="user_image_margin_top">50dp</dimen>

@@ -1,13 +1,18 @@
 package ru.petprojects69.fitgram.ui
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
@@ -22,7 +27,6 @@ import ru.petprojects69.fitgram.domain.entity.Training
 import ru.petprojects69.fitgram.domain.entity.exercises.AerobicExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
 import ru.petprojects69.fitgram.model.database.AppDatabaseDao
-
 
 private const val FIRST_RUN = "firstRun"
 

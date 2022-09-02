@@ -32,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
                 .build()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-        binding.signInButton.setOnClickListener {
+        binding.signInGoogleButton.setOnClickListener {
             signIn()
         }
         binding.loginWithoutAuthorizationTextView.setOnClickListener {
