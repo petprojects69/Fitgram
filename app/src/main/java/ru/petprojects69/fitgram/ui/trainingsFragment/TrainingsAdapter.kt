@@ -36,7 +36,7 @@ class TrainingsAdapter(private val itemActionCallback: ItemActionCallback) :
             parent,
             false
         )
-        return TrainingsViewHolder(binding, parent.context)
+        return TrainingsViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TrainingsViewHolder, position: Int) {

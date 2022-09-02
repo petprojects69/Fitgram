@@ -9,7 +9,7 @@ import ru.petprojects69.fitgram.ui.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperAdapter
 
 class TimeTableAdapter(private val itemActionCallback: ItemActionCallback) :
-    RecyclerView.Adapter<TimeTableHolder>(), ItemTouchHelperAdapter {
+    RecyclerView.Adapter<TimeTableViewHolder>(), ItemTouchHelperAdapter {
 
     private var exerciseList: MutableList<Pair<TrainingEntity, Boolean>> = mutableListOf()
 
@@ -21,16 +21,16 @@ class TimeTableAdapter(private val itemActionCallback: ItemActionCallback) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeTableHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeTableViewHolder {
         val binding = ItemTimetableBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return TimeTableHolder(binding, parent.context)
+        return TimeTableViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: TimeTableHolder, position: Int) {
+    override fun onBindViewHolder(holder: TimeTableViewHolder, position: Int) {
         holder.onChangeClick = {
             onItemUpdate(holder.absoluteAdapterPosition)
         }

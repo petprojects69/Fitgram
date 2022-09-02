@@ -23,7 +23,7 @@ class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises) {
 
     private val binding: FragmentAerobicExercisesBinding by viewBinding()
     private val viewModel: AerobicExerciseFragmentViewModel by viewModel()
-    private val adapter = AerobicExerciseFragmentAdapter()
+    private val adapter = AerobicExercisesFragmentAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
