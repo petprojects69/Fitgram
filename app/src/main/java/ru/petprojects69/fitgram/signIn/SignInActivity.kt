@@ -38,6 +38,11 @@ class SignInActivity : AppCompatActivity() {
         binding.loginWithoutAuthorizationTextView.setOnClickListener {
             loginWithAuthorisation()
         }
+        binding.phoneBtn.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(binding.container.id, PhoneSignInFragment())
+                .commit()
+        }
     }
 
     private fun loginWithAuthorisation() {
