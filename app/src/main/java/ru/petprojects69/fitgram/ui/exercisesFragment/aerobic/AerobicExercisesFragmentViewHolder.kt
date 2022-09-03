@@ -10,6 +10,7 @@ class AerobicExercisesFragmentViewHolder(private val binding: ItemAerobicExercis
     fun bind(exercise: AerobicExerciseEntity) {
         binding.itemExerciseTitleTextView.text = exercise.exercise.name
         binding.itemExerciseDescriptionTextView.text = exercise.exercise.description
+        exercise.exercise.poster?.let { binding.itemExerciseImageView.setImageResource(it) }
     }
 
 }

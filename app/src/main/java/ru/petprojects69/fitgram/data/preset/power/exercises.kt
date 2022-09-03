@@ -89,7 +89,7 @@ val tricepsExtension = PowerExerciseEntity(
 
 val barbellPull = PowerExerciseEntity(
     exercise = ExerciseEntity(
-        name = "ТЯга штанги в наклоне",
+        name = "Тяга штанги в наклоне",
         description = "Данное упражнение нагружает мышцу средней части спины и " +
                 "является чуть ли не лучшим упражнением для «добавления толщины» " +
                 "верхней части широчайших мышц, нижним и средним частям трапеций, " +

@@ -17,7 +17,4 @@ class TimeTableViewModel(private val repository: ExerciseRepository) : ViewModel
         repository.getAllTraining().asLiveData()
     }.getCompleted()
 
-    fun insertPowerExercise(powerExercise: TrainingEntity) = viewModelScope.launch {
-        repository.insertTraining(powerExercise)
-    }
 }

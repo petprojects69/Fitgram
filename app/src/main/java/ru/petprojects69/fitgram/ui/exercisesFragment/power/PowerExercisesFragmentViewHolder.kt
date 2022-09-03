@@ -10,5 +10,6 @@ class PowerExercisesFragmentViewHolder(private val binding: ItemPowerExerciseBin
     fun bind(exercise: PowerExerciseEntity) {
         binding.itemExerciseTitleTextView.text = exercise.exercise.name
         binding.itemExerciseDescriptionTextView.text = exercise.exercise.description
+        exercise.exercise.poster?.let { binding.itemExerciseImageView.setImageResource(it) }
     }
 }

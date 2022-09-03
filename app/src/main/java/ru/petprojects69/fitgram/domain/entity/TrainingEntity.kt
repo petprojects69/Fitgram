@@ -11,5 +11,5 @@ class TrainingEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val label: String?,
-    val exerciseList: MutableList<BasicExercise>?
+    val exerciseList: MutableList<TrainingExercise>?
 )

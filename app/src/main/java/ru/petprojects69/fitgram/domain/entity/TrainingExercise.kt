@@ -5,17 +5,17 @@ import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntit
 
 // TODO переписать так, чтобы был доступ к полям exerciseList: MutableList<BasicExercise> в TrainingEntity
 
-open class BasicExercise(
+open class TrainingExercise(
     val name: String?,
 )
 
-data class AerobicEx(
+data class TrainingAerobicExercise(
     val exercise: AerobicExerciseEntity,
     val duration: Int?
-) : BasicExercise(name = exercise.exercise.name)
+) : TrainingExercise(name = exercise.exercise.name)
 
-data class PowerEx(
+data class TrainingPowerExercise(
     val exercise: PowerExerciseEntity,
     val sets: Int,
     val reps: Int
-) : BasicExercise(name = exercise.exercise.name)
+) : TrainingExercise(name = exercise.exercise.name)
