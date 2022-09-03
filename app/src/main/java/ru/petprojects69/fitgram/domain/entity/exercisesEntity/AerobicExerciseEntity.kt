@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.domain.entity.exercises
+package ru.petprojects69.fitgram.domain.entity.exercisesEntity
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded

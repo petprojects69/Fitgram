@@ -22,17 +22,15 @@ class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises) {
     }
 
     private val binding: FragmentAerobicExercisesBinding by viewBinding()
-    private val viewModel: AerobicExerciseFragmentViewModel by viewModel()
-    private val adapter = AerobicExerciseFragmentAdapter()
+    private val viewModel: AerobicExercisesFragmentViewModel by viewModel()
+    private val adapter = AerobicExercisesFragmentAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.exerciseRecyclerView.adapter = adapter
-        viewModel.allAerobicExercise.observe(viewLifecycleOwner) { exercises ->
-            exercises?.let {
-                adapter.exerciseAerobicList = exercises.toMutableList()
-            }
+        viewModel.allAerobicExercise.observe(viewLifecycleOwner) {
+            adapter.exerciseAerobicList = it
         }
     }
 }

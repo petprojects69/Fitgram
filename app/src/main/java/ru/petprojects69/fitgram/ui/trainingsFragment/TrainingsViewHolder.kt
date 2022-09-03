@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemTrainingBinding
-import ru.petprojects69.fitgram.domain.entity.Training
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.ui.innerAdapter.InnerTimeTableAdapter
 import java.lang.ref.WeakReference
 
-class TrainingsViewHolder(private val binding: ItemTrainingBinding, private val context: Context) :
+class TrainingsViewHolder(private val binding: ItemTrainingBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     private val view = WeakReference(binding.root)
@@ -57,16 +57,16 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding, private val 
 
     // TODO изменить ExerciseEntity на Тренировка
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun bind(training: Pair<Training, Boolean>) {
+    fun bind(training: Pair<TrainingEntity, Boolean>) {
         if (training.second) {
             binding.detailsRecyclerView.visibility = View.VISIBLE
             binding.detailsBtnImageView.setImageDrawable(
-                context.getDrawable(R.drawable.ic_baseline_expand_less_24)
+                binding.root.context.getDrawable(R.drawable.ic_baseline_expand_less_24)
             )
         } else {
             binding.detailsRecyclerView.visibility = View.GONE
             binding.detailsBtnImageView.setImageDrawable(
-                context.getDrawable(R.drawable.ic_baseline_expand_more_24)
+                binding.root.context.getDrawable(R.drawable.ic_baseline_expand_more_24)
             )
         }
         binding.titleTextView.text = training.first.label.toString()
@@ -78,7 +78,7 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding, private val 
 
     private fun initInnerRecyclerView() {
         binding.detailsRecyclerView.adapter = innerAdapter
-        binding.detailsRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.detailsRecyclerView.layoutManager = LinearLayoutManager(binding.root.context)
     }
 }
 

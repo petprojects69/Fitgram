@@ -22,17 +22,15 @@ class PowerExercisesFragment : Fragment(R.layout.fragment_power_exercises) {
     }
 
     private val binding: FragmentPowerExercisesBinding by viewBinding()
-    private val viewModel: PowerExerciseFragmentViewModel by viewModel()
-    private val adapter = PowerExerciseFragmentAdapter()
+    private val viewModel: PowerExercisesFragmentViewModel by viewModel()
+    private val adapter = PowerExercisesFragmentAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.exerciseRecyclerView.adapter = adapter
-        viewModel.allPowerExercise.observe(viewLifecycleOwner) { exercises ->
-            exercises?.let {
-                adapter.exercisePowerList = exercises.toMutableList()
-            }
+        viewModel.allPowerExercise.observe(viewLifecycleOwner) {
+            adapter.exercisePowerList = it
         }
     }
 }

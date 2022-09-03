@@ -1,8 +1,8 @@
 package ru.petprojects69.fitgram.data.preset.power
 
 import ru.petprojects69.fitgram.R
-import ru.petprojects69.fitgram.domain.entity.exercises.ExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.exercises.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
 
 val benchPress = PowerExerciseEntity(
     exercise = ExerciseEntity(
@@ -89,7 +89,7 @@ val tricepsExtension = PowerExerciseEntity(
 
 val barbellPull = PowerExerciseEntity(
     exercise = ExerciseEntity(
-        name = "ТЯга штанги в наклоне",
+        name = "Тяга штанги в наклоне",
         description = "Данное упражнение нагружает мышцу средней части спины и " +
                 "является чуть ли не лучшим упражнением для «добавления толщины» " +
                 "верхней части широчайших мышц, нижним и средним частям трапеций, " +

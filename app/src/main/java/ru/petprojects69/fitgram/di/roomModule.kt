@@ -3,7 +3,7 @@ package ru.petprojects69.fitgram.di
 import androidx.room.Room
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-import ru.petprojects69.fitgram.model.database.AppDatabase
+import ru.petprojects69.fitgram.data.database.AppDatabase
 
 private const val DB_NAME = "FitgramDatabase"
 

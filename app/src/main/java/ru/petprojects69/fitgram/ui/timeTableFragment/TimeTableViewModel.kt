@@ -4,16 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.domain.entity.Training
-import ru.petprojects69.fitgram.model.database.ExerciseRepositoryImpl
+import ru.petprojects69.fitgram.domain.ExerciseRepository
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 
-class TimeTableViewModel(private val repository: ExerciseRepositoryImpl) : ViewModel() {
+class TimeTableViewModel(private val repository: ExerciseRepository) : ViewModel() {
 
-    val allPowerExercise: LiveData<MutableList<Training>> =
-        repository.allTraining.asLiveData()
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val allTrainings: LiveData<MutableList<TrainingEntity>> = viewModelScope.async {
+        repository.getAllTraining().asLiveData()
+    }.getCompleted()
 
-    fun insertPowerExercise(powerExercise: Training) = viewModelScope.launch {
-        repository.insertTraining(powerExercise)
-    }
 }
