@@ -15,6 +15,13 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="ButtonTextStyle" parent="FitgramTextStyle">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="MiddleTextStyle" parent="FitgramTextStyle">
+        <item name="android:textSize">18sp</item>
+    </style>
     // FAB
     <style name="ExtendedFABStyle" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
         <item name="android:backgroundTint">@color/primaryColor</item>

@@ -127,5 +127,10 @@
     <string name="get_code_btn_text">Получить код</string>
     <string name="google_sign_in_text_btn">Войти с Google</string>
     <string name="anonymous_sign_in_text_btn">войти анонимно</string>
+    <string name="sms_code_info_text">SMS c кодом отправлено на номер \n %s</string>
+    <string name="resent_button_text">ОТПРАВИТЬ ПОВТОРНО</string>
+    <string name="resent_info_text">Отправить повторно через %s c</string>
+    <string name="verify_button_text">ПРОВЕРИТЬ</string>
+    <string name="hint_sms_code">* * * * * *</string>
 
 </resources>

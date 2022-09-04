@@ -17,4 +17,12 @@
     <dimen name="field_width_standard">160dp</dimen>
 
     <dimen name="button_horizontal_margin">8dp</dimen>
+
+    // SignIn
+    <dimen name="btn_back_size">48dp</dimen>
+    <dimen name="margin_horizontal">32dp</dimen>
+    <dimen name="margin_between_view">16dp</dimen>
+    <dimen name="margin_top_main">100dp</dimen>
+    <dimen name="margin_between_link_view">4dp</dimen>
+    <dimen name="margin_top_of_the_top_view">38dp</dimen>
 </resources>

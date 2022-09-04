@@ -1,18 +1,14 @@
 package ru.petprojects69.fitgram.ui
 
 import android.content.Intent
-import android.graphics.Rect
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
-import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
@@ -43,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         decorStatusBar()
         checkingFirstLaunch()
         initBottomNavigation()
+        Toast.makeText(this, "Hello, ${intent.getStringExtra(USER_ID_KEY)}", Toast.LENGTH_LONG).show()
     }
 
     override fun onBackPressed() {
@@ -118,5 +115,10 @@ class MainActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         window.statusBarColor = this.resources.getColor(R.color.color_for_status_bar, null)
+    }
+
+    companion object {
+        const val USER_ID_KEY = "userId"
+        const val EMPTY_USER_ID = "empty"
     }
 }
