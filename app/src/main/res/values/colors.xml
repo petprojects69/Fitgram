@@ -13,6 +13,17 @@
     <color name="color_for_status_bar">#19000000</color>
     <color name="green">#75BD42</color>
     <color name="red">#ED4343</color>
+
+    <color name="blue">#0053B8</color>
+
+    <color name="colorPrimary">#039BE5</color>
+    <color name="colorPrimaryDark">#0288D1</color>
+    <color name="colorAccent">#FFA000</color>
+
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_500">#9E9E9E</color>
+    
     <color name="item_power_exercise_stroke_color">#FFAA1313</color>
     <color name="item_aerobic_exercise_stroke_color">#FF3ab2ea</color>
     <color name="item_power_image_card_color">#CC671313</color>
