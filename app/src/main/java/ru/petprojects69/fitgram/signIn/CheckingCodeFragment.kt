@@ -15,6 +15,7 @@ class CheckingCodeFragment : Fragment(R.layout.fragment_checking_code) {
     private val binding: FragmentCheckingCodeBinding by viewBinding()
     private var phoneNumber: String = ""
     private val controller: VerifyCodeController by lazy { activity as VerifyCodeController }
+    private lateinit var timer: CountDownTimer
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,7 +35,7 @@ class CheckingCodeFragment : Fragment(R.layout.fragment_checking_code) {
             controller.resendVerificationCode(phoneNumber)
         }
 
-        val timer = object : CountDownTimer(TIMER_TIME, TIMER_INTERVAL) {
+        timer = object : CountDownTimer(TIMER_TIME, TIMER_INTERVAL) {
             override fun onTick(p0: Long) {
                 binding.timerTextView.text =
                     resources.getString(R.string.resent_info_text, millisToSecond(p0))
@@ -45,6 +46,11 @@ class CheckingCodeFragment : Fragment(R.layout.fragment_checking_code) {
             }
         }
         timer.start()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        timer.cancel()
     }
 
     companion object {

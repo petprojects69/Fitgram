@@ -18,9 +18,9 @@ import com.google.android.gms.auth.api.identity.GetSignInIntentRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.FirebaseApiNotAvailableException
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
@@ -29,6 +29,7 @@ import com.google.firebase.ktx.Firebase
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ActivitySigninFirebaseBinding
 import ru.petprojects69.fitgram.ui.MainActivity
+import ru.petprojects69.fitgram.ui.utils.showSnack
 import java.util.concurrent.TimeUnit
 
 class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
@@ -43,7 +44,6 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     private lateinit var phoneNumber: String
-
     private val signInLauncher =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             handleSignInResult(result.data)
@@ -70,42 +70,36 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-
-                Log.d(TAG, "onVerificationCompleted:$credential")
                 verificationInProgress = false
-
-                // Update the UI and attempt sign in with the phone credential
-                updateUI(STATE_VERIFY_SUCCESS, credential)
                 signInWithPhoneAuthCredential(credential)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
-                Log.w(TAG, "onVerificationFailed", e)
                 verificationInProgress = false
-
-                if (e is FirebaseAuthInvalidCredentialsException) {
-                    // Invalid request
-//                    binding.fieldPhoneNumber.error = "Invalid phone number."
-                } else if (e is FirebaseTooManyRequestsException) {
-                    // The SMS quota for the project has been exceeded
-                    Snackbar.make(
-                        binding.root, "Quota exceeded.",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                when (e) {
+                    is FirebaseAuthInvalidCredentialsException -> {
+                        binding.root.showSnack("Номер не существует")
+                    }
+                    is FirebaseTooManyRequestsException -> {
+                        binding.root.showSnack("Превышена квота")
+                    }
+                    is FirebaseAuthException -> {
+                        Log.d(TAG, e.message.toString())
+                        binding.root.showSnack("Ошибка авторизации. Используйте другой способ")
+                    }
+                    is FirebaseApiNotAvailableException -> {
+                        binding.root.showSnack("Отсутствуют Google Play Services")
+                    }
                 }
-
-                updateUI(STATE_VERIFY_FAILED)
             }
 
             override fun onCodeSent(
                 verificationId: String,
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
-                Log.d(TAG, "onCodeSent:$verificationId")
                 storedVerificationId = verificationId
                 resendToken = token
-
-                updateUI(STATE_CODE_SENT)
+                startCheckingCodeFragment(phoneNumber)
             }
         }
     }
@@ -124,9 +118,6 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
         signInClient.beginSignIn(oneTapRequest)
             .addOnSuccessListener { result ->
                 launchSignIn(result.pendingIntent)
-            }
-            .addOnFailureListener {
-                // Запустить поток регистрации One Click
             }
     }
 
@@ -159,10 +150,7 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
             val credential = signInClient.getSignInCredentialFromIntent(data)
             val idToken = credential.googleIdToken
             if (idToken != null) {
-                Log.d(TAG, "firebaseAuthWithGoogle: ${credential.id}")
                 firebaseAuthWithGoogle(idToken)
-            } else {
-                Log.d(TAG, "No ID token!")
             }
         } catch (e: ApiException) {
             Log.w(TAG, "Google sign in failed", e)
@@ -171,7 +159,6 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
-        showProgressBar()
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
@@ -181,11 +168,8 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
                     updateUI(user)
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    Snackbar.make(binding.root, "Authentication Failed.", Snackbar.LENGTH_SHORT)
-                        .show()
-                    updateUI(null)
+                    binding.root.showSnack("Ошибка авторизации")
                 }
-                hideProgressBar()
             }
     }
 
@@ -200,55 +184,6 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            updateUI(STATE_SIGN_IN_SUCCESS, user)
-        } else {
-            updateUI(STATE_INITIALIZED)
-        }
-    }
-
-    private fun updateUI(uiState: Int, cred: PhoneAuthCredential) {
-        updateUI(uiState, null, cred)
-    }
-
-    private fun updateUI(
-        uiState: Int,
-        user: FirebaseUser? = auth.currentUser,
-        cred: PhoneAuthCredential? = null
-    ) {
-        when (uiState) {
-            STATE_INITIALIZED -> {
-
-            }
-            STATE_CODE_SENT -> {
-                startCheckingCodeFragment(phoneNumber)
-            }
-            STATE_VERIFY_FAILED -> {
-                // проверка не удалась
-            }
-            STATE_VERIFY_SUCCESS -> {
-                // проверка выполнена
-
-                // Set the verification text based on the credential
-                if (cred != null) {
-                    if (cred.smsCode != null) {
-//                        binding.fieldVerificationCode.setText(cred.smsCode)
-                    } else {
-//                        binding.fieldVerificationCode.setText(R.string.instant_validation)
-                    }
-                }
-            }
-            STATE_SIGN_IN_FAILED -> {
-                // вход не выполнен
-            }
-            STATE_SIGN_IN_SUCCESS -> {
-                Log.d("Debug", "STATE_SIGN_IN_SUCCESS")
-            }
-        }
-
-        if (user == null) {
-            // Signed out
-
-        } else {
             startMainActivityWithID(user.uid)
             finish()
         }
@@ -287,27 +222,15 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-
                     val user = task.result?.user
-                    updateUI(STATE_SIGN_IN_SUCCESS, user)
+                    updateUI(user)
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
-//                        binding.fieldVerificationCode.error = "Invalid code."
+                        binding.root.showSnack("Неверный код")
                     }
-                    updateUI(STATE_SIGN_IN_FAILED)
                 }
             }
-    }
-
-
-    private fun hideProgressBar() {
-
-    }
-
-    private fun showProgressBar() {
-
     }
 
     private fun decorStatusBar() {
@@ -360,11 +283,5 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
 
     companion object {
         private const val TAG = "SignInFirebaseActivity"
-        private const val STATE_INITIALIZED = 1
-        private const val STATE_VERIFY_FAILED = 3
-        private const val STATE_VERIFY_SUCCESS = 4
-        private const val STATE_CODE_SENT = 2
-        private const val STATE_SIGN_IN_FAILED = 5
-        private const val STATE_SIGN_IN_SUCCESS = 6
     }
 }

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sign_in_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/sign_in_container">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/login_label_textView"
         style="@style/LabelStyle"
-        android:textSize="38sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
         android:layout_marginTop="@dimen/login_label_textView_margin_top"
         android:text="@string/login_label_text"
+        android:textSize="38sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -113,5 +113,18 @@
             android:layout_marginStart="12dp"
             android:elevation="12dp"
             android:src="@drawable/anonym_logo" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_for_status_bar"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
