@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/inner_recycler_margin_horizontal"
+    android:layout_marginVertical="@dimen/inner_recycler_margin_vertical">
 
     <TextView
         android:id="@+id/exercise_label_textView"
-        style="@style/ItemSecondaryTextStyle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/inner_recycler_margin"
-        tools:text="Упражнение" />
-</FrameLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Упражнение"
+        style="@style/ItemSecondaryTextStyle"/>
+
+    <TextView
+        android:id="@+id/exercise_sets_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/inner_recycler_margin_horizontal"
+        app:layout_constraintEnd_toStartOf="@id/duration_textView"
+        app:layout_constraintStart_toEndOf="@id/exercise_label_textView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Подходы"
+        style="@style/ItemSecondaryTextStyle"/>
+
+    <TextView
+        android:id="@+id/duration_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/duration_textView"
+        app:layout_constraintEnd_toStartOf="@id/exercise_reps_textView"
+        app:layout_constraintStart_toEndOf="@id/exercise_sets_textView"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/ItemSecondaryTextStyle"/>
+
+    <TextView
+        android:id="@+id/exercise_reps_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/inner_recycler_margin_horizontal"
+        app:layout_constraintStart_toEndOf="@id/duration_textView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Повторы"
+        style="@style/ItemSecondaryTextStyle"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
