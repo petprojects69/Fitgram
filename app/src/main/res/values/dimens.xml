@@ -36,4 +36,5 @@
     <dimen name="item_image_card_corner_radius">13dp</dimen>
     <dimen name="item_image_card_stroke_width">2dp</dimen>
 
+    <dimen name="inner_recycler_margin_horizontal">10dp</dimen>
 </resources>

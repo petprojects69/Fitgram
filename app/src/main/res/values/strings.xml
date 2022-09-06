@@ -133,4 +133,5 @@
     <string name="verify_button_text">ПРОВЕРИТЬ</string>
     <string name="hint_sms_code">* * * * * *</string>
 
+    <string name="duration_textView">x</string>
 </resources>

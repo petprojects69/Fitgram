@@ -8,8 +8,8 @@ class PowerExercisesFragmentViewHolder(private val binding: ItemPowerExerciseBin
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(exercise: PowerExerciseEntity) {
-        binding.itemExerciseTitleTextView.text = exercise.exercise.name
-        binding.itemExerciseDescriptionTextView.text = exercise.exercise.description
-        exercise.exercise.poster?.let { binding.itemExerciseImageView.setImageResource(it) }
+        binding.itemExerciseTitleTextView.text = exercise.name
+        binding.itemExerciseDescriptionTextView.text = exercise.description
+        exercise.poster?.let { binding.itemExerciseImageView.setImageResource(it) }
     }
 }
