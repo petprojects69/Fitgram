@@ -1,7 +1,9 @@
 package ru.petprojects69.fitgram.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,16 +17,15 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import ru.petprojects69.fitgram.R
+import ru.petprojects69.fitgram.data.database.AppDatabaseDao
 import ru.petprojects69.fitgram.databinding.ActivityMainBinding
 import ru.petprojects69.fitgram.di.PRESET_AEROBIC
 import ru.petprojects69.fitgram.di.PRESET_POWER
 import ru.petprojects69.fitgram.di.PRESET_TRAINING
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
-import ru.petprojects69.fitgram.data.database.AppDatabaseDao
-import ru.petprojects69.fitgram.domain.entity.TrainingEntity
-
-private const val FIRST_RUN = "firstRun"
+import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,14 +33,27 @@ class MainActivity : AppCompatActivity() {
     private val bottomNavigationPanel: BottomNavigationView by lazy { binding.bottomNavigationView }
     private val navigationController by lazy { findNavController(R.id.navigation_fragment_container) }
     private val scope = CoroutineScope(SupervisorJob())
+    private var isFilledUserData by Delegates.notNull<Boolean>()
+    private var userId: String = ""
+    private val preferences : SharedPreferences by inject()
+    private val editor: SharedPreferences.Editor by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         decorStatusBar()
+        userId = intent.getStringExtra(USER_ID_KEY).toString()
+
+        isFilledUserData = preferences.getBoolean(IS_FILLED_USER_DATA, false)
         checkingFirstLaunch()
-        initBottomNavigation()
-        Toast.makeText(this, "Hello, ${intent.getStringExtra(USER_ID_KEY)}", Toast.LENGTH_LONG).show()
+
+        if (!isFilledUserData) {
+            startInitialDataFragment(userId)
+        } else {
+            Toast.makeText(this, "Hello, $userId", Toast.LENGTH_LONG)
+                .show()
+            initBottomNavigation()
+        }
     }
 
     override fun onBackPressed() {
@@ -88,9 +102,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkingFirstLaunch() {
-        val preferences = getPreferences(MODE_PRIVATE)
-        val editor = preferences.edit()
-
         if (!preferences.getBoolean(FIRST_RUN, false)) {
             editor.putBoolean(FIRST_RUN, true).also {
                 it.apply()
@@ -111,6 +122,15 @@ class MainActivity : AppCompatActivity() {
         dao.presetPowerEx(powerExercise)
     }
 
+    private fun startInitialDataFragment(id: String) {
+        val bundle = Bundle()
+        bundle.putString(InitialDataFragment.INITIAL_FRAGMENT_USER_ID, id)
+
+        supportFragmentManager.beginTransaction()
+            .replace(binding.activityMainContainer.id, InitialDataFragment.newInstance(bundle))
+            .commit()
+    }
+
     private fun decorStatusBar() {
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -118,6 +138,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val FIRST_RUN = "firstRun"
+        const val IS_FILLED_USER_DATA = "isFilledUserData"
         const val USER_ID_KEY = "userId"
         const val EMPTY_USER_ID = "empty"
     }

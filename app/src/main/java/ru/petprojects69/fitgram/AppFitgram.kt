@@ -3,10 +3,7 @@ package ru.petprojects69.fitgram
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import ru.petprojects69.fitgram.di.dataPresetModule
-import ru.petprojects69.fitgram.di.repositoryModule
-import ru.petprojects69.fitgram.di.roomModule
-import ru.petprojects69.fitgram.di.viewModelModule
+import ru.petprojects69.fitgram.di.*
 
 class AppFitgram : Application() {
     override fun onCreate() {
@@ -18,7 +15,8 @@ class AppFitgram : Application() {
                     viewModelModule,
                     roomModule,
                     repositoryModule,
-                    dataPresetModule
+                    dataPresetModule,
+                    preferences
                 )
             )
         }

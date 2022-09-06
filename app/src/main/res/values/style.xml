@@ -106,6 +106,7 @@
 
     <style name="InputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="hintEnabled">false</item>
+    </style>
         
     // ExerciseItem Title
     <style name="ItemTitleStyle">
