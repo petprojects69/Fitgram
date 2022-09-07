@@ -106,6 +106,7 @@
 
     <style name="InputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="hintEnabled">false</item>
+    </style>
         
     // ExerciseItem Title
     <style name="ItemTitleStyle">
@@ -131,4 +132,5 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">italic</item>
     </style>
+
 </resources>
