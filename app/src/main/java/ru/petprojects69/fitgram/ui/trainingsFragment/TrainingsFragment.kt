@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -13,22 +12,26 @@ import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTrainingsBinding
 import ru.petprojects69.fitgram.ui.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
+import ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment.TrainingConstructorDialogFragment
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
+
     private val binding: FragmentTrainingsBinding by viewBinding()
-    private val adapter = TrainingsAdapter(object : ItemActionCallback {
-        override fun delete() {
-            deleteTrainingFromStorage()
-        }
+    private val adapter = TrainingsAdapter(
+        object : ItemActionCallback {
+            override fun delete() {
+                deleteTrainingFromStorage()
+            }
 
-        override fun update() {
-            updateTrainingFromStorage()
-        }
+            override fun update() {
+                updateTrainingFromStorage()
+            }
 
-        override fun itemClick() {
-            onItemClick()
+            override fun itemClick() {
+                onItemClick()
+            }
         }
-    })
+    )
 
     private val viewModel: TrainingsViewModel by viewModel()
 
@@ -40,9 +43,10 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
             adapter.initialList(it)
         }
 
-        // TODO переход во фрагмент создания тренировки
         binding.createTrainingFab.setOnClickListener {
-
+            TrainingConstructorDialogFragment().show(
+                childFragmentManager, TrainingConstructorDialogFragment.TAG
+            )
         }
     }
 

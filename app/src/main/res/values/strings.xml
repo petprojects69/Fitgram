@@ -134,4 +134,8 @@
     <string name="hint_sms_code">* * * * * *</string>
 
     <string name="duration_textView">x</string>
+    <string name="constructor_training_label_textView">Введите название тренировки</string>
+    <string name="constructor_training_footer_add_exercise_textView">Добавить упражнение</string>
+    <string name="constructor_training_footer_cancel_button">Отмена</string>
+    <string name="constructor_training_footer_save_button">сохранить</string>
 </resources>
