@@ -22,8 +22,8 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="1"
-        tools:listitem="@layout/item_power_exercise" />
+        tools:itemCount="10"
+        tools:listitem="@layout/item_training_constructor_power_exercise" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

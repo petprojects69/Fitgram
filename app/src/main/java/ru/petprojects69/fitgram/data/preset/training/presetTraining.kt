@@ -14,6 +14,7 @@ val presetTrainings = listOf(
             PowerExerciseCustomized(exInitial = benchPress, exSets = 5, exReps = 10),
             PowerExerciseCustomized(exInitial = squat, exSets = 4, exReps = 10),
             PowerExerciseCustomized(exInitial = militaryPress, exSets = 3, exReps = 8),
+            PowerExerciseCustomized(exInitial = bicepsCurl, exSets = 2, exReps = 15)
         )
     ),
     TrainingEntity(
