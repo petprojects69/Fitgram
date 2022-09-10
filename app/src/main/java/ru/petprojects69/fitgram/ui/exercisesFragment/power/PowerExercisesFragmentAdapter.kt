@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemPowerExerciseBinding
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
 class PowerExercisesFragmentAdapter :
     RecyclerView.Adapter<PowerExercisesFragmentViewHolder>() {
 
-    var exercisePowerList: MutableList<PowerExerciseEntity> = mutableListOf()
+    var exercisePowerList: MutableList<ExerciseEntity> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()

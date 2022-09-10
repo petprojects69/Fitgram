@@ -31,7 +31,7 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/add_training_textView"
+            android:id="@+id/add_exercise_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/constructor_training_footer_add_exercise_textView"
@@ -45,7 +45,7 @@
             android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
             android:text="@string/constructor_training_footer_cancel_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/add_training_textView" />
+            app:layout_constraintTop_toBottomOf="@id/add_exercise_textView" />
 
         <Button
             android:id="@+id/save_button"
@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
             android:text="@string/constructor_training_footer_save_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/add_training_textView" />
+            app:layout_constraintTop_toBottomOf="@id/add_exercise_textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

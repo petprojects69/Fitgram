@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemAerobicExerciseBinding
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
 class AerobicExercisesFragmentAdapter :
     RecyclerView.Adapter<AerobicExercisesFragmentViewHolder>() {
 
-    var exerciseAerobicList: MutableList<AerobicExerciseEntity> = mutableListOf()
+    var exerciseAerobicList: MutableList<ExerciseEntity> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()

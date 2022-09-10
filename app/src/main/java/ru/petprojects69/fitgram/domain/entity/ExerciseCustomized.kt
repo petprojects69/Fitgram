@@ -1,37 +1,33 @@
 package ru.petprojects69.fitgram.domain.entity
 
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
 // TODO переписать правильно, пока костыль
 
 open class ExerciseCustomized(
-    val exPower: PowerExerciseEntity?,
-    val exAerobic: AerobicExerciseEntity?,
+    val exerciseInitial: ExerciseEntity,
     val duration: Int?,
     val sets: Int?,
     val reps: Int?
 )
 
 data class AerobicExerciseCustomized(
-    val exInitial: AerobicExerciseEntity,
+    val exInitial: ExerciseEntity,
     val exDuration: Int
 ) : ExerciseCustomized(
-    exAerobic = exInitial,
+    exerciseInitial = exInitial,
     duration = exDuration,
     sets = null,
-    reps = null,
-    exPower = null
+    reps = null
 )
 
 data class PowerExerciseCustomized(
-    val exInitial: PowerExerciseEntity,
+    val exInitial: ExerciseEntity,
     val exSets: Int,
     val exReps: Int
 ) : ExerciseCustomized(
-    exPower = exInitial,
+    exerciseInitial = exInitial,
     sets = exSets,
     reps = exReps,
-    exAerobic = null,
     duration = null
 )

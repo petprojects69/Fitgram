@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
-import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
-import ru.petprojects69.fitgram.databinding.TrainingConstructorDialogBinding
+import ru.petprojects69.fitgram.databinding.DialogTrainingConstructorBinding
+import ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooserDialogFragment
 
 class TrainingConstructorDialogFragment : DialogFragment() {
 
-    private val binding: TrainingConstructorDialogBinding by viewBinding()
+    private val binding: DialogTrainingConstructorBinding by viewBinding()
     private val adapter = TrainingConstructorAdapter()
     private val viewModel: TrainingConstructorViewModel by viewModel()
 
@@ -23,7 +23,7 @@ class TrainingConstructorDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.training_constructor_dialog, container, false)
+        return inflater.inflate(R.layout.dialog_training_constructor, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,8 +36,13 @@ class TrainingConstructorDialogFragment : DialogFragment() {
             dialog?.dismiss()
         }
 
-        binding.addTrainingTextView.setOnClickListener {
-            adapter.addExCustom(binding)
+        binding.addExerciseTextView.apply {
+            setOnClickListener {
+                ExerciseChooserDialogFragment().show(
+                    childFragmentManager, ExerciseChooserDialogFragment.TAG
+                )
+            }
+            performClick()
         }
     }
 

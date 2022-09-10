@@ -18,24 +18,21 @@
         android:layout_height="match_parent"
         android:theme="@style/ItemTitleStyle">
 
-        <EditText
+        <TextView
             android:id="@+id/exercise_title_editText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/item_training_constructor_name_hint"
-            android:inputType="text"
             android:singleLine="true"
             app:layout_constraintEnd_toStartOf="@+id/exercise_sets_editText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Упражнение" />
 
-        <EditText
+        <TextView
             android:id="@+id/exercise_sets_editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/inner_recycler_margin_horizontal"
-            android:inputType="number"
             app:layout_constraintEnd_toStartOf="@id/char_between_sets_and_reps_textView"
             app:layout_constraintStart_toEndOf="@id/exercise_title_editText"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +48,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="x" />
 
-        <EditText
+        <TextView
             android:id="@+id/exercise_reps_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

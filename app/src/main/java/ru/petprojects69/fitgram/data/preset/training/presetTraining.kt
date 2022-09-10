@@ -1,6 +1,6 @@
 package ru.petprojects69.fitgram.data.preset.training
 
-import ru.petprojects69.fitgram.data.preset.aerobic.running
+import ru.petprojects69.fitgram.data.preset.exercises.running
 import ru.petprojects69.fitgram.data.preset.power.*
 import ru.petprojects69.fitgram.domain.entity.AerobicExerciseCustomized
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
