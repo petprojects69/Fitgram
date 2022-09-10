@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="6dp"
+    android:paddingHorizontal="12dp"
     tools:context=".ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragment">
 
     <TextView
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dialog_exercise_title_text_view"
-        app:strokeColor="@color/item_power_image_card_color"
+        app:strokeColor="@color/item_aerobic_image_card_color"
         app:strokeWidth="@dimen/item_image_card_stroke_width">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -46,8 +46,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/dialog_exercise_image_card_view"
         tools:text="Exercise description" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        app:layout_constraintTop_toBottomOf="@id/dialog_description_exercise_text_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
