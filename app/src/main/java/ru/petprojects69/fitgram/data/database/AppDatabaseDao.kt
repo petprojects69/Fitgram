@@ -42,4 +42,7 @@ interface AppDatabaseDao {
 
     @Query("DELETE FROM training")
     suspend fun deleteAllPowerExercises()
+
+    @Query("SELECT * FROM aerobic_exercise_table WHERE aerobic_exercise_id = :id")
+    fun getAerobicExForId(id: Int): Flow<AerobicExerciseEntity>
 }

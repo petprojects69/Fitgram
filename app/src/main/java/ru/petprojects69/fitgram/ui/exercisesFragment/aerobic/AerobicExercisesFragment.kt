@@ -3,12 +3,17 @@ package ru.petprojects69.fitgram.ui.exercisesFragment.aerobic
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentAerobicExercisesBinding
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
+import ru.petprojects69.fitgram.ui.exercisesFragment.OnItemExerciseClickListener
+import ru.petprojects69.fitgram.ui.exercisesFragment.SliderExercisesFragmentDirections
 
-class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises) {
+class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises),
+    OnItemExerciseClickListener {
 
     companion object {
         private const val ARG_COUNT = "aerobicEx"
@@ -23,7 +28,7 @@ class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises) {
 
     private val binding: FragmentAerobicExercisesBinding by viewBinding()
     private val viewModel: AerobicExercisesFragmentViewModel by viewModel()
-    private val adapter = AerobicExercisesFragmentAdapter()
+    private val adapter = AerobicExercisesFragmentAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,5 +37,12 @@ class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises) {
         viewModel.allAerobicExercise.observe(viewLifecycleOwner) {
             adapter.exerciseAerobicList = it
         }
+    }
+
+    override fun onItemExerciseClick(exercise: AerobicExerciseEntity) {
+        val action =
+            SliderExercisesFragmentDirections.actionExerciseItemToDetailsExerciseDialogFragment(
+                idExercise = exercise.id)
+        findNavController().navigate(action)
     }
 }

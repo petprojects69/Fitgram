@@ -22,10 +22,31 @@
         android:name="ru.petprojects69.fitgram.ui.userProfileFragment.UserProfileFragment"
         android:label="userProfileFragment"
         tools:layout="@layout/fragment_user_profile" />
+
     <fragment
         android:id="@+id/exercise_item"
         android:name="ru.petprojects69.fitgram.ui.exercisesFragment.SliderExercisesFragment"
-        android:label="fragment_slider_exercises"
-        tools:layout="@layout/fragment_slider_exercises" />
+        android:label="fragmentSliderExercises"
+        tools:layout="@layout/fragment_power_exercises" >
+        <action
+            android:id="@+id/action_exercise_item_to_detailsExerciseDialogFragment"
+            app:destination="@id/detailsExerciseDialogFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/aerobicExercisesFragment"
+        android:name="ru.petprojects69.fitgram.ui.exercisesFragment.aerobic.AerobicExercisesFragment"
+        android:label="AerobicExercisesFragment"
+        tools:layout="@layout/fragment_aerobic_exercises"/>
+
+    <dialog
+        android:id="@+id/detailsExerciseDialogFragment"
+        android:name="ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragment"
+        android:label="DetailsExerciseDialogFragment">
+        <argument
+            android:name="idExercise"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </dialog>
 
 </navigation>

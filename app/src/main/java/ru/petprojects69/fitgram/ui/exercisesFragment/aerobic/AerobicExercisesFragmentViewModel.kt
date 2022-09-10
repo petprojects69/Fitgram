@@ -18,7 +18,6 @@ class AerobicExercisesFragmentViewModel(private val repository: ExerciseReposito
         repository.getAllAerobicEx().asLiveData()
     }.getCompleted()
 
-
     fun insertAerobicExercise(aerobicExercise: AerobicExerciseEntity) = viewModelScope.launch {
         repository.insertAerobicEx(aerobicExercise)
     }
