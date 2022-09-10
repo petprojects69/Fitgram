@@ -17,13 +17,13 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/constructor_training_recyclerView"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="10"
-        tools:listitem="@layout/item_training_constructor_power_exercise" />
+        tools:listitem="@layout/item_training_constructor" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/constructor_training_add_textView"
+            android:id="@+id/add_training_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/constructor_training_footer_add_exercise_textView"
@@ -39,22 +39,22 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/constructor_training_cancel_button"
+            android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
             android:text="@string/constructor_training_footer_cancel_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constructor_training_add_textView" />
+            app:layout_constraintTop_toBottomOf="@id/add_training_textView" />
 
         <Button
-            android:id="@+id/constructor_training_save_button"
+            android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
             android:text="@string/constructor_training_footer_save_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constructor_training_add_textView" />
+            app:layout_constraintTop_toBottomOf="@id/add_training_textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
