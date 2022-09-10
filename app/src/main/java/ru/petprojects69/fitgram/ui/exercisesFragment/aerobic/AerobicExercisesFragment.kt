@@ -9,7 +9,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentAerobicExercisesBinding
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
-import ru.petprojects69.fitgram.ui.exercisesFragment.OnItemExerciseClickListener
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
+import ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.OnItemExerciseClickListener
 import ru.petprojects69.fitgram.ui.exercisesFragment.SliderExercisesFragmentDirections
 
 class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises),
@@ -44,5 +45,9 @@ class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises),
             SliderExercisesFragmentDirections.actionExerciseItemToDetailsExerciseDialogFragment(
                 idExercise = exercise.id)
         findNavController().navigate(action)
+    }
+
+    override fun onItemExerciseClick(exercise: PowerExerciseEntity) {
+        null
     }
 }

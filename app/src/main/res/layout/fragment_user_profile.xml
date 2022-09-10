@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +17,7 @@
             android:layout_width="@dimen/image_view_size"
             android:layout_height="@dimen/image_view_size"
             android:layout_marginTop="@dimen/user_image_margin_top"
-            android:background="@drawable/ic_user_info" />
+            android:background="@drawable/ic_profile_bottom_menu" />
 
         <TextView
             android:id="@+id/user_name_textView"

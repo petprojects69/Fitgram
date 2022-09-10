@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="12dp"
+    android:paddingHorizontal="@dimen/paddingHorizontal_dialogFragment_layout"
     tools:context=".ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragment">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="@dimen/textSize_dialogFragment_title"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         android:id="@+id/dialog_exercise_image_card_view"
         android:layout_width="@dimen/dialog_image_card_layout_width"
         android:layout_height="@dimen/dialog_image_card_layout_height"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/marginTop_dialogFragment_poster"
         app:cardCornerRadius="@dimen/item_image_card_corner_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,15 +45,15 @@
         android:id="@+id/dialog_description_exercise_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/marginTop_dialogFragment_description"
         android:gravity="center"
-        android:textSize="16sp"
+        android:textSize="@dimen/testSize_dialogFragment_description"
         app:layout_constraintTop_toBottomOf="@id/dialog_exercise_image_card_view"
         tools:text="Exercise description" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="16dp"
+        android:layout_height="@dimen/layoutHeight_dialogFragment_bottomSpace"
         app:layout_constraintTop_toBottomOf="@id/dialog_description_exercise_text_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

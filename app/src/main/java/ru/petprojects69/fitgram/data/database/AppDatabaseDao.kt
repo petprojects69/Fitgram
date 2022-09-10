@@ -45,4 +45,7 @@ interface AppDatabaseDao {
 
     @Query("SELECT * FROM aerobic_exercise_table WHERE aerobic_exercise_id = :id")
     fun getAerobicExForId(id: Int): Flow<AerobicExerciseEntity>
+
+    @Query("SELECT * FROM power_exercise_table WHERE power_exercise_id = :id")
+    fun getPowerExForId(id: Int): Flow<PowerExerciseEntity>
 }
