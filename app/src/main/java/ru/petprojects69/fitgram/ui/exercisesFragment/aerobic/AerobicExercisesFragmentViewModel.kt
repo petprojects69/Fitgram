@@ -13,6 +13,7 @@ import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 class AerobicExercisesFragmentViewModel(private val repository: ExerciseRepository) :
     ViewModel() {
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val allAerobicExercise: LiveData<MutableList<ExerciseEntity>> = viewModelScope.async {
         repository.getAllAerobicEx().asLiveData()
     }.getCompleted()

@@ -39,11 +39,5 @@ class DetailsExerciseDialogFragment :
             ex.poster?.let { binding.dialogExerciseImageView.setImageResource(it) }
             binding.dialogDescriptionExerciseTextView.text = ex.description
         }
-
-        viewModel.getPowerExerciseForId(args.idExercise).observe(viewLifecycleOwner) { ex ->
-            binding.dialogExerciseTitleTextView.text = ex.name
-            ex.poster?.let { binding.dialogExerciseImageView.setImageResource(it) }
-            binding.dialogDescriptionExerciseTextView.text = ex.description
-        }
     }
 }

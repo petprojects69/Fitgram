@@ -26,7 +26,7 @@ private fun addHyphen(text: String): Editable {
 
 private fun setTextWithFirstBracket(
     view: TextInputEditText,
-    text: CharSequence?
+    text: CharSequence?,
 ) {
     view.text = addFirstBracket(text.toString())
     view.setSelection(text?.length!! + 2)
@@ -34,7 +34,7 @@ private fun setTextWithFirstBracket(
 
 private fun setTextWithSecondBracket(
     view: TextInputEditText,
-    text: CharSequence?
+    text: CharSequence?,
 ) {
     view.text = addSecondBracket(text.toString())
     view.setSelection(text?.length!! + 2)
@@ -42,7 +42,7 @@ private fun setTextWithSecondBracket(
 
 private fun setTextWithHyphen(
     view: TextInputEditText,
-    text: CharSequence?
+    text: CharSequence?,
 ) {
     view.text = addHyphen(text.toString())
     view.setSelection(text?.length!! + 1)
@@ -51,7 +51,7 @@ private fun setTextWithHyphen(
 private fun setTextWithoutSymbol(
     view: TextInputEditText,
     text: CharSequence?,
-    count: Int
+    count: Int,
 ) {
     view.text = text.toString().dropLast(count).toEditable()
     view.setSelection(text?.length!! - count)
@@ -61,7 +61,7 @@ fun punctuationSymbolNumberPhone(
     view: TextInputEditText,
     text: CharSequence?,
     start: Int,
-    end: Int
+    end: Int,
 ) {
     if (start == 2 && end == 0) {
         setTextWithFirstBracket(view, text)

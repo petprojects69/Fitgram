@@ -8,8 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentPowerExercisesBinding
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 import ru.petprojects69.fitgram.ui.exercisesFragment.SliderExercisesFragmentDirections
 import ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.OnItemExerciseClickListener
 
@@ -40,12 +39,7 @@ class PowerExercisesFragment : Fragment(R.layout.fragment_power_exercises),
         }
     }
 
-
-    override fun onItemExerciseClick(exercise: AerobicExerciseEntity) {
-        null
-    }
-
-    override fun onItemExerciseClick(exercise: PowerExerciseEntity) {
+    override fun onItemExerciseClick(exercise: ExerciseEntity) {
         val action =
             SliderExercisesFragmentDirections.actionExerciseItemToDetailsExerciseDialogFragment(
                 idExercise = exercise.id)

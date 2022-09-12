@@ -14,12 +14,6 @@ interface ExerciseRepository {
     suspend fun insertEx(ex: ExerciseEntity)
 
     suspend fun findExercise(exerciseName: String): Flow<MutableList<ExerciseEntity>>
-    suspend fun getAllPowerEx(): Flow<MutableList<PowerExerciseEntity>>
-    suspend fun getAllAerobicEx(): Flow<MutableList<AerobicExerciseEntity>>
 
-    suspend fun getAerobicExForId(idExercise: Int): Flow<AerobicExerciseEntity>
-    suspend fun getPowerExForId(idExercise: Int): Flow<PowerExerciseEntity>
-
-    suspend fun insertPowerEx(ex: PowerExerciseEntity)
-    suspend fun insertAerobicEx(ex: AerobicExerciseEntity)
+    suspend fun getExerciseForId(idExercise: Int): Flow<ExerciseEntity>
 }

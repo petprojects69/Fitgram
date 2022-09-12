@@ -24,6 +24,9 @@ interface AppDatabaseDao {
     @Query("SELECT*FROM exercise_table WHERE type='POWER'")
     fun getAllPowerEx(): Flow<MutableList<ExerciseEntity>>
 
+    @Query("SELECT * FROM exercise_table WHERE exercise_id = :id")
+    fun getExerciseForId(id: Int): Flow<ExerciseEntity>
+
     @Query("SELECT * FROM exercise_table WHERE exercise_name LIKE :exerciseName")
     fun findExercise(exerciseName: String): Flow<MutableList<ExerciseEntity>>
 
@@ -41,10 +44,4 @@ interface AppDatabaseDao {
 
     @Query("DELETE FROM training")
     suspend fun deleteAllPowerExercises()
-
-    @Query("SELECT * FROM aerobic_exercise_table WHERE aerobic_exercise_id = :id")
-    fun getAerobicExForId(id: Int): Flow<AerobicExerciseEntity>
-
-    @Query("SELECT * FROM power_exercise_table WHERE power_exercise_id = :id")
-    fun getPowerExForId(id: Int): Flow<PowerExerciseEntity>
 }

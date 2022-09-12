@@ -6,7 +6,7 @@ import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
 class ExerciseChooserViewHolder(
     private val binding: ItemExerciseChooserBinding,
-    private val clickListener: ExerciseChooserAdapter.OnItemClick?
+    private val clickListener: ExerciseChooserAdapter.OnItemClick?,
 ) :
     RecyclerView.ViewHolder(binding.root) {
 

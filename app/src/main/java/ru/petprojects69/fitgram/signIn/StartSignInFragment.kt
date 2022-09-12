@@ -2,7 +2,6 @@ package ru.petprojects69.fitgram.signIn
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding

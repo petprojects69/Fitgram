@@ -8,12 +8,12 @@ open class ExerciseCustomized(
     val exerciseInitial: ExerciseEntity,
     val duration: Int?,
     val sets: Int?,
-    val reps: Int?
+    val reps: Int?,
 )
 
 data class AerobicExerciseCustomized(
     val exInitial: ExerciseEntity,
-    val exDuration: Int
+    val exDuration: Int,
 ) : ExerciseCustomized(
     exerciseInitial = exInitial,
     duration = exDuration,
@@ -24,7 +24,7 @@ data class AerobicExerciseCustomized(
 data class PowerExerciseCustomized(
     val exInitial: ExerciseEntity,
     val exSets: Int,
-    val exReps: Int
+    val exReps: Int,
 ) : ExerciseCustomized(
     exerciseInitial = exInitial,
     sets = exSets,

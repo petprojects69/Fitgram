@@ -3,7 +3,6 @@ package ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.petprojects69.fitgram.databinding.DialogTrainingConstructorBinding
 import ru.petprojects69.fitgram.databinding.ItemTrainingConstructorBinding
 import ru.petprojects69.fitgram.domain.entity.ExerciseCustomized
 
@@ -14,7 +13,7 @@ class TrainingConstructorAdapter :
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): TrainingConstructorViewHolder {
 
         val binding = ItemTrainingConstructorBinding.inflate(

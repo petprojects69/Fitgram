@@ -1,6 +1,5 @@
 package ru.petprojects69.fitgram.ui.trainingsFragment
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast

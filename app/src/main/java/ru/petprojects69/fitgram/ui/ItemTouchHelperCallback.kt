@@ -17,7 +17,7 @@ class ItemTouchHelperCallback(resources: Resources) : ItemTouchHelper.Callback()
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,
-        viewHolder: RecyclerView.ViewHolder
+        viewHolder: RecyclerView.ViewHolder,
     ): Int {
         val dragFlags = 0
         val swipeFlags = ItemTouchHelper.START or ItemTouchHelper.END
@@ -28,7 +28,7 @@ class ItemTouchHelperCallback(resources: Resources) : ItemTouchHelper.Callback()
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
-        target: RecyclerView.ViewHolder
+        target: RecyclerView.ViewHolder,
     ): Boolean {
         return true
     }
@@ -54,7 +54,7 @@ class ItemTouchHelperCallback(resources: Resources) : ItemTouchHelper.Callback()
         dX: Float,
         dY: Float,
         actionState: Int,
-        isCurrentlyActive: Boolean
+        isCurrentlyActive: Boolean,
     ) {
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             if (dX == 0f) {
