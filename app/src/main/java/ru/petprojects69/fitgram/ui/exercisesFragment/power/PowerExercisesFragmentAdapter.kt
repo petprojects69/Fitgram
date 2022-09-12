@@ -10,7 +10,7 @@ import ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.OnItemExerci
 class PowerExercisesFragmentAdapter(private val itemClickListener: OnItemExerciseClickListener) :
     RecyclerView.Adapter<PowerExercisesFragmentViewHolder>() {
 
-    var exercisePowerList: MutableList<PowerExerciseEntity> = mutableListOf()
+    var exercisePowerList: MutableList<ExerciseEntity> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -29,7 +29,7 @@ class PowerExercisesFragmentAdapter(private val itemClickListener: OnItemExercis
     }
 
     override fun onBindViewHolder(holder: PowerExercisesFragmentViewHolder, position: Int) {
-        holder.bind(exercisePowerList[position], itemClickListener)
+        holder.bind(exercisePowerList[position])
     }
 
     override fun getItemCount(): Int {

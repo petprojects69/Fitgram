@@ -1,6 +1,8 @@
 package ru.petprojects69.fitgram.data.preset.power
 
-val presetPowerExercise = listOf(
+import ru.petprojects69.fitgram.data.preset.exercises.running
+
+val presetExercises = listOf(
     benchPress,
     squat,
     deadLift,
@@ -10,5 +12,6 @@ val presetPowerExercise = listOf(
     tricepsExtension,
     barbellPull,
     pullUps,
-    pushUps
+    pushUps,
+    running,
 )

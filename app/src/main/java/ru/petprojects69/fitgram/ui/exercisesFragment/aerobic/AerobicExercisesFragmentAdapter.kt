@@ -4,22 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemAerobicExerciseBinding
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
-import ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.OnItemExerciseClickListener
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
-class AerobicExercisesFragmentAdapter(private val itemClickListener: OnItemExerciseClickListener) :
+class AerobicExercisesFragmentAdapter :
     RecyclerView.Adapter<AerobicExercisesFragmentViewHolder>() {
 
-    var exerciseAerobicList: MutableList<AerobicExerciseEntity> = mutableListOf()
+    var exerciseAerobicList: MutableList<ExerciseEntity> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int,
-    ): AerobicExercisesFragmentViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AerobicExercisesFragmentViewHolder {
         val binding = ItemAerobicExerciseBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -29,7 +25,7 @@ class AerobicExercisesFragmentAdapter(private val itemClickListener: OnItemExerc
     }
 
     override fun onBindViewHolder(holder: AerobicExercisesFragmentViewHolder, position: Int) {
-        holder.bind(exerciseAerobicList[position], itemClickListener)
+        holder.bind(exerciseAerobicList[position])
     }
 
     override fun getItemCount(): Int {

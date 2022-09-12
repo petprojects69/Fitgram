@@ -1,6 +1,6 @@
 package ru.petprojects69.fitgram.data.preset.training
 
-import ru.petprojects69.fitgram.data.preset.aerobic.running
+import ru.petprojects69.fitgram.data.preset.exercises.running
 import ru.petprojects69.fitgram.data.preset.power.*
 import ru.petprojects69.fitgram.domain.entity.AerobicExerciseCustomized
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
@@ -14,6 +14,7 @@ val presetTrainings = listOf(
             PowerExerciseCustomized(exInitial = benchPress, exSets = 5, exReps = 10),
             PowerExerciseCustomized(exInitial = squat, exSets = 4, exReps = 10),
             PowerExerciseCustomized(exInitial = militaryPress, exSets = 3, exReps = 8),
+            PowerExerciseCustomized(exInitial = bicepsCurl, exSets = 2, exReps = 15)
         )
     ),
     TrainingEntity(

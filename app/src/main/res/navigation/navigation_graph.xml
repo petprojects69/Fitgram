@@ -15,7 +15,11 @@
         android:id="@+id/training_item"
         android:name="ru.petprojects69.fitgram.ui.trainingsFragment.TrainingsFragment"
         android:label="TrainingsFragment"
-        tools:layout="@layout/fragment_trainings" />
+        tools:layout="@layout/fragment_trainings" >
+        <action
+            android:id="@+id/to_dialog_constructor_training"
+            app:destination="@id/dialog_constructor_training" />
+    </fragment>
 
     <fragment
         android:id="@+id/profile_item"
@@ -48,6 +52,26 @@
             android:name="idExercise"
             app:argType="integer"
             android:defaultValue="0" />
+    </dialog>
+        android:label="fragment_slider_exercises"
+        tools:layout="@layout/fragment_slider_exercises" />
+    <dialog
+        android:id="@+id/dialog_constructor_training"
+        android:name="ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment.TrainingConstructorDialogFragment"
+        android:label="TrainingConstructorDialogFragment"
+        tools:layout="@layout/dialog_training_constructor">
+        <action
+            android:id="@+id/to_dialog_exercise_chooser"
+            app:destination="@id/dialog_exercise_chooser" />
+    </dialog>
+    <dialog
+        android:id="@+id/dialog_exercise_chooser"
+        android:name="ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooserDialogFragment"
+        android:label="ExerciseChooserDialogFragment"
+        tools:layout="@layout/dialog_exercise_chooser">
+        <action
+            android:id="@+id/to_dialog_constructor_training"
+            app:destination="@id/dialog_constructor_training" />
     </dialog>
 
 </navigation>
