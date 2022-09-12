@@ -8,7 +8,8 @@ import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
 class ExerciseChooserAdapter : RecyclerView.Adapter<ExerciseChooserViewHolder>() {
 
-    var exNameList: MutableList<ExerciseEntity> = mutableListOf()
+    var clickListener: OnItemClick? = null
+    var exercises: MutableList<ExerciseEntity> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -20,14 +21,19 @@ class ExerciseChooserAdapter : RecyclerView.Adapter<ExerciseChooserViewHolder>()
             parent,
             false
         )
-        return ExerciseChooserViewHolder(binding)
+        return ExerciseChooserViewHolder(binding, clickListener)
     }
 
     override fun onBindViewHolder(holder: ExerciseChooserViewHolder, position: Int) {
-        holder.bind(exNameList[position])
+        holder.bind(exercises[position])
     }
 
     override fun getItemCount(): Int {
-        return exNameList.size
+        return exercises.size
     }
+
+    fun interface OnItemClick {
+        fun onClick(exercise: ExerciseEntity)
+    }
+
 }

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="@dimen/constructor_training_margin_bottom"
     android:orientation="vertical"
-    android:padding="@dimen/constructor_training_padding">
+    android:padding="@dimen/constructor_training_padding"
+    tools:context="ui.trainingConstructorDialogFragment.TrainingConstructorDialogFragment">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/constructor_training_label"

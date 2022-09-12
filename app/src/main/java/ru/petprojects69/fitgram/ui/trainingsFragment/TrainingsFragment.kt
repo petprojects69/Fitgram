@@ -1,9 +1,11 @@
 package ru.petprojects69.fitgram.ui.trainingsFragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -12,7 +14,6 @@ import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTrainingsBinding
 import ru.petprojects69.fitgram.ui.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
-import ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment.TrainingConstructorDialogFragment
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
@@ -37,6 +38,9 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val action = TrainingsFragmentDirections.toDialogConstructorTraining()
+
         initAdapter()
 
         viewModel.allTrainings.observe(viewLifecycleOwner) {
@@ -44,11 +48,10 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
         }
 
         binding.createTrainingFab.setOnClickListener {
-            TrainingConstructorDialogFragment().show(
-                childFragmentManager, TrainingConstructorDialogFragment.TAG
-            )
+            findNavController().navigate(action)
         }
     }
+
 
     // TODO Написать реализацию во viewModel
     private fun updateTrainingFromStorage() {
