@@ -1,10 +1,11 @@
 package ru.petprojects69.fitgram.ui.trainingsFragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -15,36 +16,42 @@ import ru.petprojects69.fitgram.ui.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
+
     private val binding: FragmentTrainingsBinding by viewBinding()
-    private val adapter = TrainingsAdapter(object : ItemActionCallback {
-        override fun delete() {
-            deleteTrainingFromStorage()
-        }
+    private val adapter = TrainingsAdapter(
+        object : ItemActionCallback {
+            override fun delete() {
+                deleteTrainingFromStorage()
+            }
 
-        override fun update() {
-            updateTrainingFromStorage()
-        }
+            override fun update() {
+                updateTrainingFromStorage()
+            }
 
-        override fun itemClick() {
-            onItemClick()
+            override fun itemClick() {
+                onItemClick()
+            }
         }
-    })
+    )
 
     private val viewModel: TrainingsViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val action = TrainingsFragmentDirections.toDialogConstructorTraining()
+
         initAdapter()
 
         viewModel.allTrainings.observe(viewLifecycleOwner) {
             adapter.initialList(it)
         }
 
-        // TODO переход во фрагмент создания тренировки
         binding.createTrainingFab.setOnClickListener {
-
+            findNavController().navigate(action)
         }
     }
+
 
     // TODO Написать реализацию во viewModel
     private fun updateTrainingFromStorage() {

@@ -4,8 +4,7 @@ import androidx.annotation.WorkerThread
 import kotlinx.coroutines.flow.Flow
 import ru.petprojects69.fitgram.domain.ExerciseRepository
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
 class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : ExerciseRepository {
 
@@ -18,21 +17,23 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     override suspend fun getAllTraining(): Flow<MutableList<TrainingEntity>> =
         appDatabaseDao.getAllTraining()
 
-    override suspend fun getAllPowerEx(): Flow<MutableList<PowerExerciseEntity>> =
-        appDatabaseDao.getAllPowerEx()
+    override suspend fun getAllEx(): Flow<MutableList<ExerciseEntity>> =
+        appDatabaseDao.getAllEx()
 
-    override suspend fun getAllAerobicEx(): Flow<MutableList<AerobicExerciseEntity>> =
+    override suspend fun getAllAerobicEx(): Flow<MutableList<ExerciseEntity>> =
         appDatabaseDao.getAllAerobicEx()
 
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    override suspend fun insertPowerEx(ex: PowerExerciseEntity) {
-        appDatabaseDao.insertPowerEx(ex)
-    }
+
+    override suspend fun getAllPowerEx(): Flow<MutableList<ExerciseEntity>> =
+        appDatabaseDao.getAllPowerEx()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    override suspend fun insertAerobicEx(ex: AerobicExerciseEntity) {
-        appDatabaseDao.insertAerobicEx(ex)
+    override suspend fun insertEx(ex: ExerciseEntity) {
+        appDatabaseDao.insertEx(ex)
     }
+
+    override suspend fun findExercise(exerciseName: String): Flow<MutableList<ExerciseEntity>> =
+        appDatabaseDao.findExercise(exerciseName)
+
 }
