@@ -3,8 +3,10 @@ package ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.petprojects69.fitgram.databinding.DialogTrainingConstructorBinding
 import ru.petprojects69.fitgram.databinding.ItemTrainingConstructorBinding
 import ru.petprojects69.fitgram.domain.entity.ExerciseCustomized
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
 class TrainingConstructorAdapter :
     RecyclerView.Adapter<TrainingConstructorViewHolder>() {
@@ -24,12 +26,13 @@ class TrainingConstructorAdapter :
         return TrainingConstructorViewHolder(binding)
     }
 
-//    fun addExCustom(binding: DialogTrainingConstructorBinding) {
-//        val position = exCustomList.size
-//
-//        binding.recyclerView.scrollToPosition(position)
-//        notifyItemInserted(position)
-//    }
+    fun addExCustom(binding: DialogTrainingConstructorBinding, exercise: ExerciseEntity) {
+        val position = exCustomList.size
+
+        exCustomList.add(ExerciseCustomized(exercise, null, null, null))
+        binding.recyclerView.scrollToPosition(position)
+        notifyItemInserted(position)
+    }
 
     override fun onBindViewHolder(holder: TrainingConstructorViewHolder, position: Int) {
         holder.bind(exCustomList[position])

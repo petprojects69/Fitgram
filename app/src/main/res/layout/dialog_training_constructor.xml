@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
-            android:text="@string/constructor_training_footer_cancel_button"
+            android:text="@string/constructor_training_cancel_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_exercise_textView" />
 
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
-            android:text="@string/constructor_training_footer_save_button"
+            android:text="@string/constructor_training_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_exercise_textView" />
 

@@ -10,8 +10,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.DialogExerciseChooserBinding
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
-class ExerciseChooserDialogFragment : DialogFragment(R.layout.dialog_exercise_chooser),
+class ExerciseChooserDialogFragment(private val callback: ((ExerciseEntity) -> Unit)? = null) :
+    DialogFragment(R.layout.dialog_exercise_chooser),
     SearchView.OnQueryTextListener {
 
     val binding: DialogExerciseChooserBinding by viewBinding()
@@ -20,7 +22,6 @@ class ExerciseChooserDialogFragment : DialogFragment(R.layout.dialog_exercise_ch
     private val adapter = ExerciseChooserAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val action = ExerciseChooserDialogFragmentDirections.toDialogConstructorTraining()
         setDialogSize()
 
         binding.recyclerView.adapter = adapter
@@ -34,7 +35,8 @@ class ExerciseChooserDialogFragment : DialogFragment(R.layout.dialog_exercise_ch
         }
 
         adapter.clickListener = ExerciseChooserAdapter.OnItemClick {
-            findNavController().navigate(action)
+            callback?.invoke(it)
+            dialog?.dismiss()
         }
     }
 

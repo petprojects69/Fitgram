@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.DialogTrainingConstructorBinding
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
+import ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooserDialogFragment
+
 
 class TrainingConstructorDialogFragment : DialogFragment(R.layout.dialog_training_constructor) {
 
@@ -16,13 +18,16 @@ class TrainingConstructorDialogFragment : DialogFragment(R.layout.dialog_trainin
     private val adapter = TrainingConstructorAdapter()
     private val viewModel: TrainingConstructorViewModel by viewModel()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val action = TrainingConstructorDialogFragmentDirections.toDialogExerciseChooser()
-
         setDialogSize()
         binding.recyclerView.adapter = adapter
+
+        val callback:((ExerciseEntity) -> Unit) = {
+            adapter.addExCustom(binding, it)
+        }
 
         binding.cancelButton.setOnClickListener {
             dialog?.dismiss()
@@ -30,7 +35,7 @@ class TrainingConstructorDialogFragment : DialogFragment(R.layout.dialog_trainin
 
         binding.addExerciseTextView.apply {
             setOnClickListener {
-                findNavController().navigate(action)
+                ExerciseChooserDialogFragment(callback).show(childFragmentManager, null)
             }
         }
     }
