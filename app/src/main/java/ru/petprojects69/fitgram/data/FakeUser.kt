@@ -10,5 +10,5 @@ data class FakeUser(
     val weight: Float = 180f,
     val height: Float = 188f,
     val calories: Int = 55000,
-    val completed: Boolean = true
+    val completed: Boolean = true,
 )

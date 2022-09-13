@@ -1,6 +1,4 @@
-package ru.petprojects69.fitgram.data.preset.power
-
-import ru.petprojects69.fitgram.data.preset.exercises.running
+package ru.petprojects69.fitgram.data.preset.exercises
 
 val presetExercises = listOf(
     benchPress,

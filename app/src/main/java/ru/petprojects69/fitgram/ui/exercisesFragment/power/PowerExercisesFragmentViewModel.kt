@@ -1,10 +1,12 @@
 package ru.petprojects69.fitgram.ui.exercisesFragment.power
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import ru.petprojects69.fitgram.data.database.ExerciseRepositoryImpl
 import ru.petprojects69.fitgram.domain.ExerciseRepository
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
@@ -17,17 +19,6 @@ class PowerExercisesFragmentViewModel(private val repository: ExerciseRepository
 
     fun insertExercise(exercise: ExerciseEntity) = viewModelScope.launch {
         repository.insertEx(exercise)
-    }
-
-    class ExerciseFragmentViewModelFactory(private val repository: ExerciseRepositoryImpl) :
-        ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(PowerExercisesFragmentViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return PowerExercisesFragmentViewModel(repository) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
     }
 
 }
