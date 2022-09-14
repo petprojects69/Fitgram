@@ -92,6 +92,12 @@ class MainActivity : AppCompatActivity(), MainActivityController {
             .commit()
     }
 
+    override fun startInitFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.mainContainer.id, InitialDataFragment())
+            .commit()
+    }
+
     private fun startInitialDataFragment() {
         supportFragmentManager.beginTransaction()
             .add(binding.mainContainer.id, InitialDataFragment())

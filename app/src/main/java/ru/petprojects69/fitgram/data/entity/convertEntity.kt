@@ -12,6 +12,7 @@ fun UserEntityRemote.toMap(): Map<String, Any?> {
         "age" to this.age,
         "weight" to this.weight,
         "height" to this.height,
+        "target" to this.target,
         "calories" to this.calories,
         "completed" to this.completed
     )
@@ -28,6 +29,7 @@ fun UserEntity.toUserEntityRemote(): UserEntityRemote {
         name = this.name,
         rank = this.rank,
         sex = this.sex,
+        target = this.target,
         surname = this.surname,
         weight = this.weight
     )

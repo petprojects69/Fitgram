@@ -1,5 +1,6 @@
 package ru.petprojects69.fitgram.domain.useCase
 
+import android.content.SharedPreferences
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
@@ -7,18 +8,32 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import ru.petprojects69.fitgram.data.entity.UserEntityRemote
 import ru.petprojects69.fitgram.data.entity.toMap
 import ru.petprojects69.fitgram.data.entity.toUserEntityRemote
 import ru.petprojects69.fitgram.domain.entity.UserEntity
+import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_DOCUMENT_ID_KEY
 import ru.petprojects69.fitgram.ui.initData.SaveUserDataState
 import ru.petprojects69.fitgram.ui.utils.awaitTask
 
 class SaveUserDataInCloudUseCase(
     private val cloudDb: FirebaseFirestore,
     private val coroutineScope: CoroutineScope
-) {
+) : KoinComponent {
+    private val preferences: SharedPreferences by inject()
+
     suspend fun execute(user: UserEntity): SaveUserDataState {
+        val documentId = preferences.getString(PREF_USER_DOCUMENT_ID_KEY, null)
+        return if (documentId == null) {
+            searchOrCreateDocument(user)
+        } else {
+            updateDocumentWithId(documentId, user)
+        }
+    }
+
+    private suspend fun searchOrCreateDocument(user: UserEntity): SaveUserDataState {
         var state: SaveUserDataState = SaveUserDataState.Loading
         val task = cloudDb.collection(user.id).get()
         val mainJob = coroutineScope.launch {
@@ -33,6 +48,28 @@ class SaveUserDataInCloudUseCase(
                 }
         }
         mainJob.join()
+        return state
+    }
+
+    private suspend fun updateDocumentWithId(
+        documentId: String,
+        user: UserEntity
+    ): SaveUserDataState {
+        var state: SaveUserDataState = SaveUserDataState.Loading
+        val job = coroutineScope.launch {
+            kotlin.runCatching {
+                cloudDb.collection(user.id)
+                    .document(documentId)
+                    .update(user.toUserEntityRemote().toMap())
+            }
+                .onSuccess {
+                    state = SaveUserDataState.Success(documentId)
+                }
+                .onFailure { e ->
+                    state = SaveUserDataState.Error(e)
+                }
+        }
+        job.join()
         return state
     }
 

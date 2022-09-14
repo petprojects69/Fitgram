@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import coil.transform.CircleCropTransformation
@@ -24,7 +25,7 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
     private val binding: FragmentInitialDataBinding by viewBinding()
     private val preferences: SharedPreferences by inject()
     private val editor: SharedPreferences.Editor by inject()
-    private val viewModel: InitDataViewModel by inject()
+    private val viewModel: InitDataViewModel by viewModels()
     private val controller by lazy { activity as MainActivityController }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -45,8 +46,8 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
                 id = userId,
                 name = binding.inputNameEditText.text.toString(),
                 sex = binding.sexTabLayout.selectedTabPosition == 0,
-                height = binding.inputHeightEditText.text.toString(),
-                weight = binding.inputWeightEditText.text.toString()
+                height = binding.inputHeightEditText.text.toString().toInt(),
+                weight = binding.inputWeightEditText.text.toString().toInt()
             )
             viewModel.saveUserData(user)
         }

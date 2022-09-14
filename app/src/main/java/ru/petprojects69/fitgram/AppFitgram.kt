@@ -16,7 +16,8 @@ class AppFitgram : Application() {
                     roomModule,
                     repositoryModule,
                     dataPresetModule,
-                    preferences
+                    preferences,
+                    useCase
                 )
             )
         }

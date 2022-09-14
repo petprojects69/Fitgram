@@ -11,10 +11,11 @@ data class UserEntity(
     val sex: Boolean = true,
     val name: String? = null,
     val surname: String? = null,
-    val rank: String? = null,
+    val rank: Int? = null,
     val age: Int? = null,
-    val weight: String? = null,
-    val height: String? = null,
+    val weight: Int? = null,
+    val height: Int? = null,
+    val target: String? = null,
     val calories: Int? = null,
     val completed: Boolean = false
 )

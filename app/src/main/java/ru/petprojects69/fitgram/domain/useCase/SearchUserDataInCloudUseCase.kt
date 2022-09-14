@@ -11,25 +11,27 @@ import ru.petprojects69.fitgram.data.entity.UserEntityRemote
 import ru.petprojects69.fitgram.domain.entity.UserEntity
 import ru.petprojects69.fitgram.ui.utils.awaitTask
 
-class SearchUserDataUseCase(
+class SearchUserDataInCloudUseCase(
     private val cloudDb: FirebaseFirestore,
     private val coroutineScope: CoroutineScope
 ) {
-    suspend fun execute(userId: String): UserEntity? {
+    suspend fun execute(userId: String?): UserEntity? {
         var user: UserEntity? = null
-        val task = cloudDb.collection(userId).get()
-        val mainJob = coroutineScope.launch {
-            kotlin.runCatching {
-                awaitTask(task)
+        if (userId != null) {
+            val task = cloudDb.collection(userId).get()
+            val mainJob = coroutineScope.launch {
+                kotlin.runCatching {
+                    awaitTask(task)
+                }
+                    .onSuccess { querySnapshot ->
+                        user = searchDocument(userId, querySnapshot)
+                    }
+                    .onFailure {
+                        user = null
+                    }
             }
-                .onSuccess { querySnapshot ->
-                    user = searchDocument(userId, querySnapshot)
-                }
-                .onFailure {
-                    user = null
-                }
+            mainJob.join()
         }
-        mainJob.join()
         return user
     }
 
@@ -57,10 +59,10 @@ class SearchUserDataUseCase(
                                 sex = doc.getBoolean("sex") ?: true,
                                 name = doc.getString("name"),
                                 surname = doc.getString("surname"),
-                                rank = doc.getString("rank"),
+                                rank = doc.getField("rank"),
                                 age = doc.getField("age"),
-                                weight = doc.getString("weight"),
-                                height = doc.getString("height"),
+                                weight = doc.getField("weight"),
+                                height = doc.getField("height"),
                                 calories = doc.getField("calories"),
                                 completed = doc.getBoolean("completed") ?: false
                             )

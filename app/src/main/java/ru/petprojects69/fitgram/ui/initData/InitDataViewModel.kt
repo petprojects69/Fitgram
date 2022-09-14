@@ -4,20 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import ru.petprojects69.fitgram.domain.entity.UserEntity
 import ru.petprojects69.fitgram.domain.useCase.SaveUserDataInCloudUseCase
-import ru.petprojects69.fitgram.domain.useCase.SearchUserDataUseCase
+import ru.petprojects69.fitgram.domain.useCase.SearchUserDataInCloudUseCase
 
 class InitDataViewModel : ViewModel(), KoinComponent {
-    private val cloudDb: FirebaseFirestore by inject()
     private val liveData: MutableLiveData<SaveUserDataState> = MutableLiveData()
 
-    private val useCaseSaveUserData = SaveUserDataInCloudUseCase(cloudDb, viewModelScope)
-    private val useCaseSearchUserData = SearchUserDataUseCase(cloudDb, viewModelScope)
+    private val useCaseSaveUserDataInCloud: SaveUserDataInCloudUseCase by inject()
+    private val useCaseSearchUserDataInCloud: SearchUserDataInCloudUseCase by inject()
 
     fun getLiveData(): LiveData<SaveUserDataState> {
         return liveData
@@ -27,7 +25,7 @@ class InitDataViewModel : ViewModel(), KoinComponent {
         liveData.postValue(SaveUserDataState.Loading)
         viewModelScope.launch {
             kotlin.runCatching {
-                useCaseSearchUserData.execute(userId)
+                useCaseSearchUserDataInCloud.execute(userId)
             }
                 .onSuccess { id ->
                     if (id != null) {
@@ -45,7 +43,7 @@ class InitDataViewModel : ViewModel(), KoinComponent {
     fun saveUserData(user: UserEntity) {
         liveData.postValue(SaveUserDataState.Loading)
         viewModelScope.launch {
-            liveData.postValue(useCaseSaveUserData.execute(user))
+            liveData.postValue(useCaseSaveUserDataInCloud.execute(user))
         }
     }
 }

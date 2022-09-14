@@ -1,104 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.userProfileFragment.UserProfileFragment">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/progress_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@color/color_background_progress_layout"
+        android:elevation="4dp"
+        android:visibility="gone">
 
         <ImageView
-            android:id="@+id/user_imageView"
-            android:layout_width="@dimen/image_view_size"
-            android:layout_height="@dimen/image_view_size"
-            android:layout_marginTop="@dimen/user_image_margin_top"
-            android:background="@drawable/ic_user_info" />
-
-        <TextView
-            android:id="@+id/user_name_textView"
-            style="@style/UserNameStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Имя Фамилия" />
+            android:layout_gravity="center"
+            android:background="@drawable/progress_background" />
 
-        <LinearLayout
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/not_user_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/logo_imageView"
+            android:layout_width="@dimen/image_view_size"
+            android:layout_height="@dimen/image_view_size"
+            android:layout_marginTop="@dimen/margin_top_main"
+            android:src="@drawable/plaseholder_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/info_textView"
+            style="@style/ProfileInfoStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/user_profile_linearLayout_margin_top">
-
-            <TextView
-                android:id="@+id/user_grade_textView"
-                style="@style/UserInfoStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:text="ранг: " />
-
-            <ImageView
-                android:id="@+id/grade_info_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/ic_grade_info" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/user_gender_textView"
-            style="@style/UserInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="пол: " />
-
-        <TextView
-            android:id="@+id/user_height_textView"
-            style="@style/UserInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="рост: " />
-
-        <TextView
-            android:id="@+id/user_weight_textView"
-            style="@style/UserInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="вес: " />
-
-        <TextView
-            android:id="@+id/user_age_textView"
-            style="@style/UserInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="возраст: " />
-
-        <TextView
-            android:id="@+id/user_calories_textView"
-            style="@style/UserInfoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="необходимо калорий: " />
-
-        <ImageView
-            android:id="@+id/trains_pieChart"
-            android:layout_width="@dimen/image_view_size"
-            android:layout_height="@dimen/image_view_size"
-            android:layout_margin="@dimen/user_image_margin_top"
-            android:background="@drawable/ic_launcher_background" />
+            android:layout_marginHorizontal="@dimen/margin_horizontal_profile_fragment"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="@string/info_text_not_user"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/logout_button"
+            android:id="@+id/sign_in_button"
+            style="@style/ButtonTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/logout_button_margin_horizontal"
-            android:text="Сменить пользователя" />
+            android:layout_marginHorizontal="@dimen/margin_horizontal_profile_fragment"
+            android:layout_marginTop="@dimen/margin_between_view"
+            android:text="@string/signIn_button_text"
+            app:layout_constraintTop_toBottomOf="@id/info_textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+    <ScrollView
+        android:id="@+id/info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</ScrollView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/margin_between_view">
+
+            <ImageButton
+                android:id="@+id/edit_button"
+                android:layout_width="@dimen/size_min_button"
+                android:layout_height="@dimen/size_min_button"
+                android:backgroundTint="@color/primaryTintColor"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintStart_toEndOf="@id/user_imageView"
+                app:layout_constraintTop_toTopOf="@id/user_imageView" />
+
+            <ImageView
+                android:id="@+id/user_imageView"
+                android:layout_width="@dimen/image_view_size"
+                android:layout_height="@dimen/image_view_size"
+                android:layout_marginTop="@dimen/user_image_margin_top"
+                android:background="@drawable/man_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/user_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/user_imageView">
+
+                <TextView
+                    android:id="@+id/user_name_textView"
+                    style="@style/UserNameStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    tools:text="Имя" />
+
+                <TextView
+                    android:id="@+id/user_surName_textView"
+                    style="@style/UserNameStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Фамилия" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/user_gender_layout"
+                style="@style/ProfileElementStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/user_name_layout">
+
+                <TextView
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/hint_sex" />
+
+                <TextView
+                    android:id="@+id/user_gender_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:text="Мужской" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/user_age_layout"
+                style="@style/ProfileElementStyle"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/user_gender_layout">
+
+                <TextView
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/hint_age" />
+
+                <TextView
+                    android:id="@+id/user_age_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:text="41" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/user_height_layout"
+                style="@style/ProfileElementStyle"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/user_age_layout">
+
+                <TextView
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/hint_height" />
+
+                <TextView
+                    android:id="@+id/user_height_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:text="180" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/user_weight_layout"
+                style="@style/ProfileElementStyle"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/user_height_layout">
+
+                <TextView
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/hint_weight" />
+
+                <TextView
+                    android:id="@+id/user_weight_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:text="79" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/grade_info_layout"
+                style="@style/ProfileElementStyle"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/user_weight_layout">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        style="@style/ProfileHintStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/hint_rank" />
+
+                    <ImageView
+                        android:id="@+id/grade_info_imageView"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_grade_info" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/user_grade_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:text="Новичек" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/user_target_layout"
+                style="@style/ProfileElementStyle"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/grade_info_layout">
+
+                <TextView
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/hint_target" />
+
+                <TextView
+                    android:id="@+id/user_target"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:text="Похудеть" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/user_calories_layout"
+                style="@style/ProfileElementStyle"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/user_target_layout">
+
+                <TextView
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/hint_calories" />
+
+                <TextView
+                    android:id="@+id/user_calories_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:text="2000" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_profile_fragment"
+                android:layout_marginTop="@dimen/margin_between_view"
+                android:text="@string/change_user_button_text"
+                app:layout_constraintTop_toBottomOf="@id/user_calories_layout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>

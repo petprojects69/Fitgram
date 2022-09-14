@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.FrameLayout
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
+import ru.petprojects69.fitgram.domain.entity.UserEntity
+import ru.petprojects69.fitgram.ui.userProfileFragment.UserTarget
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
