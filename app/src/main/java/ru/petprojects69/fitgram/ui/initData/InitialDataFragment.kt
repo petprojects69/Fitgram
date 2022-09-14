@@ -17,6 +17,7 @@ import ru.petprojects69.fitgram.ui.MainActivity
 import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_DOCUMENT_ID_KEY
 import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_ID_KEY
 import ru.petprojects69.fitgram.ui.utils.showSnack
+import ru.petprojects69.fitgram.ui.utils.toEditable
 
 class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
     private var userId: String = ""
@@ -33,6 +34,7 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
         viewModel.getLiveData().observe(viewLifecycleOwner) {
             renderData(it)
         }
+        viewModel.getUserData(userId)
         binding.avatarImageView.load(R.drawable.man_placeholder) {
             transformations(CircleCropTransformation())
         }
@@ -51,9 +53,9 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
         binding.sexTabLayout.apply {
             addTab(this.newTab().setText("Man"), 0, true)
             addTab(this.newTab().setText("Woman"), 1, false)
-            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-                    when(tab?.position){
+                    when (tab?.position) {
                         0 -> {
                             binding.avatarImageView.load(R.drawable.man_placeholder) {
                                 transformations(CircleCropTransformation())
@@ -66,6 +68,7 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
                         }
                     }
                 }
+
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
             })
@@ -86,6 +89,23 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
             is SaveUserDataState.Error -> {
                 binding.progressLayout.visibility = View.GONE
                 binding.root.showSnack(state.e.message.toString())
+            }
+            is SaveUserDataState.DataReceived -> {
+                binding.progressLayout.visibility = View.GONE
+
+                binding.sexTabLayout.selectTab(
+                    if (state.userEntity?.sex == true) {
+                        binding.sexTabLayout.getTabAt(0)
+                    } else {
+                        binding.sexTabLayout.getTabAt(1)
+                    }
+                )
+                binding.inputNameEditText.text = state.userEntity?.name.toString().toEditable()
+                binding.inputHeightEditText.text = state.userEntity?.height.toString().toEditable()
+                binding.inputWeightEditText.text = state.userEntity?.weight.toString().toEditable()
+            }
+            is SaveUserDataState.EmptyData -> {
+                binding.progressLayout.visibility = View.GONE
             }
         }
     }
