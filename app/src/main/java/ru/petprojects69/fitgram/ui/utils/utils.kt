@@ -4,7 +4,11 @@ import android.text.Editable
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
+import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
@@ -28,4 +32,17 @@ fun View.showSnack(text: String) {
     }
     view.layoutParams = params
     snack.show()
+}
+
+suspend fun <T> awaitTask(task: Task<T>): T = suspendCoroutine { continuation ->
+    task.addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+            continuation.resume(task.result)
+        } else {
+            continuation.resumeWithException(task.exception!!)
+        }
+    }
+    task.addOnFailureListener {
+        continuation.resumeWithException(task.exception!!)
+    }
 }

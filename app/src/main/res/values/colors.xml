@@ -28,4 +28,7 @@
     <color name="item_aerobic_exercise_stroke_color">#FF3ab2ea</color>
     <color name="item_power_image_card_color">#CC671313</color>
     <color name="item_aerobic_image_card_color">#CC3ab2ea</color>
+
+    <color name="color_background_progress_layout">#66E0E0E0</color>
+    <color name="text_color">#424242</color>
 </resources>

@@ -132,5 +132,11 @@
     <string name="resent_info_text">Отправить повторно через %s c</string>
     <string name="verify_button_text">ПРОВЕРИТЬ</string>
     <string name="hint_sms_code">* * * * * *</string>
+    <string name="hint_name">Имя</string>
+    <string name="hint_height">Рост</string>
+    <string name="hint_weight">Вес</string>
+    <string name="hint_sex">Пол</string>
+    <string name="save_data">Сохранить</string>
+    <string name="label_initial_data">Мои данные</string>
 
 </resources>

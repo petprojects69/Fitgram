@@ -85,7 +85,7 @@ dependencies {
     def koin_version = "3.2.0-beta-1"
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
-    
+
     // ViewPager
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'androidx.paging:paging-runtime:3.1.1'
@@ -100,4 +100,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     implementation 'androidx.browser:browser:1.4.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    // Coil
+    implementation 'io.coil-kt:coil:1.4.0'
 }

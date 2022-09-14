@@ -4,6 +4,7 @@
     // Text Style
     <style name="FitgramTextStyle" parent="TextAppearance.AppCompat">
         <item name="fontFamily">monospace</item>
+        <item name="android:textColor">@color/text_color</item>
     </style>
 
     <style name="ItemTitleTextStyle" parent="FitgramTextStyle">
@@ -20,7 +21,7 @@
     </style>
 
     <style name="MiddleTextStyle" parent="FitgramTextStyle">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
     // FAB
     <style name="ExtendedFABStyle" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
@@ -106,8 +107,9 @@
 
     <style name="InputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="hintEnabled">false</item>
+        <item name="boxBackgroundColor">@color/white</item>
     </style>
-        
+
     // ExerciseItem Title
     <style name="ItemTitleStyle">
         <item name="android:layout_marginStart">14dp</item>
@@ -131,5 +133,20 @@
         <item name="android:shadowColor">#99000000</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">italic</item>
+    </style>
+
+    // TabLayout
+    <style name="CustomTabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:layout_height">46dp</item>
+        <item name="android:background">@drawable/background_tab_layout</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+        <item name="tabIndicatorAnimationMode">elastic</item>
+        <item name="tabIndicatorColor">@color/grey_500</item>
+        <item name="tabIndicatorGravity">stretch</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabTextAppearance">@style/FitgramTextStyle</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+        <item name="tabTextColor">@color/grey_500</item>
     </style>
 </resources>
