@@ -13,19 +13,22 @@ class InnerTimeTableViewHolder(private val binding: InnerItemTrainingBinding) :
     val context: Context = binding.root.context
 
     fun bind(exercise: ExerciseCustomized) {
-        when (exercise.exerciseInitial.type) {
+        when (exercise.exInitial.type) {
             ExerciseType.AEROBIC -> {
-                binding.exerciseTitleTextView.text = exercise.exerciseInitial.name
-                binding.exerciseRepsOrDurationTextView.text = exercise.duration.toString()
+                binding.exerciseTitleTextView.text = exercise.exInitial.name
+                binding.exerciseRepsOrDurationTextView.text = "${exercise.duration?:""}"
                 binding.itemInnerCardView.strokeColor =
                     context.getColor(R.color.item_aerobic_exercise_stroke_color)
             }
             ExerciseType.POWER -> {
-                binding.exerciseTitleTextView.text = exercise.exerciseInitial.name
-                binding.exerciseSetsTextView.text = exercise.sets.toString()
-                binding.exerciseRepsOrDurationTextView.text = exercise.reps.toString()
-                binding.charBetweenSetsAndRepsTextView.text =
-                    context.getString(R.string.char_between_sets_and_reps_textView)
+                binding.exerciseTitleTextView.text = exercise.exInitial.name
+                binding.exerciseSetsTextView.text = "${exercise.sets?:""}"
+                binding.exerciseRepsOrDurationTextView.text = "${exercise.reps?:""}"
+
+                if (exercise.sets != null || exercise.reps != null) {
+                    binding.charBetweenSetsAndRepsTextView.text =
+                        context.getString(R.string.char_between_sets_and_reps_textView)
+                }
                 binding.itemInnerCardView.strokeColor =
                     context.getColor(R.color.item_power_exercise_stroke_color)
             }

@@ -9,13 +9,12 @@
     android:padding="@dimen/constructor_training_padding"
     tools:context="ui.trainingConstructorDialogFragment.TrainingConstructorDialogFragment">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/constructor_training_label"
+    <EditText
+        android:id="@+id/training_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/constructor_training_label_textView"
-        android:inputType="text" />
-
+        android:inputType="text"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -35,6 +34,8 @@
             android:id="@+id/add_exercise_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/grey_300"
+            android:gravity="end"
             android:text="@string/constructor_training_footer_add_exercise_textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
+            android:enabled="false"
             android:text="@string/constructor_training_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_exercise_textView" />

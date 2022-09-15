@@ -44,13 +44,13 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
         viewModel.allTrainings.observe(viewLifecycleOwner) {
             adapter.initialList(it)
+            adapter.notifyDataSetChanged()
         }
 
         binding.createTrainingFab.setOnClickListener {
             findNavController().navigate(action)
         }
     }
-
 
     // TODO Написать реализацию во viewModel
     private fun updateTrainingFromStorage() {

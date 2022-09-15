@@ -29,7 +29,7 @@ class TrainingConstructorAdapter :
     fun addExCustom(binding: DialogTrainingConstructorBinding, exercise: ExerciseEntity) {
         val position = exCustomList.size
 
-        exCustomList.add(ExerciseCustomized(exercise, null, null, null))
+        exCustomList.add(ExerciseCustomized(exercise))
         binding.recyclerView.scrollToPosition(position)
         notifyItemInserted(position)
     }

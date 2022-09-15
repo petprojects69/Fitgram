@@ -1,27 +1,26 @@
 package ru.petprojects69.fitgram.data.preset.training
 
 import ru.petprojects69.fitgram.data.preset.exercises.*
-import ru.petprojects69.fitgram.domain.entity.AerobicExerciseCustomized
-import ru.petprojects69.fitgram.domain.entity.PowerExerciseCustomized
+import ru.petprojects69.fitgram.domain.entity.ExerciseCustomized
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 
 val presetTrainings = listOf(
     TrainingEntity(
         label = "Тренировка на мощь",
         exerciseList = mutableListOf(
-            PowerExerciseCustomized(exInitial = deadLift, exSets = 3, exReps = 5),
-            PowerExerciseCustomized(exInitial = benchPress, exSets = 5, exReps = 10),
-            PowerExerciseCustomized(exInitial = squat, exSets = 4, exReps = 10),
-            PowerExerciseCustomized(exInitial = militaryPress, exSets = 3, exReps = 8),
-            PowerExerciseCustomized(exInitial = bicepsCurl, exSets = 2, exReps = 15)
+            ExerciseCustomized(exInitial = deadLift, sets = 3, reps = 5, duration = null),
+            ExerciseCustomized(exInitial = benchPress, sets = 5, reps = 10, duration = null),
+            ExerciseCustomized(exInitial = squat, sets = 4, reps = 10, duration = null),
+            ExerciseCustomized(exInitial = militaryPress, sets = 3, reps = 8, duration = null),
+            ExerciseCustomized(exInitial = bicepsCurl, sets = 2, reps = 15, duration = null)
         )
     ),
     TrainingEntity(
         label = "Тренировка на хлесткость",
         exerciseList = mutableListOf(
-            PowerExerciseCustomized(exInitial = pushUps, exSets = 4, exReps = 10),
-            PowerExerciseCustomized(exInitial = pullUps, exSets = 3, exReps = 8),
-            AerobicExerciseCustomized(exInitial = running, exDuration = 300)
+            ExerciseCustomized(exInitial = pushUps, sets = 4, reps = 10, duration = null),
+            ExerciseCustomized(exInitial = pullUps, sets = 3, reps = 8, duration = null),
+            ExerciseCustomized(exInitial = running, duration = 300, sets = null, reps = null)
         )
     )
 )
