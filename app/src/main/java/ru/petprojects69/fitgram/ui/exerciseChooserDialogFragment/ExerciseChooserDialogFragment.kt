@@ -5,7 +5,6 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.SearchView
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
@@ -25,10 +24,7 @@ class ExerciseChooserDialogFragment(private val callback: ((ExerciseEntity) -> U
         setDialogSize()
 
         binding.recyclerView.adapter = adapter
-        binding.searchView.apply {
-            onActionViewExpanded()
-            setOnQueryTextListener(this@ExerciseChooserDialogFragment)
-        }
+        binding.searchView.setOnQueryTextListener(this@ExerciseChooserDialogFragment)
 
         viewModel.allExercises.observe(this) {
             adapter.exercises = it

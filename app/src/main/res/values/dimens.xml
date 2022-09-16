@@ -46,7 +46,6 @@
     <dimen name="testSize_dialogFragment_description">16sp</dimen>
     <dimen name="layoutHeight_dialogFragment_bottomSpace">16dp</dimen>
     <dimen name="constructor_training_padding">5dp</dimen>
-    <dimen name="constructor_training_footer_button_margin_top">20dp</dimen>
     <dimen name="constructor_training_margin_bottom">40dp</dimen>
     <dimen name="inner_item_training_padding">5dp</dimen>
     <dimen name="inner_item_training_margin">4dp</dimen>

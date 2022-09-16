@@ -1,12 +1,21 @@
 package ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment
 
+import android.content.Context
+import android.graphics.Rect
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.getSystemService
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.viewModelScope
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
@@ -36,7 +45,7 @@ class TrainingConstructorDialogFragment : DialogFragment(R.layout.dialog_trainin
             dialog?.dismiss()
         }
 
-        binding.addExerciseTextView.setOnClickListener {
+        binding.addExerciseButton.setOnClickListener {
             ExerciseChooserDialogFragment(getExerciseFromDataBaseCallback).show(
                 childFragmentManager,
                 null

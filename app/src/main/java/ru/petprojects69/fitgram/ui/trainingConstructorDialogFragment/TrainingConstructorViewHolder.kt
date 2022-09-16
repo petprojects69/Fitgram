@@ -32,7 +32,7 @@ class TrainingConstructorViewHolder(private val binding: ItemTrainingConstructor
                     context.getColor(R.color.item_aerobic_exercise_stroke_color)
                 binding.exerciseSetsEditText.visibility = GONE
                 binding.charBetweenSetsAndRepsTextView.visibility = GONE
-                binding.exerciseRepsOrDurationEditText.hint = "Длительность"
+                binding.exerciseRepsOrDurationEditText.hint = context.getString(R.string.exercise_constructor_duration_hint)
 
                 val saveDurationCallback: (Int?) -> Unit = {
                     exCustomized.duration = it
@@ -45,13 +45,13 @@ class TrainingConstructorViewHolder(private val binding: ItemTrainingConstructor
                     context.getColor(R.color.item_power_exercise_stroke_color)
                 binding.exerciseSetsEditText.apply {
                     visibility = VISIBLE
-                    hint = "Подходы"
+                    hint = context.getString(R.string.exercise_constructor_sets_hint)
                 }
                 binding.charBetweenSetsAndRepsTextView.apply {
                     visibility = VISIBLE
                     text = context.getString(R.string.char_between_sets_and_reps_textView)
                 }
-                binding.exerciseRepsOrDurationEditText.hint = "Повторы"
+                binding.exerciseRepsOrDurationEditText.hint = context.getString(R.string.exercise_constructor_reps_hint)
 
                 val saveSetsCallback: (Int?) -> Unit = {
                     exCustomized.sets = it
