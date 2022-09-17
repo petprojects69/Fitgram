@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemTrainingBinding
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
-import ru.petprojects69.fitgram.ui.ItemActionCallback
-import ru.petprojects69.fitgram.ui.ItemTouchHelperAdapter
+import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
+import ru.petprojects69.fitgram.domain.usecase.ItemTouchHelperAdapter
 
 class TrainingsAdapter(private val itemActionCallback: ItemActionCallback) :
     RecyclerView.Adapter<TrainingsViewHolder>(), ItemTouchHelperAdapter {

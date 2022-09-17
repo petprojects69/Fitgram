@@ -9,19 +9,20 @@
     android:padding="@dimen/constructor_training_padding"
     tools:context="ui.trainingConstructorDialogFragment.TrainingConstructorDialogFragment">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/constructor_training_label"
+    <EditText
+        android:id="@+id/training_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:hint="@string/constructor_training_label_textView"
+        android:imeOptions="actionDone"
         android:inputType="text" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="4"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="10"
         tools:listitem="@layout/item_training_constructor" />
@@ -31,31 +32,60 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/add_exercise_textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/constructor_training_footer_add_exercise_textView"
+        <LinearLayout
+            android:id="@+id/helper_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/cancel_button"
+            app:layout_constraintEnd_toStartOf="@id/add_exercise_button"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/dismiss_helper_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/training_constructor_button_margin"
+                android:text="@string/dsimiss_helper_textView"
+                android:textColor="@color/red" />
+
+            <TextView
+                android:id="@+id/helper_textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/training_constructor_button_margin"
+                android:lines="5"
+                android:textSize="@dimen/constructor_training_helper_text_size"
+                android:text="@string/helper_text"/>
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/add_exercise_button"
+            style="@style/ExtendedFABStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/training_constructor_button_margin"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
-            android:text="@string/constructor_training_footer_cancel_button"
+            android:layout_margin="@dimen/training_constructor_button_margin"
+            android:text="@string/constructor_training_cancel_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/add_exercise_textView" />
+            app:layout_constraintTop_toBottomOf="@id/add_exercise_button" />
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/constructor_training_footer_button_margin_top"
-            android:text="@string/constructor_training_footer_save_button"
+            android:layout_margin="@dimen/training_constructor_button_margin"
+            android:text="@string/constructor_training_save_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/add_exercise_textView" />
+            app:layout_constraintTop_toBottomOf="@id/add_exercise_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

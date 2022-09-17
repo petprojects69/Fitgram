@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.domain
+package ru.petprojects69.fitgram.domain.usecase
 
 import kotlinx.coroutines.flow.Flow
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity

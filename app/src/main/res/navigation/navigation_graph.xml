@@ -63,9 +63,6 @@
         android:name="ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooserDialogFragment"
         android:label="ExerciseChooserDialogFragment"
         tools:layout="@layout/dialog_exercise_chooser">
-        <action
-            android:id="@+id/to_dialog_constructor_training"
-            app:destination="@id/dialog_constructor_training" />
     </dialog>
 
 </navigation>

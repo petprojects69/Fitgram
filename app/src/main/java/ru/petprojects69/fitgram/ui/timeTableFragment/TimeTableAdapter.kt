@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
-import ru.petprojects69.fitgram.ui.ItemActionCallback
-import ru.petprojects69.fitgram.ui.ItemTouchHelperAdapter
+import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
+import ru.petprojects69.fitgram.domain.usecase.ItemTouchHelperAdapter
 
 class TimeTableAdapter(private val itemActionCallback: ItemActionCallback) :
     RecyclerView.Adapter<TimeTableViewHolder>(), ItemTouchHelperAdapter {

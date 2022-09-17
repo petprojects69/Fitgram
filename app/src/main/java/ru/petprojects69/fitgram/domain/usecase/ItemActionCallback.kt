@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.ui
+package ru.petprojects69.fitgram.domain.usecase
 
 interface ItemActionCallback {
     // TODO в параметры передать объект Тренировка
