@@ -141,4 +141,6 @@
     <string name="exercise_constructor_duration_hint">Duration</string>
     <string name="exercise_constructor_sets_hint">Sets</string>
     <string name="exercise_constructor_reps_hint">Reps</string>
+    <string name="dsimiss_helper_textView">x</string>
+    <string name="helper_text">Заменить упражнение - нажмите на его название. Переместить упражнение  - нажмите и удерживайте. Удалить упражнение  - смахните.</string>
 </resources>

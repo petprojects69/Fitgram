@@ -54,7 +54,6 @@ class ExerciseChooserDialogFragment(private val callback: ((ExerciseEntity) -> U
         return true
     }
 
-
     private fun searchExercise(query: String) {
         val searchQuery = "%$query%"
         viewModel.searchExercise(searchQuery).observe(this) {

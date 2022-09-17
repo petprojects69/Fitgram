@@ -53,4 +53,5 @@
     <dimen name="item_exercise_chooser_padding">5dp</dimen>
     <dimen name="item_exercise_chooser_margin">2dp</dimen>
     <dimen name="training_constructor_button_margin">10dp</dimen>
+    <dimen name="constructor_training_helper_text_size">10sp</dimen>
 </resources>

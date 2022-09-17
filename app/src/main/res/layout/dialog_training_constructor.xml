@@ -32,6 +32,33 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
+        <LinearLayout
+            android:id="@+id/helper_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/cancel_button"
+            app:layout_constraintEnd_toStartOf="@id/add_exercise_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/dismiss_helper_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/training_constructor_button_margin"
+                android:text="@string/dsimiss_helper_textView"
+                android:textColor="@color/red" />
+
+            <TextView
+                android:id="@+id/helper_textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/training_constructor_button_margin"
+                android:lines="5"
+                android:textSize="@dimen/constructor_training_helper_text_size"
+                android:text="@string/helper_text"/>
+        </LinearLayout>
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/add_exercise_button"
             style="@style/ExtendedFABStyle"
