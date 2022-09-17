@@ -11,7 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTrainingsBinding
-import ru.petprojects69.fitgram.ui.ItemActionCallback
+import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {

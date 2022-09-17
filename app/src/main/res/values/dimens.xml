@@ -50,4 +50,7 @@
     <dimen name="inner_item_training_padding">5dp</dimen>
     <dimen name="inner_item_training_margin">4dp</dimen>
     <dimen name="training_constructor_hint_text_size">13sp</dimen>
+    <dimen name="item_exercise_chooser_padding">5dp</dimen>
+    <dimen name="item_exercise_chooser_margin">2dp</dimen>
+    <dimen name="training_constructor_button_margin">10dp</dimen>
 </resources>
