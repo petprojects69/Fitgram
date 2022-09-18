@@ -81,8 +81,3 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding) :
     }
 }
 
-//private fun <E> fromJson(List) {
-//    fun jsonToList(value: String) =
-//        Gson().fromJson(value, Array<BasicExercise>::class.java).toMutableList()
-//}
-

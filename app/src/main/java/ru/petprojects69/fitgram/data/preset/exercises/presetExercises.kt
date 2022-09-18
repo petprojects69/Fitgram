@@ -5,11 +5,13 @@ val presetExercises = listOf(
     squat,
     deadLift,
     lunges,
+    swimming,
     militaryPress,
     bicepsCurl,
     tricepsExtension,
     barbellPull,
+    jumping,
     pullUps,
-    pushUps,
     running,
+    pushUps
 )

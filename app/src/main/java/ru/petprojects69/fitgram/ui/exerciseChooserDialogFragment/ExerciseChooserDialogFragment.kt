@@ -5,13 +5,14 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.SearchView
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.DialogExerciseChooserBinding
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
-class ExerciseChooserDialogFragment : DialogFragment(R.layout.dialog_exercise_chooser),
+class ExerciseChooserDialogFragment(private val callback: ((ExerciseEntity) -> Unit)? = null) :
+    DialogFragment(R.layout.dialog_exercise_chooser),
     SearchView.OnQueryTextListener {
 
     val binding: DialogExerciseChooserBinding by viewBinding()
@@ -20,21 +21,18 @@ class ExerciseChooserDialogFragment : DialogFragment(R.layout.dialog_exercise_ch
     private val adapter = ExerciseChooserAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val action = ExerciseChooserDialogFragmentDirections.toDialogConstructorTraining()
         setDialogSize()
 
         binding.recyclerView.adapter = adapter
-        binding.searchView.apply {
-            onActionViewExpanded()
-            setOnQueryTextListener(this@ExerciseChooserDialogFragment)
-        }
+        binding.searchView.setOnQueryTextListener(this@ExerciseChooserDialogFragment)
 
         viewModel.allExercises.observe(this) {
             adapter.exercises = it
         }
 
         adapter.clickListener = ExerciseChooserAdapter.OnItemClick {
-            findNavController().navigate(action)
+            callback?.invoke(it)
+            dialog?.dismiss()
         }
     }
 
@@ -55,7 +53,6 @@ class ExerciseChooserDialogFragment : DialogFragment(R.layout.dialog_exercise_ch
         }
         return true
     }
-
 
     private fun searchExercise(query: String) {
         val searchQuery = "%$query%"

@@ -11,7 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTrainingsBinding
-import ru.petprojects69.fitgram.ui.ItemActionCallback
+import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
@@ -44,13 +44,13 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
         viewModel.allTrainings.observe(viewLifecycleOwner) {
             adapter.initialList(it)
+            adapter.notifyDataSetChanged()
         }
 
         binding.createTrainingFab.setOnClickListener {
             findNavController().navigate(action)
         }
     }
-
 
     // TODO Написать реализацию во viewModel
     private fun updateTrainingFromStorage() {

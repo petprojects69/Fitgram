@@ -6,4 +6,5 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     tools:text="Упражнение"
-    android:padding="5dp" />
+    android:padding="@dimen/item_exercise_chooser_padding"
+    android:layout_margin="@dimen/item_exercise_chooser_margin"/>
