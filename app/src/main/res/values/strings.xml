@@ -148,4 +148,15 @@
     <string name="signIn_button_text">войти</string>
     <string name="info_text_not_user">Для ввода личных данных выполните вход</string>
     <string name="hint_surname">Фамилия</string>
+
+    <string name="char_between_sets_and_reps_textView">x</string>
+    <string name="constructor_training_label_textView">Введите название тренировки</string>
+    <string name="constructor_training_cancel_button">Отмена</string>
+    <string name="constructor_training_save_button">сохранить</string>
+    <string name="training_constructor_sets_hint">Подходы</string>
+    <string name="exercise_constructor_duration_hint">Duration</string>
+    <string name="exercise_constructor_sets_hint">Sets</string>
+    <string name="exercise_constructor_reps_hint">Reps</string>
+    <string name="dsimiss_helper_textView">x</string>
+    <string name="helper_text">Заменить упражнение - нажмите на его название. Переместить упражнение  - нажмите и удерживайте. Удалить упражнение  - смахните.</string>
 </resources>

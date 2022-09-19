@@ -19,15 +19,18 @@ import org.koin.core.qualifier.named
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.data.database.AppDatabaseDao
 import ru.petprojects69.fitgram.databinding.ActivityMainBinding
-import ru.petprojects69.fitgram.di.PRESET_AEROBIC
-import ru.petprojects69.fitgram.di.PRESET_POWER
+import ru.petprojects69.fitgram.di.PRESET_EXERCISE
 import ru.petprojects69.fitgram.di.PRESET_TRAINING
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
+
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
 import ru.petprojects69.fitgram.ui.initData.InitialDataFragment
 import ru.petprojects69.fitgram.ui.initData.MainActivityController
 import kotlin.properties.Delegates
+
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
+
 
 class MainActivity : AppCompatActivity(), MainActivityController {
 
@@ -55,6 +58,7 @@ class MainActivity : AppCompatActivity(), MainActivityController {
         } else {
             startMainFragment()
         }
+        initBottomNavigation()
     }
 
     override fun onBackPressed() {
@@ -79,11 +83,9 @@ class MainActivity : AppCompatActivity(), MainActivityController {
     private suspend fun dataPreset() {
         val dao: AppDatabaseDao by inject()
         val trainingData: List<TrainingEntity> by inject(named(PRESET_TRAINING))
-        val aerobicExercise: List<AerobicExerciseEntity> by inject(named(PRESET_AEROBIC))
-        val powerExercise: List<PowerExerciseEntity> by inject(named(PRESET_POWER))
+        val powerExercise: List<ExerciseEntity> by inject(named(PRESET_EXERCISE))
         dao.presetTraining(trainingData)
-        dao.presetAerobicEx(aerobicExercise)
-        dao.presetPowerEx(powerExercise)
+        dao.presetEx(powerExercise)
     }
 
     override fun startMainFragment() {

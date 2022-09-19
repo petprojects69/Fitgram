@@ -63,8 +63,8 @@ class TimeTableViewHolder(private val binding: ItemTimetableBinding) :
             binding.detailsBtnImageView.setImageDrawable(
                 binding.root.context.getDrawable(R.drawable.ic_baseline_expand_less_24)
             )
+
             exercise.first.exerciseList?.let {
-                val k = it
                 innerAdapter.initData(it)
             }
         } else {

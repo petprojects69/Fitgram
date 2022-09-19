@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_inner_card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/inner_item_training_margin"
+    android:paddingHorizontal="@dimen/root_padding_horizontal"
+    app:cardCornerRadius="@dimen/item_exercise_card_corner_radius"
+    app:cardElevation="@dimen/item_exercise_card_elevation"
+    app:strokeColor="@color/black"
+    app:strokeWidth="@dimen/item_exercise_stroke_width">
 
-    <TextView
-        android:id="@+id/exercise_label_textView"
-        style="@style/ItemSecondaryTextStyle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/inner_recycler_margin"
-        tools:text="Упражнение" />
-</FrameLayout>
+        android:layout_height="match_parent"
+        android:padding="@dimen/inner_item_training_padding"
+        android:theme="@style/ItemTitleStyle">
+
+        <TextView
+            android:id="@+id/exercise_title_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/exercise_sets_textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Упражнение"/>
+
+        <TextView
+            android:id="@+id/exercise_sets_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/inner_recycler_margin_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/char_between_sets_and_reps_textView"
+            app:layout_constraintStart_toEndOf="@id/exercise_title_textView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Подходы" />
+
+        <TextView
+            android:id="@+id/char_between_sets_and_reps_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/exercise_reps_or_duration_textView"
+            app:layout_constraintStart_toEndOf="@id/exercise_sets_textView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="x" />
+
+        <TextView
+            android:id="@+id/exercise_reps_or_duration_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/inner_recycler_margin_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/char_between_sets_and_reps_textView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Повторы/Длительность" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

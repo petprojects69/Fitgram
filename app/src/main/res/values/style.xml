@@ -2,6 +2,7 @@
 <resources>
 
     // Text Style
+
     <style name="FitgramTextStyle" parent="TextAppearance.AppCompat">
         <item name="fontFamily">monospace</item>
         <item name="android:textColor">@color/text_color</item>
@@ -24,6 +25,7 @@
         <item name="android:textSize">20sp</item>
     </style>
     // FAB
+
     <style name="ExtendedFABStyle" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
         <item name="android:backgroundTint">@color/primaryColor</item>
         <item name="android:textAppearance">@style/FitgramTextStyle</item>
@@ -31,6 +33,7 @@
     </style>
 
     // Bottom Navigation View
+
     <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
         <item name="backgroundTint">@color/primaryColor</item>
         <item name="itemIconTint">@color/selector_bottom_navigation_item</item>
@@ -38,11 +41,13 @@
     </style>
 
     // AppBar
+
     <style name="LabelStyle" parent="FitgramTextStyle">
         <item name="android:textSize">22sp</item>
     </style>
 
     // UserProfileFragment UserName
+
     <style name="UserNameStyle" parent="FitgramTextStyle">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
@@ -57,6 +62,14 @@
         <item name="android:paddingStart">@dimen/padding_horizontal_item_profile_fragment</item>
         <item name="android:paddingEnd">@dimen/padding_horizontal_item_profile_fragment</item>
         <item name="android:background">@drawable/background_element</item>
+
+    // UserProfileFragment UserInformations
+
+    <style name="UserInfoStyle" parent="FitgramTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_gravity">start</item>
     </style>
 
     <style name="ProfileHintStyle" parent="FitgramTextStyle">
@@ -92,7 +105,7 @@
     </style>
 
     <!-- Light EditTexts -->
-    <style name="ThemeOverlay.MyLightEditText" parent="ThemeOverlay.AppCompat.Dark"/>
+    <style name="ThemeOverlay.MyLightEditText" parent="ThemeOverlay.AppCompat.Dark" />
 
     <style name="ThemeOverlay.MyTextDetail" parent="AppTheme">
         <item name="android:layout_width">wrap_content</item>
@@ -121,6 +134,7 @@
     </style>
 
     // ExerciseItem Title
+
     <style name="ItemTitleStyle">
         <item name="android:layout_marginStart">14dp</item>
         <item name="android:layout_marginTop">3dp</item>
@@ -128,18 +142,21 @@
         <item name="android:maxLines">2</item>
         <item name="android:shadowColor">#40000000</item>
         <item name="android:shadowDy">4</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:shadowRadius">6</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     // ExerciseItem Description
+
     <style name="ItemDescriptionStyle">
         <item name="android:layout_marginStart">14dp</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginEnd">5dp</item>
         <item name="android:lineSpacingExtra">-2sp</item>
         <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:shadowColor">#99000000</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">italic</item>

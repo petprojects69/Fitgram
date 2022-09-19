@@ -17,5 +17,5 @@ data class UserEntity(
     val height: Int? = null,
     val target: String? = null,
     val calories: Int? = null,
-    val completed: Boolean = false
+    val completed: Boolean = false,
 )

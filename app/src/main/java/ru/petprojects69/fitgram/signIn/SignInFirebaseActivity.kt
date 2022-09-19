@@ -99,7 +99,7 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
 
             override fun onCodeSent(
                 verificationId: String,
-                token: PhoneAuthProvider.ForceResendingToken
+                token: PhoneAuthProvider.ForceResendingToken,
             ) {
                 storedVerificationId = verificationId
                 resendToken = token

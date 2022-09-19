@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/paddingHorizontal_dialogFragment_layout"
+    tools:context=".ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragment">
+
+    <TextView
+        android:id="@+id/dialog_exercise_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize_dialogFragment_title"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Название упражнения" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/dialog_exercise_image_card_view"
+        android:layout_width="@dimen/dialog_image_card_layout_width"
+        android:layout_height="@dimen/dialog_image_card_layout_height"
+        android:layout_marginTop="@dimen/marginTop_dialogFragment_poster"
+        app:cardCornerRadius="@dimen/item_image_card_corner_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_exercise_title_text_view"
+        app:strokeColor="@color/item_aerobic_image_card_color"
+        app:strokeWidth="@dimen/item_image_card_stroke_width">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/dialog_exercise_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/item_tmp_image"
+            tools:background="@color/black" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/dialog_description_exercise_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop_dialogFragment_description"
+        android:gravity="center"
+        android:textSize="@dimen/testSize_dialogFragment_description"
+        app:layout_constraintTop_toBottomOf="@id/dialog_exercise_image_card_view"
+        tools:text="Exercise description" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layoutHeight_dialogFragment_bottomSpace"
+        app:layout_constraintTop_toBottomOf="@id/dialog_description_exercise_text_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

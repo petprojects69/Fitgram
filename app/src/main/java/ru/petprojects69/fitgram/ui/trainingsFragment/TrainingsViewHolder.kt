@@ -1,7 +1,6 @@
 package ru.petprojects69.fitgram.ui.trainingsFragment
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -81,9 +80,4 @@ class TrainingsViewHolder(private val binding: ItemTrainingBinding) :
         binding.detailsRecyclerView.layoutManager = LinearLayoutManager(binding.root.context)
     }
 }
-
-//private fun <E> fromJson(List) {
-//    fun jsonToList(value: String) =
-//        Gson().fromJson(value, Array<BasicExercise>::class.java).toMutableList()
-//}
 

@@ -29,7 +29,11 @@
     <color name="item_power_image_card_color">#CC671313</color>
     <color name="item_aerobic_image_card_color">#CC3ab2ea</color>
 
+
     <color name="color_background_progress_layout">#66E0E0E0</color>
     <color name="text_color">#424242</color>
     <color name="hint_text_color">#80424242</color>
+
+    <color name="item_power_exercise_background_color">#1AAA1313</color>
+    <color name="item_aerobic_exercise_background_color">#1A3AB2EA</color>
 </resources>
