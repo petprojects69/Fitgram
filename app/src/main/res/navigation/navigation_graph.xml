@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_exercise_item_to_detailsExerciseDialogFragment"
             app:destination="@id/detailsExerciseDialogFragment" />
+        <argument
+            android:name="idExerciseRemove"
+            app:argType="integer" />
     </fragment>
 
     <dialog
@@ -46,6 +49,9 @@
             android:name="idExercise"
             android:defaultValue="0"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailsExerciseDialogFragment_to_exercise_item"
+            app:destination="@id/exercise_item" />
     </dialog>
 
     <dialog

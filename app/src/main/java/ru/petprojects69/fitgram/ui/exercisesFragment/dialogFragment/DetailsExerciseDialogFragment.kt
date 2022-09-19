@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -48,6 +49,11 @@ class DetailsExerciseDialogFragment :
                     ExerciseType.POWER -> getColor(requireContext(),
                         R.color.item_power_image_card_color)
                 }
+        }
+
+        binding.deleteExerciseImageButton.setOnClickListener {
+            findNavController().popBackStack()
+            viewModel.removeExerciseForId(args.idExercise)
         }
     }
 }

@@ -44,4 +44,7 @@ interface AppDatabaseDao {
 
     @Query("DELETE FROM training")
     suspend fun deleteAllPowerExercises()
+
+    @Query("DELETE FROM exercise_table WHERE exercise_id = :id")
+    suspend fun removeExerciseForId(id: Int)
 }

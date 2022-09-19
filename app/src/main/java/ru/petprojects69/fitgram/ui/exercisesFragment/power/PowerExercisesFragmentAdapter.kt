@@ -37,4 +37,6 @@ class PowerExercisesFragmentAdapter(private val itemClickListener: OnItemExercis
     override fun getItemCount(): Int {
         return exercisePowerList.size
     }
+
+
 }
