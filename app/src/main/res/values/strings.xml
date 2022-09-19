@@ -132,6 +132,22 @@
     <string name="resent_info_text">Отправить повторно через %s c</string>
     <string name="verify_button_text">ПРОВЕРИТЬ</string>
     <string name="hint_sms_code">* * * * * *</string>
+    <string name="hint_name">Имя</string>
+    <string name="hint_height">Рост</string>
+    <string name="hint_weight">Вес</string>
+    <string name="hint_sex">Пол</string>
+    <string name="save_data">Сохранить</string>
+    <string name="label_initial_data">Мои данные</string>
+    
+    // UserProfileFragment
+    <string name="hint_rank">Ранг</string>
+    <string name="hint_age">Возраст</string>
+    <string name="hint_calories">Норма калорий</string>
+    <string name="hint_target">Цель</string>
+    <string name="change_user_button_text">Сменить пользователя</string>
+    <string name="signIn_button_text">войти</string>
+    <string name="info_text_not_user">Для ввода личных данных выполните вход</string>
+    <string name="hint_surname">Фамилия</string>
 
     <string name="char_between_sets_and_reps_textView">x</string>
     <string name="constructor_training_label_textView">Введите название тренировки</string>
