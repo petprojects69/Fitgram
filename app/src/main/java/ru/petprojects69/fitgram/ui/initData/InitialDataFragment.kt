@@ -3,6 +3,7 @@ package ru.petprojects69.fitgram.ui.initData
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +18,8 @@ import ru.petprojects69.fitgram.domain.entity.UserEntity
 import ru.petprojects69.fitgram.ui.MainActivity
 import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_DOCUMENT_ID_KEY
 import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_ID_KEY
+import ru.petprojects69.fitgram.ui.userProfileFragment.UserTarget
+import ru.petprojects69.fitgram.ui.utils.customBehaviorHintAndCursor
 import ru.petprojects69.fitgram.ui.utils.showSnack
 import ru.petprojects69.fitgram.ui.utils.toEditable
 
@@ -39,15 +42,54 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
         binding.avatarImageView.load(R.drawable.man_placeholder) {
             transformations(CircleCropTransformation())
         }
+        val targetCallback: TargetCallback = object : TargetCallback {
+            override fun weightLoss() {
+                binding.targetInfoTextView.text = UserTarget.WEIGHT_LOSS.target
+            }
+
+            override fun keepingInShape() {
+                binding.targetInfoTextView.text = UserTarget.KEEPING_IN_SHAPE.target
+            }
+
+            override fun massSet() {
+                binding.targetInfoTextView.text = UserTarget.MASS_SET.target
+            }
+
+            override fun notDefined() {
+                binding.targetInfoTextView.text = UserTarget.NOT_DEFINED.target
+            }
+        }
+
+        binding.inputTargetLayout.setOnClickListener {
+            BottomSheetFragment(targetCallback, getUserTarget()).show(childFragmentManager, null)
+        }
+
+        binding.inputNameEditText
+            .customBehaviorHintAndCursor(resources.getString(R.string.hint_name))
+
+        binding.inputSurnameEditText
+            .customBehaviorHintAndCursor(resources.getString(R.string.hint_surname))
+
+        binding.inputAgeEditText
+            .customBehaviorHintAndCursor(resources.getString(R.string.hint_age))
+
+        binding.inputHeightEditText
+            .customBehaviorHintAndCursor(resources.getString(R.string.hint_height))
+
+        binding.inputWeightEditText
+            .customBehaviorHintAndCursor(resources.getString(R.string.hint_weight))
 
         binding.saveDataButton.setOnClickListener {
             editor.putBoolean(MainActivity.PREF_IS_FILLED_USER_DATA, true).commit()
             val user = UserEntity(
                 id = userId,
-                name = binding.inputNameEditText.text.toString(),
-                sex = binding.sexTabLayout.selectedTabPosition == 0,
-                height = binding.inputHeightEditText.text.toString().toInt(),
-                weight = binding.inputWeightEditText.text.toString().toInt()
+                name = getUserName(),
+                surname = getUserSurname(),
+                age = getUserAge(),
+                sex = getUserSex(),
+                height = getUserHeight(),
+                weight = getUserWeight(),
+                target = getUserTarget()
             )
             viewModel.saveUserData(user)
         }
@@ -76,6 +118,50 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
         }
     }
 
+    private fun getUserSex() = binding.sexTabLayout.selectedTabPosition == 0
+
+    private fun getUserTarget() =
+        if (binding.targetInfoTextView.text.isNullOrBlank()) {
+            UserTarget.NOT_DEFINED.target
+        } else {
+            binding.targetInfoTextView.text.toString()
+        }
+
+    private fun getUserWeight() =
+        if (binding.inputWeightEditText.text.isNullOrBlank()) {
+            null
+        } else {
+            binding.inputWeightEditText.text.toString().toInt()
+        }
+
+    private fun getUserHeight() =
+        if (binding.inputHeightEditText.text.isNullOrBlank()) {
+            null
+        } else {
+            binding.inputHeightEditText.text.toString().toInt()
+        }
+
+    private fun getUserAge() =
+        if (binding.inputAgeEditText.text.isNullOrBlank()) {
+            null
+        } else {
+            binding.inputAgeEditText.text.toString().toInt()
+        }
+
+    private fun getUserName() =
+        if (binding.inputNameEditText.text.isNullOrBlank()) {
+            null
+        } else {
+            binding.inputNameEditText.text.toString()
+        }
+
+    private fun getUserSurname() =
+        if (binding.inputSurnameEditText.text.isNullOrBlank()) {
+            null
+        } else {
+            binding.inputSurnameEditText.text.toString()
+        }
+
     private fun renderData(state: SaveUserDataState) {
         when (state) {
             is SaveUserDataState.Loading -> {
@@ -101,10 +187,42 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
                         binding.sexTabLayout.getTabAt(1)
                     }
                 )
-                binding.inputNameEditText.text = state.userEntity?.name.toString().toEditable()
-                binding.inputHeightEditText.text = state.userEntity?.height.toString().toEditable()
-                binding.inputWeightEditText.text = state.userEntity?.weight.toString().toEditable()
+                state.userEntity?.name?.let {
+                    binding.inputNameEditText.apply {
+                        gravity = Gravity.END
+                        text = it.toEditable()
+                    }
+                }
+                state.userEntity?.surname?.let {
+                    binding.inputSurnameEditText.apply {
+                        gravity = Gravity.END
+                        text = it.toEditable()
+                    }
+                }
+
+                state.userEntity?.height?.let {
+                    binding.inputHeightEditText.apply {
+                        gravity = Gravity.END
+                        text = it.toString().toEditable()
+                    }
+                }
+                state.userEntity?.weight?.let {
+                    binding.inputWeightEditText.apply {
+                        gravity = Gravity.END
+                        text = it.toString().toEditable()
+                    }
+                }
+                state.userEntity?.age?.let {
+                    binding.inputAgeEditText.apply {
+                        gravity = Gravity.END
+                        text = it.toString().toEditable()
+                    }
+                }
+                state.userEntity?.target?.let {
+                    binding.targetInfoTextView.text = it
+                }
             }
+
             is SaveUserDataState.EmptyData -> {
                 binding.progressLayout.visibility = View.GONE
             }

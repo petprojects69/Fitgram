@@ -21,10 +21,10 @@ fun setCalorieNorm(user: UserEntity): String {
                     (0.063 * user.weight + 2.896) * 240 * CPA
                 }
                 in 31..60 -> {
-                    (0.484 * user.weight + 3.653) * 240 * CPA
+                    (0.0484 * user.weight + 3.653) * 240 * CPA
                 }
                 in 60..Int.MAX_VALUE -> {
-                    (0.491 * user.weight + 2.459) * 240 * CPA
+                    (0.0491 * user.weight + 2.459) * 240 * CPA
                 }
                 else -> {
                     0.0
@@ -56,6 +56,6 @@ fun setCalorieNorm(user: UserEntity): String {
                 calories *= 1.15
             }
         }
-        return calories.toString()
+        return calories.toInt().toString()
     }
 }

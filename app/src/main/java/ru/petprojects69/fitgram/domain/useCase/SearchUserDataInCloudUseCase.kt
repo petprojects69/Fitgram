@@ -63,6 +63,7 @@ class SearchUserDataInCloudUseCase(
                                 age = doc.getField("age"),
                                 weight = doc.getField("weight"),
                                 height = doc.getField("height"),
+                                target = doc.getString("target"),
                                 calories = doc.getField("calories"),
                                 completed = doc.getBoolean("completed") ?: false
                             )

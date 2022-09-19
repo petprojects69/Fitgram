@@ -31,4 +31,5 @@
 
     <color name="color_background_progress_layout">#66E0E0E0</color>
     <color name="text_color">#424242</color>
+    <color name="hint_text_color">#80424242</color>
 </resources>

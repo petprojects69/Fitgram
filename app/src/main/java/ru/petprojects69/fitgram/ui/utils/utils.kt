@@ -6,8 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
-import ru.petprojects69.fitgram.domain.entity.UserEntity
-import ru.petprojects69.fitgram.ui.userProfileFragment.UserTarget
+import com.google.android.material.textfield.TextInputEditText
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -46,5 +45,22 @@ suspend fun <T> awaitTask(task: Task<T>): T = suspendCoroutine { continuation ->
     }
     task.addOnFailureListener {
         continuation.resumeWithException(task.exception!!)
+    }
+}
+
+fun TextInputEditText.customBehaviorHintAndCursor(hint: String) {
+    setOnFocusChangeListener { _, hasFocused ->
+        if (this.text.isNullOrBlank()) {
+            this.gravity = Gravity.START
+        } else {
+            this.gravity = Gravity.END
+        }
+
+        if (hasFocused) {
+            this.hint = null
+            this.gravity = Gravity.END
+        } else {
+            this.hint = hint
+        }
     }
 }

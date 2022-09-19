@@ -147,4 +147,5 @@
     <string name="change_user_button_text">Сменить пользователя</string>
     <string name="signIn_button_text">войти</string>
     <string name="info_text_not_user">Для ввода личных данных выполните вход</string>
+    <string name="hint_surname">Фамилия</string>
 </resources>
