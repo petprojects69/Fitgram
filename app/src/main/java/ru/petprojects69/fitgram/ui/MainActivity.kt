@@ -22,9 +22,6 @@ import ru.petprojects69.fitgram.databinding.ActivityMainBinding
 import ru.petprojects69.fitgram.di.PRESET_EXERCISE
 import ru.petprojects69.fitgram.di.PRESET_TRAINING
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
-
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.AerobicExerciseEntity
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.PowerExerciseEntity
 import ru.petprojects69.fitgram.ui.initData.InitialDataFragment
 import ru.petprojects69.fitgram.ui.initData.MainActivityController
 import kotlin.properties.Delegates
@@ -58,7 +55,6 @@ class MainActivity : AppCompatActivity(), MainActivityController {
         } else {
             startMainFragment()
         }
-        initBottomNavigation()
     }
 
     override fun onBackPressed() {
