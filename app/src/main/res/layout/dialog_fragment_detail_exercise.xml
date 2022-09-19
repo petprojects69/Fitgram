@@ -57,19 +57,20 @@
         android:layout_height="@dimen/dpLayout_actionExercise_imageButton"
         android:layout_marginEnd="@dimen/marginEnd_deleteExercice_imageButton"
         android:backgroundTint="@color/red"
-        android:contentDescription="@string/buttondeleteexercise"
+        android:contentDescription="@string/button_delete_exercise"
         android:src="@drawable/ic_baseline_delete_outline_24"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/edit_exercise_imageButton"
         app:layout_constraintTop_toBottomOf="@id/dialog_description_exercise_text_view" />
 
     <ImageButton
         android:id="@+id/edit_exercise_imageButton"
         android:layout_width="@dimen/dpLayout_actionExercise_imageButton"
         android:layout_height="@dimen/dpLayout_actionExercise_imageButton"
+        android:layout_marginEnd="@dimen/marginEnd_deleteExercice_imageButton"
         android:backgroundTint="@color/green"
-        android:contentDescription="@string/buttondeleteexercise"
+        android:contentDescription="@string/button_edit_exercise"
         android:src="@drawable/ic_baseline_edit_24"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dialog_description_exercise_text_view" />
 
     <Space

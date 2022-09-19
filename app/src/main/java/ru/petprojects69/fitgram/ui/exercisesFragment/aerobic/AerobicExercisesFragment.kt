@@ -36,6 +36,7 @@ class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises),
         binding.exerciseRecyclerView.adapter = adapter
         viewModel.allAerobicExercise.observe(viewLifecycleOwner) {
             adapter.exerciseAerobicList = it
+            adapter.notifyDataSetChanged()
         }
     }
 
