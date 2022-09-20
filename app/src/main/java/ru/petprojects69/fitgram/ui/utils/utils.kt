@@ -1,6 +1,8 @@
 package ru.petprojects69.fitgram.ui.utils
 
 import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
@@ -63,4 +65,29 @@ fun TextInputEditText.customBehaviorHintAndCursor(hint: String) {
             this.hint = hint
         }
     }
+}
+
+fun TextInputEditText.setDecimalLimit(limit: Int = 2) {
+    addTextChangedListener(object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun afterTextChanged(p0: Editable?) {
+            val str = this@setDecimalLimit.text.toString()
+            if (str.isEmpty()) return
+
+            var dotIndex = 0
+            str.forEachIndexed { index, c ->
+                if (c == '.') {
+                    dotIndex = index
+
+                }
+            }
+            if (str.length > dotIndex + limit + 1) {
+                this@setDecimalLimit.text = str.dropLast(1).toEditable()
+                this@setDecimalLimit.setSelection(p0.toString().lastIndex)
+            }
+        }
+    })
 }

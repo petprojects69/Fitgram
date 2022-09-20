@@ -13,7 +13,7 @@ data class UserEntity(
     val surname: String? = null,
     val rank: Int? = null,
     val age: Int? = null,
-    val weight: Int? = null,
+    val weight: Float? = null,
     val height: Int? = null,
     val target: String? = null,
     val calories: Int? = null,

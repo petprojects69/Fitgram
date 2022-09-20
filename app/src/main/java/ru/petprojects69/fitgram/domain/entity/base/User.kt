@@ -8,7 +8,7 @@ open class User(
     open val surname: String? = null,
     open val rank: Int? = null,
     open val age: Int? = null,
-    open val weight: Int? = null,
+    open val weight: Float? = null,
     open val height: Int? = null,
     open val target: String? = null,
     open val calories: Int? = null,

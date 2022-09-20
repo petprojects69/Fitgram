@@ -11,7 +11,7 @@ data class UserEntityRemote(
     override val surname: String?,
     override val rank: Int?,
     override val age: Int?,
-    override val weight: Int?,
+    override val weight: Float?,
     override val height: Int?,
     override val target: String?,
     override val calories: Int?,

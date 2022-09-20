@@ -20,6 +20,7 @@ import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_DOCUMENT_ID_
 import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_ID_KEY
 import ru.petprojects69.fitgram.ui.userProfileFragment.UserTarget
 import ru.petprojects69.fitgram.ui.utils.customBehaviorHintAndCursor
+import ru.petprojects69.fitgram.ui.utils.setDecimalLimit
 import ru.petprojects69.fitgram.ui.utils.showSnack
 import ru.petprojects69.fitgram.ui.utils.toEditable
 
@@ -76,8 +77,10 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
         binding.inputHeightEditText
             .customBehaviorHintAndCursor(resources.getString(R.string.hint_height))
 
-        binding.inputWeightEditText
-            .customBehaviorHintAndCursor(resources.getString(R.string.hint_weight))
+        binding.inputWeightEditText.apply {
+            customBehaviorHintAndCursor(resources.getString(R.string.hint_weight))
+            setDecimalLimit()
+        }
 
         binding.saveDataButton.setOnClickListener {
             editor.putBoolean(MainActivity.PREF_IS_FILLED_USER_DATA, true).commit()
@@ -127,26 +130,11 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
             binding.targetInfoTextView.text.toString()
         }
 
-    private fun getUserWeight() =
-        if (binding.inputWeightEditText.text.isNullOrBlank()) {
-            null
-        } else {
-            binding.inputWeightEditText.text.toString().toInt()
-        }
+    private fun getUserWeight() = binding.inputWeightEditText.text.toString().toFloatOrNull()
 
-    private fun getUserHeight() =
-        if (binding.inputHeightEditText.text.isNullOrBlank()) {
-            null
-        } else {
-            binding.inputHeightEditText.text.toString().toInt()
-        }
+    private fun getUserHeight() = binding.inputHeightEditText.text.toString().toIntOrNull()
 
-    private fun getUserAge() =
-        if (binding.inputAgeEditText.text.isNullOrBlank()) {
-            null
-        } else {
-            binding.inputAgeEditText.text.toString().toInt()
-        }
+    private fun getUserAge() = binding.inputAgeEditText.text.toString().toIntOrNull()
 
     private fun getUserName() =
         if (binding.inputNameEditText.text.isNullOrBlank()) {
