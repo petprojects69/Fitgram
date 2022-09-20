@@ -63,8 +63,14 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                     } else {
                         "Женский"
                     }
-                    state.user.height?.let { userHeightTextView.text = it.toString() }
-                    state.user.weight?.let { userWeightTextView.text = it.toString() }
+                    state.user.height?.let {
+                        userHeightTextView.text =
+                            resources.getString(R.string.user_height_text, it.toString())
+                    }
+                    state.user.weight?.let {
+                        userWeightTextView.text =
+                            resources.getString(R.string.user_weight_text, it.toString())
+                    }
                     state.user.age?.let { userAgeTextView.text = it.toString() }
                     state.user.target?.let { userTarget.text = it }
 

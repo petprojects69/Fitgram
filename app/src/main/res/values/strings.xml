@@ -159,4 +159,9 @@
     <string name="exercise_constructor_reps_hint">Reps</string>
     <string name="dsimiss_helper_textView">x</string>
     <string name="helper_text">Заменить упражнение - нажмите на его название. Переместить упражнение  - нажмите и удерживайте. Удалить упражнение  - смахните.</string>
+    <string name="user_weight_suffix">кг</string>
+    <string name="user_height_suffix">см</string>
+
+    <string name="user_weight_text">%s кг</string>
+    <string name="user_height_text">%s см</string>
 </resources>

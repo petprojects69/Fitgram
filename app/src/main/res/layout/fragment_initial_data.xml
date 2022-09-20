@@ -169,6 +169,7 @@
                 android:layout_marginTop="@dimen/margin_between_view"
                 app:layout_constraintTop_toBottomOf="@id/input_target_layout"
                 app:prefixText="@string/hint_height"
+                app:suffixText="@string/user_height_suffix"
                 app:prefixTextAppearance="@style/ProfileHintStyle">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -189,6 +190,7 @@
                 android:layout_marginTop="@dimen/margin_between_view"
                 app:layout_constraintTop_toBottomOf="@id/input_height_layout"
                 app:prefixText="@string/hint_weight"
+                app:suffixText="@string/user_weight_suffix"
                 app:prefixTextAppearance="@style/ProfileHintStyle">
 
                 <com.google.android.material.textfield.TextInputEditText
