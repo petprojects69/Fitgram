@@ -1,11 +1,11 @@
-package ru.petprojects69.fitgram.ui.initData
+package ru.petprojects69.fitgram.ui.initData.bottomSheetTarget
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.petprojects69.fitgram.ui.userProfileFragment.UserTarget
 
-class BottomSheetViewModel : ViewModel() {
+class BottomSheetTargetViewModel : ViewModel() {
     private val liveData: MutableLiveData<UserTarget> = MutableLiveData()
     fun getData(): LiveData<UserTarget> = liveData
 

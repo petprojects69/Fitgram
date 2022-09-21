@@ -58,4 +58,9 @@
     <dimen name="item_exercise_chooser_margin">2dp</dimen>
     <dimen name="training_constructor_button_margin">10dp</dimen>
     <dimen name="constructor_training_helper_text_size">10sp</dimen>
+
+    <dimen name="sex_selector_button_width">130dp</dimen>
+    <dimen name="sex_selector_button_height">150dp</dimen>
+    <dimen name="sex_selector_margin_vertical">32dp</dimen>
+    <dimen name="elevation_sex_selector_item">4dp</dimen>
 </resources>

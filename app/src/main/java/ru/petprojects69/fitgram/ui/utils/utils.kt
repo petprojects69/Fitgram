@@ -1,14 +1,18 @@
 package ru.petprojects69.fitgram.ui.utils
 
+import android.annotation.SuppressLint
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageView
+import coil.load
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import ru.petprojects69.fitgram.R
+import ru.petprojects69.fitgram.ui.userProfileFragment.UserSex
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -90,4 +94,21 @@ fun TextInputEditText.setDecimalLimit(limit: Int = 2) {
             }
         }
     })
+}
+
+@SuppressLint("UseCompatLoadingForDrawables")
+fun ImageView.setAvatar(sex: String?) {
+    when (sex) {
+        UserSex.MAN.sex -> {
+            this.load(resources.getDrawable(R.drawable.man_placeholder, null))
+        }
+
+        UserSex.WOMAN.sex -> {
+            this.load(resources.getDrawable(R.drawable.woman_placeholder, null))
+        }
+
+        UserSex.NOT_DEFINED.sex -> {
+            this.load(resources.getDrawable(R.drawable.not_defined_placeholder, null))
+        }
+    }
 }

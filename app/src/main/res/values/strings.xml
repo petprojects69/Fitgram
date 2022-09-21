@@ -164,4 +164,7 @@
 
     <string name="user_weight_text">%s кг</string>
     <string name="user_height_text">%s см</string>
+    <string name="man_sex_info">Мужчина</string>
+    <string name="woman_sex_info">Женщина</string>
+    <string name="throw_button_text">Сбросить</string>
 </resources>

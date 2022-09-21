@@ -3,7 +3,7 @@ package ru.petprojects69.fitgram.domain.entity.base
 open class User(
     open val id: String,
     open val email: String = "null",
-    open val sex: Boolean = true,
+    open val sex: String = "",
     open val name: String? = null,
     open val surname: String? = null,
     open val rank: Int? = null,

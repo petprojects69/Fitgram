@@ -91,10 +91,10 @@
                 android:layout_width="@dimen/image_view_size"
                 android:layout_height="@dimen/image_view_size"
                 android:layout_marginTop="@dimen/user_image_margin_top"
-                android:background="@drawable/man_placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@drawable/not_defined_placeholder" />
 
             <LinearLayout
                 android:id="@+id/user_name_layout"

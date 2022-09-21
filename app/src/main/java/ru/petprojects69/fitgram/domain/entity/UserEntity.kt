@@ -8,7 +8,7 @@ data class UserEntity(
     @PrimaryKey
     val id: String,
     val email: String = "null",
-    val sex: Boolean = true,
+    val sex: String = "",
     val name: String? = null,
     val surname: String? = null,
     val rank: Int? = null,

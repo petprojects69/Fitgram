@@ -51,21 +51,44 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/man_placeholder"
+                android:src="@drawable/not_defined_placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/label" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/sex_tab_layout"
-                style="@style/CustomTabLayout"
+            <FrameLayout
+                android:id="@+id/sex_input_layout"
                 android:layout_width="match_parent"
+                android:layout_height="42dp"
                 android:layout_marginHorizontal="@dimen/margin_horizontal"
                 android:layout_marginTop="@dimen/margin_between_view"
-                android:padding="5dp"
+                android:background="@drawable/background_element"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/avatar_imageView" />
+                app:layout_constraintTop_toBottomOf="@id/avatar_imageView" >
+
+                <TextView
+                    android:id="@+id/sex_hint_textView"
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_between_view"
+                    android:gravity="start"
+                    android:text="@string/hint_sex" />
+
+                <TextView
+                    android:id="@+id/sex_info_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="@dimen/margin_between_view"
+                    android:gravity="end"
+                    tools:text="Мужской" />
+            </FrameLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_name_layout"
@@ -74,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_horizontal"
                 android:layout_marginTop="@dimen/margin_between_view"
-                app:layout_constraintTop_toBottomOf="@id/sex_tab_layout"
+                app:layout_constraintTop_toBottomOf="@id/sex_input_layout"
                 app:prefixText="@string/hint_name"
                 app:prefixTextAppearance="@style/ProfileHintStyle">
 

@@ -6,7 +6,7 @@ data class UserEntityRemote(
     val typeEntity: String = USER_DATA_ENTITY_KEY,
     override val id: String,
     override val email: String,
-    override val sex: Boolean,
+    override val sex: String,
     override val name: String?,
     override val surname: String?,
     override val rank: Int?,

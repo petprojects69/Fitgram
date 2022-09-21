@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/top_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_maximize_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/throw_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_between_view"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/throw_button_text"
+        android:textColor="@color/blue"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_line" />
+
+    <LinearLayout
+        android:id="@+id/man_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/sex_selector_margin_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/woman_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/throw_off">
+
+        <FrameLayout
+            android:layout_width="@dimen/sex_selector_button_width"
+            android:layout_height="@dimen/sex_selector_button_height"
+            android:layout_margin="@dimen/elevation_sex_selector_item"
+            android:background="@drawable/background_element"
+            android:elevation="@dimen/elevation_sex_selector_item">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/man_placeholder" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/avatar_gradient" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/info_man_textView"
+            style="@style/FitgramTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_view"
+            android:gravity="center_horizontal"
+            android:text="@string/man_sex_info" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/woman_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/sex_selector_margin_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/man_layout"
+        app:layout_constraintTop_toBottomOf="@id/throw_off">
+
+        <FrameLayout
+            android:layout_width="@dimen/sex_selector_button_width"
+            android:layout_height="@dimen/sex_selector_button_height"
+            android:layout_margin="@dimen/elevation_sex_selector_item"
+            android:background="@drawable/background_element"
+            android:elevation="@dimen/elevation_sex_selector_item">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="1dp"
+                android:src="@drawable/woman_placeholder" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:src="@drawable/avatar_gradient" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/info_woman_textView"
+            style="@style/FitgramTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/margin_between_view"
+            android:gravity="center_horizontal"
+            android:text="@string/woman_sex_info" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
