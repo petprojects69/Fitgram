@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.ui.initData
+package ru.petprojects69.fitgram.ui.initData.bottomSheetTarget
 
 import android.annotation.SuppressLint
 import android.graphics.Paint
@@ -9,23 +9,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.petprojects69.fitgram.R
-import ru.petprojects69.fitgram.databinding.InitDataBottomSheetLayoutBinding
+import ru.petprojects69.fitgram.databinding.BottomSheetTargetLayoutBinding
 import ru.petprojects69.fitgram.ui.userProfileFragment.UserTarget
 
-class BottomSheetFragment(
+class BottomSheetTargetFragment(
     private val callback: TargetCallback,
     private val currentTarget: String
 ) : BottomSheetDialogFragment() {
-    private lateinit var binding: InitDataBottomSheetLayoutBinding
-    private val viewModel: BottomSheetViewModel by viewModels()
+    private lateinit var binding: BottomSheetTargetLayoutBinding
+    private val viewModel: BottomSheetTargetViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = InitDataBottomSheetLayoutBinding.bind(
+        binding = BottomSheetTargetLayoutBinding.bind(
             inflater.inflate(
-                R.layout.init_data_bottom_sheet_layout,
+                R.layout.bottom_sheet_target_layout,
                 container
             )
         )

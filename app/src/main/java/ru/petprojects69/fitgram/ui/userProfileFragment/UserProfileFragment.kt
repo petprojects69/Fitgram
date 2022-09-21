@@ -15,6 +15,7 @@ import ru.petprojects69.fitgram.domain.setCalorieNorm
 import ru.petprojects69.fitgram.signIn.SignInFirebaseActivity
 import ru.petprojects69.fitgram.ui.MainActivity
 import ru.petprojects69.fitgram.ui.initData.MainActivityController
+import ru.petprojects69.fitgram.ui.utils.setAvatar
 import ru.petprojects69.fitgram.ui.utils.showSnack
 
 class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
@@ -53,18 +54,21 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
             is UserProfileState.Success -> {
                 binding.progressLayout.visibility = View.GONE
                 binding.apply {
+                    binding.userImageView.setAvatar(state.user.sex)
                     state.user.name?.let { userNameTextView.text = it }
                     state.user.surname?.let { userSurNameTextView.text = it }
 
                     userGradeTextView.text = setUserRank(state).rank
+                    userGenderTextView.text = state.user.sex
 
-                    userGenderTextView.text = if (state.user.sex) {
-                        "Мужской"
-                    } else {
-                        "Женский"
+                    state.user.height?.let {
+                        userHeightTextView.text =
+                            resources.getString(R.string.user_height_text, it.toString())
                     }
-                    state.user.height?.let { userHeightTextView.text = it.toString() }
-                    state.user.weight?.let { userWeightTextView.text = it.toString() }
+                    state.user.weight?.let {
+                        userWeightTextView.text =
+                            resources.getString(R.string.user_weight_text, it.toString())
+                    }
                     state.user.age?.let { userAgeTextView.text = it.toString() }
                     state.user.target?.let { userTarget.text = it }
 

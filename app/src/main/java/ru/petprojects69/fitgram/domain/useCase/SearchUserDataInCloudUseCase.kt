@@ -56,7 +56,7 @@ class SearchUserDataInCloudUseCase(
                             user = UserEntity(
                                 id = doc.getString("id") ?: "id",
                                 email = doc.getString("email") ?: "email",
-                                sex = doc.getBoolean("sex") ?: true,
+                                sex = doc.getString("sex") ?: "",
                                 name = doc.getString("name"),
                                 surname = doc.getString("surname"),
                                 rank = doc.getField("rank"),

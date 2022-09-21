@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.google.android.material.tabs.TabLayout
 import org.koin.android.ext.android.inject
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentInitialDataBinding
@@ -18,10 +17,13 @@ import ru.petprojects69.fitgram.domain.entity.UserEntity
 import ru.petprojects69.fitgram.ui.MainActivity
 import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_DOCUMENT_ID_KEY
 import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_ID_KEY
+import ru.petprojects69.fitgram.ui.initData.bottomSheetSex.BottomSheetSexFragment
+import ru.petprojects69.fitgram.ui.initData.bottomSheetSex.SexCallback
+import ru.petprojects69.fitgram.ui.initData.bottomSheetTarget.BottomSheetTargetFragment
+import ru.petprojects69.fitgram.ui.initData.bottomSheetTarget.TargetCallback
+import ru.petprojects69.fitgram.ui.userProfileFragment.UserSex
 import ru.petprojects69.fitgram.ui.userProfileFragment.UserTarget
-import ru.petprojects69.fitgram.ui.utils.customBehaviorHintAndCursor
-import ru.petprojects69.fitgram.ui.utils.showSnack
-import ru.petprojects69.fitgram.ui.utils.toEditable
+import ru.petprojects69.fitgram.ui.utils.*
 
 class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
     private var userId: String = ""
@@ -39,9 +41,7 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
             renderData(it)
         }
         viewModel.getUserData(userId)
-        binding.avatarImageView.load(R.drawable.man_placeholder) {
-            transformations(CircleCropTransformation())
-        }
+
         val targetCallback: TargetCallback = object : TargetCallback {
             override fun weightLoss() {
                 binding.targetInfoTextView.text = UserTarget.WEIGHT_LOSS.target
@@ -60,8 +60,41 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
             }
         }
 
+        val sexCallback: SexCallback = object : SexCallback {
+            override fun setMan() {
+                binding.sexInfoTextView.text = UserSex.MAN.sex
+                binding.avatarImageView.load(R.drawable.man_placeholder) {
+                    transformations(CircleCropTransformation())
+                }
+            }
+
+            override fun setWoman() {
+                binding.sexInfoTextView.text = UserSex.WOMAN.sex
+                binding.avatarImageView.load(R.drawable.woman_placeholder) {
+                    transformations(CircleCropTransformation())
+                }
+            }
+
+            override fun setNotDefined() {
+                binding.sexInfoTextView.text = UserSex.NOT_DEFINED.sex
+                binding.avatarImageView.load(R.drawable.not_defined_placeholder) {
+                    transformations(CircleCropTransformation())
+                }
+            }
+
+        }
         binding.inputTargetLayout.setOnClickListener {
-            BottomSheetFragment(targetCallback, getUserTarget()).show(childFragmentManager, null)
+            BottomSheetTargetFragment(targetCallback, getUserTarget()).show(
+                childFragmentManager,
+                null
+            )
+        }
+
+        binding.sexInputLayout.setOnClickListener {
+            BottomSheetSexFragment(
+                sex = getUserSex(),
+                callback = sexCallback
+            ).show(childFragmentManager, null)
         }
 
         binding.inputNameEditText
@@ -76,8 +109,10 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
         binding.inputHeightEditText
             .customBehaviorHintAndCursor(resources.getString(R.string.hint_height))
 
-        binding.inputWeightEditText
-            .customBehaviorHintAndCursor(resources.getString(R.string.hint_weight))
+        binding.inputWeightEditText.apply {
+            customBehaviorHintAndCursor(resources.getString(R.string.hint_weight))
+            setDecimalLimit()
+        }
 
         binding.saveDataButton.setOnClickListener {
             editor.putBoolean(MainActivity.PREF_IS_FILLED_USER_DATA, true).commit()
@@ -93,32 +128,9 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
             )
             viewModel.saveUserData(user)
         }
-        binding.sexTabLayout.apply {
-            addTab(this.newTab().setText("Man"), 0, true)
-            addTab(this.newTab().setText("Woman"), 1, false)
-            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    when (tab?.position) {
-                        0 -> {
-                            binding.avatarImageView.load(R.drawable.man_placeholder) {
-                                transformations(CircleCropTransformation())
-                            }
-                        }
-                        1 -> {
-                            binding.avatarImageView.load(R.drawable.woman_placeholder) {
-                                transformations(CircleCropTransformation())
-                            }
-                        }
-                    }
-                }
-
-                override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                override fun onTabReselected(tab: TabLayout.Tab?) {}
-            })
-        }
     }
 
-    private fun getUserSex() = binding.sexTabLayout.selectedTabPosition == 0
+    private fun getUserSex(): String = binding.sexInfoTextView.text.toString()
 
     private fun getUserTarget() =
         if (binding.targetInfoTextView.text.isNullOrBlank()) {
@@ -127,26 +139,11 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
             binding.targetInfoTextView.text.toString()
         }
 
-    private fun getUserWeight() =
-        if (binding.inputWeightEditText.text.isNullOrBlank()) {
-            null
-        } else {
-            binding.inputWeightEditText.text.toString().toInt()
-        }
+    private fun getUserWeight() = binding.inputWeightEditText.text.toString().toFloatOrNull()
 
-    private fun getUserHeight() =
-        if (binding.inputHeightEditText.text.isNullOrBlank()) {
-            null
-        } else {
-            binding.inputHeightEditText.text.toString().toInt()
-        }
+    private fun getUserHeight() = binding.inputHeightEditText.text.toString().toIntOrNull()
 
-    private fun getUserAge() =
-        if (binding.inputAgeEditText.text.isNullOrBlank()) {
-            null
-        } else {
-            binding.inputAgeEditText.text.toString().toInt()
-        }
+    private fun getUserAge() = binding.inputAgeEditText.text.toString().toIntOrNull()
 
     private fun getUserName() =
         if (binding.inputNameEditText.text.isNullOrBlank()) {
@@ -180,13 +177,10 @@ class InitialDataFragment : Fragment(R.layout.fragment_initial_data) {
             is SaveUserDataState.DataReceived -> {
                 binding.progressLayout.visibility = View.GONE
 
-                binding.sexTabLayout.selectTab(
-                    if (state.userEntity?.sex == true) {
-                        binding.sexTabLayout.getTabAt(0)
-                    } else {
-                        binding.sexTabLayout.getTabAt(1)
-                    }
-                )
+                binding.avatarImageView.setAvatar(state.userEntity?.sex)
+
+                binding.sexInfoTextView.text = state.userEntity?.sex
+
                 state.userEntity?.name?.let {
                     binding.inputNameEditText.apply {
                         gravity = Gravity.END
