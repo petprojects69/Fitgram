@@ -23,9 +23,8 @@ class DetailsExerciseDialogFragment :
 
     override fun onStart() {
         super.onStart()
-
         val dialog: Dialog? = dialog
-        if (dialog != null) {
+        dialog?.let {
             val width = ViewGroup.LayoutParams.MATCH_PARENT
             val height = ViewGroup.LayoutParams.WRAP_CONTENT
             dialog.window?.setLayout(width, height)

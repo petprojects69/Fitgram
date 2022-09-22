@@ -43,9 +43,12 @@
     <TextView
         android:id="@+id/dialog_description_exercise_text_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginTop="@dimen/marginTop_dialogFragment_description"
-        android:gravity="center"
+        android:gravity="top"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
         android:textSize="@dimen/testSize_dialogFragment_description"
         app:layout_constraintTop_toBottomOf="@id/dialog_exercise_image_card_view"
         tools:text="Exercise description" />

@@ -149,4 +149,9 @@
     <string name="exercise_constructor_reps_hint">Reps</string>
     <string name="dsimiss_helper_textView">x</string>
     <string name="helper_text">Заменить упражнение - нажмите на его название. Переместить упражнение  - нажмите и удерживайте. Удалить упражнение  - смахните.</string>
+    <string name="constructor_exercise_exercise_label_hint_edit_text">Введите название упражнения</string>
+    <string name="constructor_exercise_description_hint_edit_text">Введите описание упражнения</string>
+    <string name="fab_create_exercise_text">Создать упражнение</string>
+    <string name="constructor_exercise_label_type_text_view">Тип упражнения:</string>
+    <string name="constructor_exercise_save_button">Сохранить</string>
 </resources>

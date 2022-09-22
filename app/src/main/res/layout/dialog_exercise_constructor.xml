@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="16dp">
+
+    <EditText
+        android:id="@+id/constructor_exercise_label_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:hint="@string/constructor_exercise_exercise_label_hint_edit_text"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:textColorHint="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/constructor_exercise_image_card_view"
+        android:layout_width="@dimen/dialog_image_card_layout_width"
+        android:layout_height="@dimen/dialog_image_card_layout_height"
+        android:layout_marginTop="@dimen/marginTop_dialogFragment_poster"
+        app:cardCornerRadius="@dimen/item_image_card_corner_radius"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constructor_exercise_label_edit_text"
+        app:strokeWidth="@dimen/item_image_card_stroke_width">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/constructor_exercise_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/item_tmp_image"
+            tools:background="@color/black" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/constructor_exercise_label_type_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/constructor_exercise_label_type_text_view"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/constructor_exercise_image_card_view"
+        app:layout_constraintTop_toTopOf="@id/constructor_exercise_image_card_view" />
+
+    <Spinner
+        android:id="@+id/constructor_exercise_label_type_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="@id/constructor_exercise_label_type_text_view"
+        app:layout_constraintTop_toBottomOf="@id/constructor_exercise_label_type_text_view" />
+
+    <EditText
+        android:id="@+id/constructor_exercise_description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/marginTop_dialogFragment_description"
+        android:gravity="top"
+        android:hint="@string/constructor_exercise_description_hint_edit_text"
+        android:inputType="textMultiLine"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:textColorHint="@color/red"
+        android:textSize="@dimen/testSize_dialogFragment_description"
+        app:layout_constraintTop_toBottomOf="@id/constructor_exercise_image_card_view"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/constructor_exercise_save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:letterSpacing="0.5"
+        android:text="@string/constructor_exercise_save_button"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constructor_exercise_description_edit_text" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layoutHeight_dialogFragment_bottomSpace"
+        app:layout_constraintTop_toBottomOf="@id/constructor_exercise_save_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
