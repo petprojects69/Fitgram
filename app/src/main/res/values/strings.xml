@@ -141,17 +141,17 @@
     <string name="item_training_constructor_name_hint">Упражнение</string>
     <string name="button_delete_exercise">ButtonDeleteExercise</string>
     <string name="button_edit_exercise">ButtonEditExercise</string>
-    <string name="constructor_training_cancel_button">Отмена</string>
-    <string name="constructor_training_save_button">сохранить</string>
+    <string name="constructor_cancel_button">Отмена</string>
+    <string name="constructor_save_button">Сохранить</string>
     <string name="training_constructor_sets_hint">Подходы</string>
     <string name="exercise_constructor_duration_hint">Duration</string>
     <string name="exercise_constructor_sets_hint">Sets</string>
     <string name="exercise_constructor_reps_hint">Reps</string>
     <string name="dsimiss_helper_textView">x</string>
     <string name="helper_text">Заменить упражнение - нажмите на его название. Переместить упражнение  - нажмите и удерживайте. Удалить упражнение  - смахните.</string>
-    <string name="constructor_exercise_exercise_label_hint_edit_text">Введите название упражнения</string>
-    <string name="constructor_exercise_description_hint_edit_text">Введите описание упражнения</string>
+    <string name="constructor_exercise_exercise_label_hint_edit_text">*Введите название упражнения</string>
+    <string name="constructor_exercise_description_hint_edit_text">*Введите описание упражнения</string>
     <string name="fab_create_exercise_text">Создать упражнение</string>
     <string name="constructor_exercise_label_type_text_view">Тип упражнения:</string>
-    <string name="constructor_exercise_save_button">Сохранить</string>
+    <string name="constructor_exercise_warning_text_view">*Поля обязательные для заполнения</string>
 </resources>

@@ -36,6 +36,14 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         super.onViewCreated(view, savedInstanceState)
         initSpinnerTypes()
         initChangeListenerTextFolds()
+        initActionButton()
+
+    }
+
+    private fun initActionButton() {
+        binding.constructorExerciseCancelButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
         binding.constructorExerciseSaveButton.setOnClickListener {
             viewModel.viewModelScope.launch {
@@ -53,8 +61,6 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
             }
             findNavController().popBackStack()
         }
-
-
     }
 
     private fun initChangeListenerTextFolds() {
