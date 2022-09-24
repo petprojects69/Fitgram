@@ -3,6 +3,7 @@ package ru.petprojects69.fitgram.ui.exercisesFragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import ru.petprojects69.fitgram.R
@@ -23,6 +24,12 @@ class SliderExercisesFragment : Fragment(R.layout.fragment_slider_exercises) {
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, type ->
             tab.text = tabNames(type)
         }.attach()
+
+        binding.createExerciseFab.setOnClickListener {
+            val action =
+                SliderExercisesFragmentDirections.actionExerciseItemToExerciseConstructorDialogFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun tabNames(type: Int): String? {

@@ -4,6 +4,7 @@
     <dimen name="login_without_authorization_textView_margin_top">20dp</dimen>
 
     <dimen name="user_image_margin_top">50dp</dimen>
+    <dimen name="logout_button_margin_horizontal">5dp</dimen>
     <dimen name="image_view_size">200dp</dimen>
     <dimen name="user_profile_linearLayout_margin_top">10dp</dimen>
 
@@ -53,11 +54,23 @@
     <dimen name="constructor_training_margin_bottom">40dp</dimen>
     <dimen name="inner_item_training_padding">5dp</dimen>
     <dimen name="inner_item_training_margin">4dp</dimen>
+    <dimen name="dpLayout_actionExercise_imageButton">48dp</dimen>
+    <dimen name="marginEnd_deleteExercise_imageButton">6dp</dimen>
     <dimen name="training_constructor_hint_text_size">13sp</dimen>
     <dimen name="item_exercise_chooser_padding">5dp</dimen>
     <dimen name="item_exercise_chooser_margin">2dp</dimen>
     <dimen name="training_constructor_button_margin">10dp</dimen>
     <dimen name="constructor_training_helper_text_size">10sp</dimen>
+    <dimen name="constructor_exercise_label_edit_text_margin_top">8dp</dimen>
+    <dimen name="constructor_exercise_layout_padding_horizontal">16dp</dimen>
+    <dimen name="constructor_exercise_label_type_text_view_margin_start">16dp</dimen>
+    <dimen name="constructor_exercise_label_type_text_view_margin_top">16dp</dimen>
+    <dimen name="constructor_exercise_label_type_text_view_text_size">18sp</dimen>
+    <dimen name="constructor_exercise_description_edit_text_layout_height">200dp</dimen>
+    <dimen name="constructor_exercise_action_button_text_size">14sp</dimen>
+    <dimen name="constructor_exercise_label_type_spinner_margin_top">6dp</dimen>
+    <dimen name="constructor_exercise_warning_text_view_text_size">12sp</dimen>
+    <dimen name="constructor_exercise_warning_text_view_margin_horizontal">6dp</dimen>
 
     <dimen name="sex_selector_button_width">130dp</dimen>
     <dimen name="sex_selector_button_height">150dp</dimen>

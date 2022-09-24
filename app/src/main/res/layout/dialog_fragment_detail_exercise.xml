@@ -29,7 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dialog_exercise_title_text_view"
-        app:strokeColor="@color/item_aerobic_image_card_color"
         app:strokeWidth="@dimen/item_image_card_stroke_width">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -44,12 +43,38 @@
     <TextView
         android:id="@+id/dialog_description_exercise_text_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginTop="@dimen/marginTop_dialogFragment_description"
-        android:gravity="center"
+        android:gravity="top"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
         android:textSize="@dimen/testSize_dialogFragment_description"
         app:layout_constraintTop_toBottomOf="@id/dialog_exercise_image_card_view"
         tools:text="Exercise description" />
+
+
+    <ImageButton
+        android:id="@+id/delete_exercise_imageButton"
+        android:layout_width="@dimen/dpLayout_actionExercise_imageButton"
+        android:layout_height="@dimen/dpLayout_actionExercise_imageButton"
+        android:layout_marginEnd="@dimen/marginEnd_deleteExercise_imageButton"
+        android:backgroundTint="@color/red"
+        android:contentDescription="@string/button_delete_exercise"
+        android:src="@drawable/ic_baseline_delete_outline_24"
+        app:layout_constraintEnd_toStartOf="@id/edit_exercise_imageButton"
+        app:layout_constraintTop_toBottomOf="@id/dialog_description_exercise_text_view" />
+
+    <ImageButton
+        android:id="@+id/edit_exercise_imageButton"
+        android:layout_width="@dimen/dpLayout_actionExercise_imageButton"
+        android:layout_height="@dimen/dpLayout_actionExercise_imageButton"
+        android:layout_marginEnd="@dimen/marginEnd_deleteExercise_imageButton"
+        android:backgroundTint="@color/green"
+        android:contentDescription="@string/button_edit_exercise"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_description_exercise_text_view" />
 
     <Space
         android:layout_width="match_parent"

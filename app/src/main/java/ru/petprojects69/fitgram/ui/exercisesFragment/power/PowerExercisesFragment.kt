@@ -36,6 +36,7 @@ class PowerExercisesFragment : Fragment(R.layout.fragment_power_exercises),
         binding.exerciseRecyclerView.adapter = adapter
         viewModel.allPowerExercise.observe(viewLifecycleOwner) {
             adapter.exercisePowerList = it
+            adapter.notifyDataSetChanged()
         }
     }
 
