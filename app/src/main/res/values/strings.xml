@@ -132,6 +132,22 @@
     <string name="resent_info_text">Отправить повторно через %s c</string>
     <string name="verify_button_text">ПРОВЕРИТЬ</string>
     <string name="hint_sms_code">* * * * * *</string>
+    <string name="hint_name">Имя</string>
+    <string name="hint_height">Рост</string>
+    <string name="hint_weight">Вес</string>
+    <string name="hint_sex">Пол</string>
+    <string name="save_data">Сохранить</string>
+    <string name="label_initial_data">Мои данные</string>
+
+    // UserProfileFragment
+    <string name="hint_rank">Ранг</string>
+    <string name="hint_age">Возраст</string>
+    <string name="hint_calories">Норма калорий</string>
+    <string name="hint_target">Цель</string>
+    <string name="change_user_button_text">Сменить пользователя</string>
+    <string name="signIn_button_text">войти</string>
+    <string name="info_text_not_user">Для ввода личных данных выполните вход</string>
+    <string name="hint_surname">Фамилия</string>
 
     <string name="char_between_sets_and_reps_textView">x</string>
     <string name="constructor_training_label_textView">Введите название тренировки</string>
@@ -149,6 +165,14 @@
     <string name="exercise_constructor_reps_hint">Reps</string>
     <string name="dsimiss_helper_textView">x</string>
     <string name="helper_text">Заменить упражнение - нажмите на его название. Переместить упражнение  - нажмите и удерживайте. Удалить упражнение  - смахните.</string>
+    <string name="user_weight_suffix">кг</string>
+    <string name="user_height_suffix">см</string>
+
+    <string name="user_weight_text">%s кг</string>
+    <string name="user_height_text">%s см</string>
+    <string name="man_sex_info">Мужчина</string>
+    <string name="woman_sex_info">Женщина</string>
+    <string name="throw_button_text">Сбросить</string>
     <string name="constructor_exercise_exercise_label_hint_edit_text">*Введите название упражнения</string>
     <string name="constructor_exercise_description_hint_edit_text">*Введите описание упражнения</string>
     <string name="fab_create_exercise_text">Создать упражнение</string>

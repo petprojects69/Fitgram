@@ -1,14 +1,16 @@
 package ru.petprojects69.fitgram.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Rect
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
@@ -20,25 +22,39 @@ import ru.petprojects69.fitgram.databinding.ActivityMainBinding
 import ru.petprojects69.fitgram.di.PRESET_EXERCISE
 import ru.petprojects69.fitgram.di.PRESET_TRAINING
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
+import ru.petprojects69.fitgram.ui.initData.InitialDataFragment
+import ru.petprojects69.fitgram.ui.initData.MainActivityController
+import kotlin.properties.Delegates
+
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
-private const val FIRST_RUN = "firstRun"
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainActivityController {
 
     private val binding: ActivityMainBinding by viewBinding()
-    private val bottomNavigationPanel: BottomNavigationView by lazy { binding.bottomNavigationView }
-    private val navigationController by lazy { findNavController(R.id.navigation_fragment_container) }
+
     private val scope = CoroutineScope(SupervisorJob())
+    private var isFilledUserData by Delegates.notNull<Boolean>()
+    private var userId: String? = ""
+    private val preferences: SharedPreferences by inject()
+    private val editor: SharedPreferences.Editor by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         decorStatusBar()
+        userId = preferences.getString(PREF_USER_ID_KEY, null)
+        isFilledUserData = preferences.getBoolean(PREF_IS_FILLED_USER_DATA, false)
         checkingFirstLaunch()
-        initBottomNavigation()
-        Toast.makeText(this, "Hello, ${intent.getStringExtra(USER_ID_KEY)}", Toast.LENGTH_LONG)
-            .show()
+        startFragment()
+    }
+
+    private fun startFragment() {
+        if (!isFilledUserData && userId != null) {
+            startInitialDataFragment()
+        } else {
+            startMainFragment()
+        }
     }
 
     override fun onBackPressed() {
@@ -49,47 +65,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(setIntent)
     }
 
-    private fun initBottomNavigation() {
-        binding.labelFragmentTextView.text = resources.getString(R.string.label_timetable)
-        bottomNavigationPanel.setupWithNavController(navigationController)
-        bottomNavigationPanel.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.timetable_item -> {
-                    binding.labelFragmentTextView.text =
-                        resources.getString(R.string.label_timetable)
-                    navigationController.navigate(R.id.timetable_item)
-                    true
-                }
-                R.id.training_item -> {
-                    binding.labelFragmentTextView.text =
-                        resources.getString(R.string.label_trainings)
-                    navigationController.navigate(R.id.training_item)
-                    true
-                }
-                R.id.exercise_item -> {
-                    binding.labelFragmentTextView.text =
-                        resources.getString(R.string.label_exercises)
-                    navigationController.navigate(R.id.exercise_item)
-                    true
-                }
-
-                R.id.profile_item -> {
-                    binding.labelFragmentTextView.text =
-                        resources.getString(R.string.label_profile)
-                    navigationController.navigate(R.id.profile_item)
-                    true
-                }
-                else -> {
-                    false
-                }
-            }
-        }
-    }
-
     private fun checkingFirstLaunch() {
-        val preferences = getPreferences(MODE_PRIVATE)
-        val editor = preferences.edit()
-
         if (!preferences.getBoolean(FIRST_RUN, false)) {
             editor.putBoolean(FIRST_RUN, true).also {
                 it.apply()
@@ -108,14 +84,51 @@ class MainActivity : AppCompatActivity() {
         dao.presetEx(powerExercise)
     }
 
+    override fun startMainFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.mainContainer.id, MainFragment())
+            .commit()
+    }
+
+    override fun startInitFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(binding.mainContainer.id, InitialDataFragment())
+            .commit()
+    }
+
+    private fun startInitialDataFragment() {
+        supportFragmentManager.beginTransaction()
+            .add(binding.mainContainer.id, InitialDataFragment())
+            .commit()
+    }
+
     private fun decorStatusBar() {
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         window.statusBarColor = this.resources.getColor(R.color.color_for_status_bar, null)
     }
 
+    // метод для потери фокуса при клике вне поля ввода
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        if (ev?.action == MotionEvent.ACTION_DOWN) {
+            val v = currentFocus
+            if (v is TextInputEditText || v is MaterialAutoCompleteTextView) {
+                val outRect = Rect()
+                v.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(ev.rawX.toInt(), ev.rawY.toInt())) {
+                    v.clearFocus()
+                    val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.windowToken, 0)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
     companion object {
-        const val USER_ID_KEY = "userId"
-        const val EMPTY_USER_ID = "empty"
+        private const val FIRST_RUN = "firstRun"
+        const val PREF_IS_FILLED_USER_DATA = "isFilledUserData"
+        const val PREF_USER_ID_KEY = "prefUserKey"
+        const val PREF_USER_DOCUMENT_ID_KEY = "prefUserDocumentIdKey"
     }
 }

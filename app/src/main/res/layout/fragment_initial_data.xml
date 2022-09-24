@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background_progress_layout"
+        android:elevation="4dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/progress_background" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label"
+                style="@style/MiddleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="@string/label_initial_data"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/avatar_imageView"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="50dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/not_defined_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label" />
+
+            <FrameLayout
+                android:id="@+id/sex_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_between_view"
+                android:background="@drawable/background_element"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/avatar_imageView" >
+
+                <TextView
+                    android:id="@+id/sex_hint_textView"
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_between_view"
+                    android:gravity="start"
+                    android:text="@string/hint_sex" />
+
+                <TextView
+                    android:id="@+id/sex_info_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="@dimen/margin_between_view"
+                    android:gravity="end"
+                    tools:text="Мужской" />
+            </FrameLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_name_layout"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_between_view"
+                app:layout_constraintTop_toBottomOf="@id/sex_input_layout"
+                app:prefixText="@string/hint_name"
+                app:prefixTextAppearance="@style/ProfileHintStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_name_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:hint="@string/hint_name"
+                    android:inputType="textCapWords"
+                    android:textAppearance="@style/ProfileInfoStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_surname_layout"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_between_view"
+                app:layout_constraintTop_toBottomOf="@id/input_name_layout"
+                app:prefixText="@string/hint_surname"
+                app:prefixTextAppearance="@style/ProfileHintStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_surname_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_surname"
+                    android:inputType="textCapWords"
+                    android:textAppearance="@style/ProfileInfoStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_age_layout"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_between_view"
+                app:layout_constraintTop_toBottomOf="@id/input_surname_layout"
+                app:prefixText="@string/hint_age"
+                app:prefixTextAppearance="@style/ProfileHintStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_age_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_age"
+                    android:inputType="number"
+                    android:textAppearance="@style/ProfileInfoStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <FrameLayout
+                android:id="@+id/input_target_layout"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_between_view"
+                android:background="@drawable/background_element"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintTop_toBottomOf="@id/input_age_layout">
+
+                <TextView
+                    android:id="@+id/target_hint_textView"
+                    style="@style/ProfileHintStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_between_view"
+                    android:gravity="start"
+                    android:text="@string/hint_target" />
+
+                <TextView
+                    android:id="@+id/target_info_textView"
+                    style="@style/ProfileInfoStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="@dimen/margin_between_view"
+                    android:gravity="end"
+                    tools:text="Похудеть" />
+            </FrameLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_height_layout"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_between_view"
+                app:layout_constraintTop_toBottomOf="@id/input_target_layout"
+                app:prefixText="@string/hint_height"
+                app:suffixText="@string/user_height_suffix"
+                app:prefixTextAppearance="@style/ProfileHintStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_height_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_height"
+                    android:inputType="numberDecimal"
+                    android:textAppearance="@style/ProfileInfoStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_weight_layout"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_between_view"
+                app:layout_constraintTop_toBottomOf="@id/input_height_layout"
+                app:prefixText="@string/hint_weight"
+                app:suffixText="@string/user_weight_suffix"
+                app:prefixTextAppearance="@style/ProfileHintStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_weight_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_weight"
+                    android:inputType="numberDecimal"
+                    android:textAppearance="@style/ProfileInfoStyle" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/save_data_button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/save_data"
+                app:layout_constraintTop_toBottomOf="@id/input_weight_layout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

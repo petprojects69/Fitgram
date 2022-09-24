@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="32dp">
+
+    <ImageView
+        android:id="@+id/top_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_maximize_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/info_textView"
+        style="@style/FitgramTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:gravity="center"
+        android:text="Укажите цель тренировок и мы рассчитаем необходимое количество потребляемых калорий."
+        app:layout_constraintTop_toBottomOf="@id/top_line" />
+
+    <TextView
+        android:id="@+id/throw_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_between_view"
+        android:text="@string/throw_button_text"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@color/blue"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_textView" />
+
+    <Button
+        android:id="@+id/weight_loss_button"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/margin_between_view"
+        android:backgroundTint="@color/grey_300"
+        android:text="Похудеть"
+        android:textAppearance="@style/FitgramTextStyle"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/keeping_in_shape_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/throw_off" />
+
+
+    <Button
+        android:id="@+id/keeping_in_shape_button"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_between_view"
+        android:backgroundTint="@color/grey_300"
+        android:text="Быть \nв форме"
+        android:textAppearance="@style/FitgramTextStyle"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/mass_set_button"
+        app:layout_constraintStart_toEndOf="@id/weight_loss_button"
+        app:layout_constraintTop_toBottomOf="@id/throw_off" />
+
+    <Button
+        android:id="@+id/mass_set_button"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/margin_between_view"
+        android:backgroundTint="@color/grey_300"
+        android:text="Набрать массу"
+        android:textAppearance="@style/FitgramTextStyle"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/keeping_in_shape_button"
+        app:layout_constraintTop_toBottomOf="@id/throw_off" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package ru.petprojects69.fitgram.signIn
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentSender
+import android.content.SharedPreferences
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
@@ -26,9 +27,11 @@ import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import org.koin.android.ext.android.inject
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ActivitySigninFirebaseBinding
 import ru.petprojects69.fitgram.ui.MainActivity
+import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_ID_KEY
 import ru.petprojects69.fitgram.ui.utils.showSnack
 import java.util.concurrent.TimeUnit
 
@@ -48,6 +51,7 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             handleSignInResult(result.data)
         }
+    private val editor: SharedPreferences.Editor by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -269,15 +273,18 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
             .commit()
     }
 
-    private fun startMainActivityWithID(uid: String) {
+    private fun startMainActivityWithID(uid: String?) {
+        saveUserIdWithPreferences(uid)
         val startIntent = Intent(this, MainActivity::class.java)
-        startIntent.putExtra(MainActivity.USER_ID_KEY, uid)
         startActivity(startIntent)
+    }
+
+    private fun saveUserIdWithPreferences(uid: String?){
+        editor.putString(PREF_USER_ID_KEY, uid).commit()
     }
 
     override fun loginAnonymous() {
         val startIntent = Intent(this, MainActivity::class.java)
-        startIntent.putExtra(MainActivity.USER_ID_KEY, MainActivity.EMPTY_USER_ID)
         startActivity(startIntent)
     }
 
