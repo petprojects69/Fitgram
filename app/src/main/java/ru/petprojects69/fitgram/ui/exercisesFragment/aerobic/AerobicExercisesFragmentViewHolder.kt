@@ -1,5 +1,6 @@
 package ru.petprojects69.fitgram.ui.exercisesFragment.aerobic
 
+import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemAerobicExerciseBinding
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
@@ -11,7 +12,11 @@ class AerobicExercisesFragmentViewHolder(private val binding: ItemAerobicExercis
     fun bind(exercise: ExerciseEntity, clickListener: OnItemExerciseClickListener) {
         binding.itemExerciseTitleTextView.text = exercise.name
         binding.itemExerciseDescriptionTextView.text = exercise.description
-        exercise.poster?.let { binding.itemExerciseImageView.setImageResource(it) }
+        if (exercise.posterCustom != null) {
+            binding.itemExerciseImageView.setImageURI(Uri.parse("file://${exercise.posterCustom}"))
+        } else {
+            exercise.poster?.let { binding.itemExerciseImageView.setImageResource(it) }
+        }
         itemView.setOnClickListener {
             clickListener.onItemExerciseClick(exercise)
         }

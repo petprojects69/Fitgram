@@ -119,7 +119,7 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
             }
             val outFile =
                 File(path, "${binding.constructorExerciseLabelEditText.text}.jpeg")
-
+            pathExercisePoster = outFile.path
             val outputStream = FileOutputStream(outFile)
             selectedExerciseBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
             outputStream.close()
