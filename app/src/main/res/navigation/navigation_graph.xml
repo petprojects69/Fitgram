@@ -45,7 +45,7 @@
 
     <dialog
         android:id="@+id/detailsExerciseDialogFragment"
-        android:name="ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragment"
+        android:name="ru.petprojects69.fitgram.ui.detailExerciseDialogFragment.DetailsExerciseDialogFragment"
         android:label="DetailsExerciseDialogFragment"
         tools:layout="@layout/dialog_fragment_detail_exercise">
         <argument

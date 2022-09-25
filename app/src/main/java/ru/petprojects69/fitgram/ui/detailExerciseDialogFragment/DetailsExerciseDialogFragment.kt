@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment
+package ru.petprojects69.fitgram.ui.detailExerciseDialogFragment
 
 import android.app.Dialog
 import android.net.Uri

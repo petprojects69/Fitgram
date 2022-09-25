@@ -4,7 +4,7 @@ import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemAerobicExerciseBinding
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
-import ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.OnItemExerciseClickListener
+import ru.petprojects69.fitgram.ui.detailExerciseDialogFragment.OnItemExerciseClickListener
 
 class AerobicExercisesFragmentViewHolder(private val binding: ItemAerobicExerciseBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -18,7 +18,7 @@ class AerobicExercisesFragmentViewHolder(private val binding: ItemAerobicExercis
             exercise.poster?.let { binding.itemExerciseImageView.setImageResource(it) }
         }
         itemView.setOnClickListener {
-            clickListener.onItemExerciseClick(exercise)
+            clickListener.onItemExerciseClick(exercise.id)
         }
     }
 }
