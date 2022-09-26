@@ -14,6 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.DialogFragmentDetailExerciseBinding
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseType
+import java.io.File
 
 
 class DetailsExerciseDialogFragment :
@@ -21,6 +22,10 @@ class DetailsExerciseDialogFragment :
 
     private val binding: DialogFragmentDetailExerciseBinding by viewBinding()
     private val viewModel: DetailsExerciseDialogFragmentViewModel by viewModel()
+
+    companion object {
+        private var labelExercise: String = ""
+    }
 
     override fun onStart() {
         super.onStart()
@@ -38,11 +43,12 @@ class DetailsExerciseDialogFragment :
         val args: DetailsExerciseDialogFragmentArgs by navArgs()
 
         viewModel.getAerobicExerciseForId(args.idExercise).observe(viewLifecycleOwner) { ex ->
+            labelExercise = ex.name
             binding.dialogExerciseTitleTextView.text = ex.name
             if (ex.posterCustom != null) {
                 binding.dialogExerciseImageView.setImageURI(Uri.parse("file://${ex.posterCustom}"))
             } else {
-                ex.poster?.let { binding.dialogExerciseImageView.setImageResource(it) }
+                ex.poster.let { binding.dialogExerciseImageView.setImageResource(it) }
             }
             binding.dialogDescriptionExerciseTextView.text = ex.description
             binding.dialogExerciseImageCardView.strokeColor =
@@ -55,6 +61,8 @@ class DetailsExerciseDialogFragment :
         }
 
         binding.deleteExerciseImageButton.setOnClickListener {
+            File(File(requireContext().filesDir, File.separator + "Images"),
+                "$labelExercise.jpeg").also { it.delete() }
             findNavController().popBackStack()
             viewModel.removeExerciseForId(args.idExercise)
         }

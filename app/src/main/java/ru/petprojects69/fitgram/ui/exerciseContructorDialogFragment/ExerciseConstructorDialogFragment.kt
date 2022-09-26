@@ -36,19 +36,18 @@ import java.io.FileOutputStream
 
 class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercise_constructor) {
 
-
     companion object {
-        private var selectedImage: Uri? = null
         private var selectedExerciseBitmap: Bitmap? = null
         private var pathExercisePoster: String? = null
+        private var selectedImageFlag: Boolean = false
         private const val GALLERY_PERMISSION_REQUEST = 1
         private const val GALLERY_RESULT_REQUEST = 2
         private var types = arrayOf("Силовые", "Аэробные")
     }
 
+    private var selectedImage: Uri? = null
     private val binding: DialogExerciseConstructorBinding by viewBinding()
     private val viewModel: ExerciseConstructorDialogFragmentViewModel by viewModel()
-
 
     override fun onStart() {
         super.onStart()
@@ -91,7 +90,9 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         }
 
         binding.constructorExerciseSaveButton.setOnClickListener {
-            saveExerciseImage()
+            if (selectedImageFlag) {
+                saveExerciseImage()
+            }
             viewModel.viewModelScope.launch {
                 viewModel.saveExercise(
                     ExerciseEntity(
@@ -213,6 +214,7 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         try {
             context?.let {
                 if (selectedImage != null) {
+                    selectedImageFlag = true
                     if (Build.VERSION.SDK_INT >= 28) {
                         val source = ImageDecoder.createSource(it.contentResolver, selectedImage!!)
                         selectedExerciseBitmap = ImageDecoder.decodeBitmap(source)
