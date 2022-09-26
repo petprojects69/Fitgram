@@ -3,6 +3,7 @@ package ru.petprojects69.fitgram.domain.entity.exercisesEntity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.File
 
 @Entity(tableName = "exercise_table")
 data class ExerciseEntity(
@@ -17,6 +18,7 @@ data class ExerciseEntity(
     @ColumnInfo(name = "exercise_burningCalories") val burningCalories: Int? = null,
     @ColumnInfo(name = "exercise_cooldown") val cooldown: Float? = null,
     @ColumnInfo(name = "exercise_muscleGroup") val muscleGroup: String? = null,
+    @ColumnInfo(name = "exercise_posterCustom") val posterCustom: String? = null,
 )
 
 enum class ExerciseType {

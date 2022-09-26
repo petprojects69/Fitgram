@@ -1,6 +1,7 @@
-package ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment
+package ru.petprojects69.fitgram.ui.detailExerciseDialogFragment
 
 import android.app.Dialog
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -38,9 +39,12 @@ class DetailsExerciseDialogFragment :
 
         viewModel.getAerobicExerciseForId(args.idExercise).observe(viewLifecycleOwner) { ex ->
             binding.dialogExerciseTitleTextView.text = ex.name
-            ex.poster?.let { binding.dialogExerciseImageView.setImageResource(it) }
+            if (ex.posterCustom != null) {
+                binding.dialogExerciseImageView.setImageURI(Uri.parse("file://${ex.posterCustom}"))
+            } else {
+                ex.poster?.let { binding.dialogExerciseImageView.setImageResource(it) }
+            }
             binding.dialogDescriptionExerciseTextView.text = ex.description
-
             binding.dialogExerciseImageCardView.strokeColor =
                 when (ex.type) {
                     ExerciseType.AEROBIC -> getColor(requireContext(),

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="@dimen/paddingHorizontal_dialogFragment_layout"
-    tools:context=".ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragment">
+    tools:context=".ui.detailExerciseDialogFragment.DetailsExerciseDialogFragment">
 
     <TextView
         android:id="@+id/dialog_exercise_title_text_view"

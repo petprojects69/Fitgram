@@ -1,4 +1,4 @@
-package ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment
+package ru.petprojects69.fitgram.ui.detailExerciseDialogFragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

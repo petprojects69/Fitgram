@@ -5,7 +5,7 @@ import org.koin.dsl.module
 import ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooserViewModel
 import ru.petprojects69.fitgram.ui.exerciseContructorDialogFragment.ExerciseConstructorDialogFragmentViewModel
 import ru.petprojects69.fitgram.ui.exercisesFragment.aerobic.AerobicExercisesFragmentViewModel
-import ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragmentViewModel
+import ru.petprojects69.fitgram.ui.detailExerciseDialogFragment.DetailsExerciseDialogFragmentViewModel
 import ru.petprojects69.fitgram.ui.exercisesFragment.power.PowerExercisesFragmentViewModel
 import ru.petprojects69.fitgram.ui.initData.bottomSheetTarget.BottomSheetTargetViewModel
 import ru.petprojects69.fitgram.ui.initData.InitDataViewModel
