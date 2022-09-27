@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
@@ -65,6 +66,14 @@ class DetailsExerciseDialogFragment :
                 "$labelExercise.jpeg").also { it.delete() }
             findNavController().popBackStack()
             viewModel.removeExerciseForId(args.idExercise)
+
+            Toast.makeText(requireContext(),
+                "Упражнение \"$labelExercise\" удалено",
+                Toast.LENGTH_SHORT).show()
+        }
+
+        binding.editExerciseImageButton.setOnClickListener {
+
         }
     }
 }
