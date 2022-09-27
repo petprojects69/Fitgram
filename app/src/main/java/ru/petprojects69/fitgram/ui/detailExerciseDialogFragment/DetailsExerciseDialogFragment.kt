@@ -43,7 +43,7 @@ class DetailsExerciseDialogFragment :
 
         val args: DetailsExerciseDialogFragmentArgs by navArgs()
 
-        viewModel.getAerobicExerciseForId(args.idExercise).observe(viewLifecycleOwner) { ex ->
+        viewModel.getExerciseForId(args.idExercise).observe(viewLifecycleOwner) { ex ->
             labelExercise = ex.name
             binding.dialogExerciseTitleTextView.text = ex.name
             if (ex.posterCustom != null) {
@@ -73,7 +73,10 @@ class DetailsExerciseDialogFragment :
         }
 
         binding.editExerciseImageButton.setOnClickListener {
-
+            val action =
+                DetailsExerciseDialogFragmentDirections.actionDetailsExerciseDialogFragmentToExerciseConstructorDialogFragment(
+                    idEditExercise = args.idExercise)
+            findNavController().navigate(action)
         }
     }
 }

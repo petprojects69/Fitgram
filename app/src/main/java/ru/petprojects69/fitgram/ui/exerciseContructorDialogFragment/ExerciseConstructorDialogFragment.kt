@@ -22,6 +22,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import kotlinx.coroutines.launch
 import okio.FileNotFoundException
@@ -31,6 +32,7 @@ import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.DialogExerciseConstructorBinding
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseType
+import ru.petprojects69.fitgram.ui.utils.toEditable
 import java.io.File
 import java.io.FileOutputStream
 
@@ -46,6 +48,7 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         private var types = arrayOf("Силовые", "Аэробные")
     }
 
+    private val argsEdit: ExerciseConstructorDialogFragmentArgs by navArgs()
     private var selectedImage: Uri? = null
     private val binding: DialogExerciseConstructorBinding by viewBinding()
     private val viewModel: ExerciseConstructorDialogFragmentViewModel by viewModel()
@@ -61,10 +64,29 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         initChangeListenerTextFolds()
         initActionButton()
         initPosterSelector()
+        initViewEditMode()
+    }
+
+    private fun initViewEditMode() {
+        if (argsEdit.idEditExercise != -1) {
+            viewModel.getExerciseForId(argsEdit.idEditExercise).observe(viewLifecycleOwner) { ex ->
+                binding.constructorExerciseLabelEditText.text = ex.name.toEditable()
+                binding.constructorExerciseDescriptionEditText.text = ex.description.toEditable()
+                if (ex.posterCustom != null) {
+                    binding.constructorExerciseImageView.setImageURI(Uri.parse("file://${ex.posterCustom}"))
+                } else {
+                    ex.poster.let { binding.constructorExerciseImageView.setImageResource(it) }
+                }
+                binding.constructorExerciseLabelTypeSpinner.setSelection(when (ex.type) {
+                    ExerciseType.AEROBIC -> 1
+                    ExerciseType.POWER -> 0
+                })
+            }
+        }
     }
 
     private fun initPosterSelector() {
-        binding.constructorExerciseImageView.setOnClickListener() {
+        binding.constructorExerciseImageView.setOnClickListener {
             selectImage()
         }
     }

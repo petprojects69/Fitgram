@@ -11,7 +11,7 @@ data class ExerciseEntity(
     @ColumnInfo(name = "exercise_id") val id: Int = 0,
     @ColumnInfo(name = "type") val type: ExerciseType = ExerciseType.POWER,
     @ColumnInfo(name = "exercise_name") val name: String = "Common name",
-    @ColumnInfo(name = "exercise_description") val description: String? = null,
+    @ColumnInfo(name = "exercise_description") val description: String,
     @ColumnInfo(name = "exercise_poster") val poster: Int = R.drawable.poster_temp_exercise,
     @ColumnInfo(name = "exercise_difficulty") val difficulty: String? = null,
     @ColumnInfo(name = "exercise_location") val location: String? = null,
