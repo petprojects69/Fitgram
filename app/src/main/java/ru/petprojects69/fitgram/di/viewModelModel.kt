@@ -7,15 +7,15 @@ import ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooser
 import ru.petprojects69.fitgram.ui.exercisesFragment.aerobic.AerobicExercisesFragmentViewModel
 import ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragmentViewModel
 import ru.petprojects69.fitgram.ui.exercisesFragment.power.PowerExercisesFragmentViewModel
-import ru.petprojects69.fitgram.ui.initData.bottomSheetTarget.BottomSheetTargetViewModel
 import ru.petprojects69.fitgram.ui.initData.InitDataViewModel
 import ru.petprojects69.fitgram.ui.initData.bottomSheetSex.BottomSheetSexViewModel
+import ru.petprojects69.fitgram.ui.initData.bottomSheetTarget.BottomSheetTargetViewModel
 import ru.petprojects69.fitgram.ui.timeTableFragment.TimeTableViewModel
 import ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment.TrainingConstructorViewModel
 import ru.petprojects69.fitgram.ui.trainingsFragment.TrainingsViewModel
 
 val viewModelModule = module {
-    viewModel { TimeTableViewModel(repository = get()) }
+    viewModel { TimeTableViewModel() }
     viewModel { TrainingsViewModel(repository = get()) }
     viewModel { AerobicExercisesFragmentViewModel(repository = get()) }
     viewModel { PowerExercisesFragmentViewModel(repository = get()) }

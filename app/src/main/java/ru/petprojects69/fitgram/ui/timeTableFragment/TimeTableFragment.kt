@@ -41,7 +41,7 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
 
-        viewModel.allTrainings.observe(viewLifecycleOwner) {
+        viewModel.getAllTrainings().observe(viewLifecycleOwner) {
             adapter.initData(it)
         }
     }
