@@ -73,10 +73,10 @@ class DetailsExerciseDialogFragment :
         }
 
         binding.editExerciseImageButton.setOnClickListener {
-            val action =
-                DetailsExerciseDialogFragmentDirections.actionDetailsExerciseDialogFragmentToExerciseConstructorDialogFragment(
-                    idEditExercise = args.idExercise)
-            findNavController().navigate(action)
+            DetailsExerciseDialogFragmentDirections.actionDetailsExerciseDialogFragmentToExerciseConstructorDialogFragment(
+                idEditExercise = args.idExercise).also {
+                findNavController().navigate(it)
+            }
         }
     }
 }

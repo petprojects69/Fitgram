@@ -45,6 +45,7 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         private var selectedImageFlag: Boolean = false
         private const val GALLERY_PERMISSION_REQUEST = 1
         private const val GALLERY_RESULT_REQUEST = 2
+        private var labelEditExercise: String = ""
         private var types = arrayOf("Силовые", "Аэробные")
     }
 
@@ -81,6 +82,7 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
                     ExerciseType.AEROBIC -> 1
                     ExerciseType.POWER -> 0
                 })
+                labelEditExercise = ex.name
             }
         }
     }
@@ -114,11 +116,17 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
 
         binding.constructorExerciseSaveButton.setOnClickListener {
             if (selectedImageFlag) {
+                if (argsEdit.idEditExercise != -1) {
+                    File(File(requireContext().filesDir, File.separator + "Images"),
+                        "$labelEditExercise.jpeg").also { it.delete() }
+                }
                 saveExerciseImage()
             }
-            viewModel.viewModelScope.launch {
-                viewModel.saveExercise(
-                    ExerciseEntity(
+
+            if (argsEdit.idEditExercise != -1) {
+                viewModel.viewModelScope.launch {
+                    viewModel.updateExercise(
+                        id = argsEdit.idEditExercise,
                         name = binding.constructorExerciseLabelEditText.text.toString(),
                         description = binding.constructorExerciseDescriptionEditText.text.toString(),
                         type = when (binding.constructorExerciseLabelTypeSpinner.selectedItem) {
@@ -128,14 +136,35 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
                         },
                         posterCustom = pathExercisePoster
                     )
-                )
+                }
+                Toast.makeText(requireContext(),
+                    "Упражнение \"${binding.constructorExerciseLabelEditText.text}\" отредактировано",
+                    Toast.LENGTH_SHORT).show()
+            } else {
+                viewModel.viewModelScope.launch {
+                    viewModel.saveExercise(
+                        ExerciseEntity(
+                            name = binding.constructorExerciseLabelEditText.text.toString(),
+                            description = binding.constructorExerciseDescriptionEditText.text.toString(),
+                            type = when (binding.constructorExerciseLabelTypeSpinner.selectedItem) {
+                                types[0] -> ExerciseType.POWER
+                                types[1] -> ExerciseType.AEROBIC
+                                else -> ExerciseType.POWER
+                            },
+                            posterCustom = pathExercisePoster
+                        )
+                    )
+                }
+                Toast.makeText(requireContext(),
+                    "Упражнение \"${binding.constructorExerciseLabelEditText.text}\" создано",
+                    Toast.LENGTH_SHORT).show()
+
             }
             findNavController().popBackStack()
-            Toast.makeText(requireContext(),
-                "Упражнение \"${binding.constructorExerciseLabelEditText.text}\" создано",
-                Toast.LENGTH_SHORT).show()
         }
+
     }
+
 
     private fun saveExerciseImage() {
         try {
