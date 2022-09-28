@@ -35,9 +35,6 @@
         <action
             android:id="@+id/action_exercise_item_to_detailsExerciseDialogFragment"
             app:destination="@id/detailsExerciseDialogFragment" />
-        <argument
-            android:name="idExerciseRemove"
-            app:argType="integer" />
         <action
             android:id="@+id/action_exercise_item_to_exerciseConstructorDialogFragment"
             app:destination="@id/exerciseConstructorDialogFragment" />
@@ -52,6 +49,9 @@
             android:name="idExercise"
             android:defaultValue="0"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailsExerciseDialogFragment_to_exerciseConstructorDialogFragment"
+            app:destination="@id/exerciseConstructorDialogFragment" />
     </dialog>
 
     <dialog
@@ -68,13 +68,17 @@
         android:id="@+id/dialog_exercise_chooser"
         android:name="ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooserDialogFragment"
         android:label="ExerciseChooserDialogFragment"
-        tools:layout="@layout/dialog_exercise_chooser">
-    </dialog>
+        tools:layout="@layout/dialog_exercise_chooser"/>
 
     <dialog
         android:id="@+id/exerciseConstructorDialogFragment"
         android:name="ru.petprojects69.fitgram.ui.exerciseContructorDialogFragment.ExerciseConstructorDialogFragment"
         android:label="ExerciseConstructorDialogFragment"
-        tools:layout="@layout/dialog_exercise_constructor"/>
+        tools:layout="@layout/dialog_exercise_constructor">
+        <argument
+            android:name="idEditExercise"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </dialog>
 
 </navigation>

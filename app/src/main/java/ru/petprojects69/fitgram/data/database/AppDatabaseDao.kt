@@ -8,6 +8,7 @@ import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseType
 
 @Dao
 interface AppDatabaseDao {
@@ -38,6 +39,20 @@ interface AppDatabaseDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertEx(exercise: ExerciseEntity)
+
+    @Query("UPDATE exercise_table SET " +
+            "exercise_name =:name, " +
+            "type = :type, " +
+            "exercise_description = :description," +
+            "exercise_posterCustom = :posterCustom " +
+            "WHERE exercise_id = :id")
+    suspend fun updateEx(
+        id: Int,
+        name: String,
+        type: ExerciseType,
+        description: String,
+        posterCustom: String?,
+    )
 
     @Insert(onConflict = REPLACE)
     suspend fun presetEx(data: List<ExerciseEntity>)

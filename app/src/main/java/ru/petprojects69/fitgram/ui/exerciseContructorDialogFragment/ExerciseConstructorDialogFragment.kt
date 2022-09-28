@@ -16,11 +16,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import kotlinx.coroutines.launch
 import okio.FileNotFoundException
@@ -30,25 +32,27 @@ import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.DialogExerciseConstructorBinding
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseType
+import ru.petprojects69.fitgram.ui.utils.toEditable
 import java.io.File
 import java.io.FileOutputStream
 
 
 class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercise_constructor) {
 
-
     companion object {
-        private var selectedImage: Uri? = null
         private var selectedExerciseBitmap: Bitmap? = null
         private var pathExercisePoster: String? = null
+        private var selectedImageFlag: Boolean = false
         private const val GALLERY_PERMISSION_REQUEST = 1
         private const val GALLERY_RESULT_REQUEST = 2
+        private var labelEditExercise: String = ""
         private var types = arrayOf("Силовые", "Аэробные")
     }
 
+    private val argsEdit: ExerciseConstructorDialogFragmentArgs by navArgs()
+    private var selectedImage: Uri? = null
     private val binding: DialogExerciseConstructorBinding by viewBinding()
     private val viewModel: ExerciseConstructorDialogFragmentViewModel by viewModel()
-
 
     override fun onStart() {
         super.onStart()
@@ -61,10 +65,30 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         initChangeListenerTextFolds()
         initActionButton()
         initPosterSelector()
+        initViewEditMode()
+    }
+
+    private fun initViewEditMode() {
+        if (argsEdit.idEditExercise != -1) {
+            viewModel.getExerciseForId(argsEdit.idEditExercise).observe(viewLifecycleOwner) { ex ->
+                binding.constructorExerciseLabelEditText.text = ex.name.toEditable()
+                binding.constructorExerciseDescriptionEditText.text = ex.description.toEditable()
+                if (ex.posterCustom != null) {
+                    binding.constructorExerciseImageView.setImageURI(Uri.parse("file://${ex.posterCustom}"))
+                } else {
+                    ex.poster.let { binding.constructorExerciseImageView.setImageResource(it) }
+                }
+                binding.constructorExerciseLabelTypeSpinner.setSelection(when (ex.type) {
+                    ExerciseType.AEROBIC -> 1
+                    ExerciseType.POWER -> 0
+                })
+                labelEditExercise = ex.name
+            }
+        }
     }
 
     private fun initPosterSelector() {
-        binding.constructorExerciseImageView.setOnClickListener() {
+        binding.constructorExerciseImageView.setOnClickListener {
             selectImage()
         }
     }
@@ -91,10 +115,18 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         }
 
         binding.constructorExerciseSaveButton.setOnClickListener {
-            saveExerciseImage()
-            viewModel.viewModelScope.launch {
-                viewModel.saveExercise(
-                    ExerciseEntity(
+            if (selectedImageFlag) {
+                if (argsEdit.idEditExercise != -1) {
+                    File(File(requireContext().filesDir, File.separator + "Images"),
+                        "$labelEditExercise.jpeg").also { it.delete() }
+                }
+                saveExerciseImage()
+            }
+
+            if (argsEdit.idEditExercise != -1) {
+                viewModel.viewModelScope.launch {
+                    viewModel.updateExercise(
+                        id = argsEdit.idEditExercise,
                         name = binding.constructorExerciseLabelEditText.text.toString(),
                         description = binding.constructorExerciseDescriptionEditText.text.toString(),
                         type = when (binding.constructorExerciseLabelTypeSpinner.selectedItem) {
@@ -104,11 +136,35 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
                         },
                         posterCustom = pathExercisePoster
                     )
-                )
+                }
+                Toast.makeText(requireContext(),
+                    "Упражнение \"${binding.constructorExerciseLabelEditText.text}\" отредактировано",
+                    Toast.LENGTH_SHORT).show()
+            } else {
+                viewModel.viewModelScope.launch {
+                    viewModel.saveExercise(
+                        ExerciseEntity(
+                            name = binding.constructorExerciseLabelEditText.text.toString(),
+                            description = binding.constructorExerciseDescriptionEditText.text.toString(),
+                            type = when (binding.constructorExerciseLabelTypeSpinner.selectedItem) {
+                                types[0] -> ExerciseType.POWER
+                                types[1] -> ExerciseType.AEROBIC
+                                else -> ExerciseType.POWER
+                            },
+                            posterCustom = pathExercisePoster
+                        )
+                    )
+                }
+                Toast.makeText(requireContext(),
+                    "Упражнение \"${binding.constructorExerciseLabelEditText.text}\" создано",
+                    Toast.LENGTH_SHORT).show()
+
             }
             findNavController().popBackStack()
         }
+
     }
+
 
     private fun saveExerciseImage() {
         try {
@@ -213,6 +269,7 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
         try {
             context?.let {
                 if (selectedImage != null) {
+                    selectedImageFlag = true
                     if (Build.VERSION.SDK_INT >= 28) {
                         val source = ImageDecoder.createSource(it.contentResolver, selectedImage!!)
                         selectedExerciseBitmap = ImageDecoder.decodeBitmap(source)

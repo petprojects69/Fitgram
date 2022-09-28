@@ -40,9 +40,9 @@ class PowerExercisesFragment : Fragment(R.layout.fragment_power_exercises),
     }
 
     override fun onItemExerciseClick(idExercise: Int) {
-        val action =
-            SliderExercisesFragmentDirections.actionExerciseItemToDetailsExerciseDialogFragment(
-                idExercise = idExercise)
-        findNavController().navigate(action)
+        SliderExercisesFragmentDirections.actionExerciseItemToDetailsExerciseDialogFragment(
+            idExercise = idExercise).also {
+            findNavController().navigate(it)
+        }
     }
 }

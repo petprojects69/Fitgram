@@ -4,6 +4,7 @@ import androidx.annotation.WorkerThread
 import kotlinx.coroutines.flow.Flow
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
+import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseType
 import ru.petprojects69.fitgram.domain.usecase.ExerciseRepository
 
 class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : ExerciseRepository {
@@ -37,6 +38,20 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     @WorkerThread
     override suspend fun insertEx(ex: ExerciseEntity) {
         appDatabaseDao.insertEx(ex)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    override suspend fun updateEx(
+        id: Int, name: String, description: String, type: ExerciseType, posterCustom: String?,
+    ) {
+        appDatabaseDao.updateEx(
+            id = id,
+            name = name,
+            description = description,
+            type = type,
+            posterCustom = posterCustom
+        )
     }
 
     override suspend fun findExercise(exerciseName: String): Flow<MutableList<ExerciseEntity>> =
