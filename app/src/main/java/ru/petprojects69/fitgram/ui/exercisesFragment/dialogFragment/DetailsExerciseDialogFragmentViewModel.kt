@@ -13,7 +13,7 @@ class DetailsExerciseDialogFragmentViewModel(private val repository: ExerciseRep
     ViewModel() {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun getAerobicExerciseForId(idExercise: Int): LiveData<ExerciseEntity> =
+    fun getAerobicExerciseForId(idExercise: String): LiveData<ExerciseEntity> =
         viewModelScope.async {
             repository.getExerciseForId(idExercise).asLiveData()
         }.getCompleted()

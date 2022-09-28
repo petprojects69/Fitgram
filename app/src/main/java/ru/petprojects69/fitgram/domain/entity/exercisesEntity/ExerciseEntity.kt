@@ -3,11 +3,12 @@ package ru.petprojects69.fitgram.domain.entity.exercisesEntity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ru.petprojects69.fitgram.domain.generateId
 
 @Entity(tableName = "exercise_table")
 data class ExerciseEntity(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "exercise_id") val id: Int = 0,
+    @PrimaryKey
+    @ColumnInfo(name = "exercise_id") val id: String = generateId(),
     @ColumnInfo(name = "type") val type: ExerciseType = ExerciseType.POWER,
     @ColumnInfo(name = "exercise_name") val name: String = "Common name",
     @ColumnInfo(name = "exercise_description") val description: String? = null,

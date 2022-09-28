@@ -3,6 +3,9 @@ package ru.petprojects69.fitgram.domain
 import ru.petprojects69.fitgram.domain.entity.UserEntity
 import ru.petprojects69.fitgram.ui.userProfileFragment.UserSex
 import ru.petprojects69.fitgram.ui.userProfileFragment.UserTarget
+import java.util.*
+
+fun generateId() = UUID.randomUUID().toString()
 
 fun setCalorieNorm(user: UserEntity): String {
     if (

@@ -41,8 +41,10 @@ class AerobicExercisesFragment : Fragment(R.layout.fragment_aerobic_exercises),
 
     override fun onItemExerciseClick(exercise: ExerciseEntity) {
         val action =
-            SliderExercisesFragmentDirections.actionExerciseItemToDetailsExerciseDialogFragment(
-                idExercise = exercise.id)
+            SliderExercisesFragmentDirections
+                .actionExerciseItemToDetailsExerciseDialogFragment(
+                    idExercise = exercise.id
+                )
         findNavController().navigate(action)
     }
 }

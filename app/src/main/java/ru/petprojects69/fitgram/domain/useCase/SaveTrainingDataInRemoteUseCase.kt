@@ -5,6 +5,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import ru.petprojects69.fitgram.data.entity.toTrainingRemote
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.ui.MainActivity
 
@@ -20,8 +21,8 @@ class SaveTrainingDataInRemoteUseCase(
             trainings?.forEach { training ->
                 listTask.add(
                     cloudDb.collection(userId)
-                        .document(training.id.toString())
-                        .set(training)
+                        .document(training.id)
+                        .set(training.toTrainingRemote())
                 )
             }
         }
