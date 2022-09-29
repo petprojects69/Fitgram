@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -22,15 +23,16 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
     private val viewModel: TimeTableViewModel by viewModel()
 
     private val trainingCallback = object : ItemActionCallback {
-        override fun delete() {
+        override fun delete(id: Int) {
             Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
+            viewModel.removeDatedTraining(id)
         }
 
         override fun update() {
             Toast.makeText(requireContext(), "Тренировка изменена", Toast.LENGTH_SHORT).show()
         }
 
-        override fun itemClick() {
+        override fun <T> itemClick(training: T) {
             Toast.makeText(requireContext(), "Начинаем тренировку", Toast.LENGTH_SHORT).show()
         }
     }
@@ -43,6 +45,12 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
 
         viewModel.getAllTrainings().observe(viewLifecycleOwner) {
             adapter.initData(it)
+            adapter.notifyDataSetChanged()
+        }
+
+        binding.addTrainingFab.setOnClickListener {
+            findNavController().navigate(TimeTableFragmentDirections.toTrainingItem())
+            Toast.makeText(requireContext(), "Выберите тренировку", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -13,6 +13,7 @@
     <color name="color_for_status_bar">#19000000</color>
     <color name="green">#75BD42</color>
     <color name="red">#ED4343</color>
+    <color name="hintRed">#BBED4343</color>
 
     <color name="blue">#0053B8</color>
 
@@ -40,4 +41,8 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="center_color_avatar_gradient">#46A8A8A8</color>
     <color name="end_color_avatar_gradient">#CFCFCF</color>
+
+    <color name="past_training_background_color">#4DA8A8A8</color>
+    <color name="past_training_text_color">#4D000000</color>
+    <color name="present_training_background_color">#4DFFAE00</color>
 </resources>

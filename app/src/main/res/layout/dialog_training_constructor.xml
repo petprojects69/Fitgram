@@ -16,7 +16,8 @@
         android:gravity="center"
         android:hint="@string/constructor_training_label_textView"
         android:imeOptions="actionDone"
-        android:inputType="text" />
+        android:inputType="text"
+        android:autofillHints="" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -74,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/training_constructor_button_margin"
-            android:text="@string/constructor_training_cancel_button"
+            android:text="@string/constructor_cancel_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_exercise_button" />
 
@@ -83,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/training_constructor_button_margin"
-            android:text="@string/constructor_training_save_button"
+            android:text="@string/constructor_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_exercise_button" />
 

@@ -9,7 +9,11 @@
         android:id="@+id/timetable_item"
         android:name="ru.petprojects69.fitgram.ui.timeTableFragment.TimeTableFragment"
         android:label="TimeTableFragment"
-        tools:layout="@layout/fragment_timetable" />
+        tools:layout="@layout/fragment_timetable" >
+        <action
+            android:id="@+id/to_training_item"
+            app:destination="@id/training_item" />
+    </fragment>
 
     <fragment
         android:id="@+id/training_item"
@@ -19,6 +23,9 @@
         <action
             android:id="@+id/to_dialog_constructor_training"
             app:destination="@id/dialog_constructor_training" />
+        <action
+            android:id="@+id/to_datingTrainingDialogFragment"
+            app:destination="@id/datingTrainingDialogFragment" />
     </fragment>
 
     <fragment
@@ -35,17 +42,23 @@
         <action
             android:id="@+id/action_exercise_item_to_detailsExerciseDialogFragment"
             app:destination="@id/detailsExerciseDialogFragment" />
+        <action
+            android:id="@+id/action_exercise_item_to_exerciseConstructorDialogFragment"
+            app:destination="@id/exerciseConstructorDialogFragment" />
     </fragment>
 
     <dialog
         android:id="@+id/detailsExerciseDialogFragment"
-        android:name="ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.DetailsExerciseDialogFragment"
+        android:name="ru.petprojects69.fitgram.ui.detailExerciseDialogFragment.DetailsExerciseDialogFragment"
         android:label="DetailsExerciseDialogFragment"
         tools:layout="@layout/dialog_fragment_detail_exercise">
         <argument
             android:name="idExercise"
             android:defaultValue="0"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailsExerciseDialogFragment_to_exerciseConstructorDialogFragment"
+            app:destination="@id/exerciseConstructorDialogFragment" />
     </dialog>
 
     <dialog
@@ -53,15 +66,35 @@
         android:name="ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment.TrainingConstructorDialogFragment"
         android:label="TrainingConstructorDialogFragment"
         tools:layout="@layout/dialog_training_constructor">
-        <action
-            android:id="@+id/to_dialog_exercise_chooser"
-            app:destination="@id/dialog_exercise_chooser" />
     </dialog>
 
     <dialog
         android:id="@+id/dialog_exercise_chooser"
         android:name="ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooserDialogFragment"
         android:label="ExerciseChooserDialogFragment"
-        tools:layout="@layout/dialog_exercise_chooser"></dialog>
+        tools:layout="@layout/dialog_exercise_chooser"/>
 
+    <dialog
+        android:id="@+id/exerciseConstructorDialogFragment"
+        android:name="ru.petprojects69.fitgram.ui.exerciseContructorDialogFragment.ExerciseConstructorDialogFragment"
+        android:label="ExerciseConstructorDialogFragment"
+        tools:layout="@layout/dialog_exercise_constructor">
+        <argument
+            android:name="idEditExercise"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/datingTrainingDialogFragment"
+        android:name="ru.petprojects69.fitgram.ui.datingTrainingDialogFragment.DatingTrainingDialogFragment"
+        android:label="dialog_dating_training"
+        tools:layout="@layout/dialog_dating_training" >
+        <argument
+            android:name="training"
+            app:argType="ru.petprojects69.fitgram.domain.entity.TrainingEntity"/>
+        <action
+            android:id="@+id/to_timetable_item"
+            app:destination="@id/timetable_item" />
+    </dialog>
 </navigation>

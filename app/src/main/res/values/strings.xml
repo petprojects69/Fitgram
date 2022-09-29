@@ -151,8 +151,14 @@
 
     <string name="char_between_sets_and_reps_textView">x</string>
     <string name="constructor_training_label_textView">Введите название тренировки</string>
-    <string name="constructor_training_cancel_button">Отмена</string>
-    <string name="constructor_training_save_button">сохранить</string>
+    <string name="constructor_training_footer_add_exercise_textView">Добавить упражнение</string>
+    <string name="constructor_training_footer_cancel_button">Отмена</string>
+    <string name="constructor_training_footer_save_button">сохранить</string>
+    <string name="item_training_constructor_name_hint">Упражнение</string>
+    <string name="button_delete_exercise">ButtonDeleteExercise</string>
+    <string name="button_edit_exercise">ButtonEditExercise</string>
+    <string name="constructor_cancel_button">Отмена</string>
+    <string name="constructor_save_button">Сохранить</string>
     <string name="training_constructor_sets_hint">Подходы</string>
     <string name="exercise_constructor_duration_hint">Duration</string>
     <string name="exercise_constructor_sets_hint">Sets</string>
@@ -167,4 +173,9 @@
     <string name="man_sex_info">Мужчина</string>
     <string name="woman_sex_info">Женщина</string>
     <string name="throw_button_text">Сбросить</string>
+    <string name="constructor_exercise_exercise_label_hint_edit_text">*Введите название упражнения</string>
+    <string name="constructor_exercise_description_hint_edit_text">*Введите описание упражнения</string>
+    <string name="fab_create_exercise_text">Создать упражнение</string>
+    <string name="constructor_exercise_label_type_text_view">Тип упражнения:</string>
+    <string name="constructor_exercise_warning_text_view">*Поля обязательные для заполнения</string>
 </resources>

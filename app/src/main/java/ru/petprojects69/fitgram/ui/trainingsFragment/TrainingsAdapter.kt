@@ -23,13 +23,6 @@ class TrainingsAdapter(private val itemActionCallback: ItemActionCallback) :
         }
     }
 
-    // TODO изменить ExerciseEntity на Тренировка
-    fun addTraining(training: TrainingEntity) {
-        val position = trainingsList.size
-        trainingsList.add(position, Pair(first = training, second = false))
-        notifyItemInserted(position)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainingsViewHolder {
         val binding = ItemTrainingBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -58,7 +51,9 @@ class TrainingsAdapter(private val itemActionCallback: ItemActionCallback) :
     override fun getItemCount(): Int = trainingsList.size
 
     override fun onItemRemove(position: Int) {
-        itemActionCallback.delete()
+        val id = trainingsList[position].first.id
+        itemActionCallback.delete(id)
+
         trainingsList.removeAt(position)
         notifyItemRemoved(position)
     }
@@ -77,6 +72,7 @@ class TrainingsAdapter(private val itemActionCallback: ItemActionCallback) :
     }
 
     override fun onItemClick(position: Int) {
-        itemActionCallback.itemClick()
+        val training = trainingsList[position].first
+        itemActionCallback.itemClick(training)
     }
 }

@@ -13,4 +13,8 @@ class TimeTableViewModel : ViewModel(), KoinComponent {
 
     fun getAllTrainings(): LiveData<MutableList<TrainingEntity>> =
         getTrainingInLocalStorageUseCase.allTrainings(viewModelScope)
+        
+        fun removeDatedTraining(id: Int) {
+        viewModelScope.launch { repository.removeDatedTrainingForId(id) }
+    }
 }

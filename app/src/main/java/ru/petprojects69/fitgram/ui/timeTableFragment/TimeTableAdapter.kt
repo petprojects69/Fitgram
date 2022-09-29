@@ -4,20 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
-import ru.petprojects69.fitgram.domain.entity.TrainingEntity
+import ru.petprojects69.fitgram.domain.entity.DatedTrainingEntity
 import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
 import ru.petprojects69.fitgram.domain.usecase.ItemTouchHelperAdapter
 
 class TimeTableAdapter(private val itemActionCallback: ItemActionCallback) :
     RecyclerView.Adapter<TimeTableViewHolder>(), ItemTouchHelperAdapter {
 
-    private var exerciseList: MutableList<Pair<TrainingEntity, Boolean>> = mutableListOf()
+    private var datedTrainingList: MutableList<Pair<DatedTrainingEntity, Boolean>> = mutableListOf()
 
-    fun initData(exercise: List<TrainingEntity>) {
-        exerciseList.clear()
-        for (item in exercise) {
-            exerciseList.add(Pair(first = item, second = false))
-            notifyItemInserted(exercise.size)
+    fun initData(datedTraining: List<DatedTrainingEntity>) {
+        datedTrainingList.clear()
+        for (item in datedTraining) {
+            datedTrainingList.add(Pair(first = item, second = false))
+            notifyItemInserted(datedTraining.size)
         }
     }
 
@@ -43,16 +43,18 @@ class TimeTableAdapter(private val itemActionCallback: ItemActionCallback) :
         holder.onItemClick = {
             onItemClick(holder.absoluteAdapterPosition)
         }
-        holder.bind(exerciseList[position])
+        holder.bind(datedTrainingList[position])
     }
 
     override fun getItemCount(): Int {
-        return exerciseList.size
+        return datedTrainingList.size
     }
 
     override fun onItemRemove(position: Int) {
-        itemActionCallback.delete()
-        exerciseList.removeAt(position)
+        val id = datedTrainingList[position].first.datedTrainingId
+        itemActionCallback.delete(id)
+
+        datedTrainingList.removeAt(position)
         notifyItemRemoved(position)
     }
 
@@ -62,14 +64,15 @@ class TimeTableAdapter(private val itemActionCallback: ItemActionCallback) :
     }
 
     override fun detailsClick(position: Int) {
-        exerciseList[position] =
-            exerciseList[position].let {
+        datedTrainingList[position] =
+            datedTrainingList[position].let {
                 it.first to !it.second
             }
         notifyItemChanged(position)
     }
 
     override fun onItemClick(position: Int) {
-        itemActionCallback.itemClick()
+        val datedTraining = datedTrainingList[position].first
+        itemActionCallback.itemClick(datedTraining)
     }
 }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemPowerExerciseBinding
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
-import ru.petprojects69.fitgram.ui.exercisesFragment.dialogFragment.OnItemExerciseClickListener
+import ru.petprojects69.fitgram.ui.detailExerciseDialogFragment.OnItemExerciseClickListener
 
 class PowerExercisesFragmentAdapter(private val itemClickListener: OnItemExerciseClickListener) :
     RecyclerView.Adapter<PowerExercisesFragmentViewHolder>() {
@@ -37,4 +37,6 @@ class PowerExercisesFragmentAdapter(private val itemClickListener: OnItemExercis
     override fun getItemCount(): Int {
         return exercisePowerList.size
     }
+
+
 }
