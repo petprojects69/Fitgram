@@ -23,7 +23,7 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
     private val viewModel: TimeTableViewModel by viewModel()
 
     private val trainingCallback = object : ItemActionCallback {
-        override fun delete(id: Int) {
+        override fun delete(id: String) {
             Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
             viewModel.removeDatedTraining(id)
         }
@@ -43,7 +43,7 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
 
-        viewModel.getAllTrainings().observe(viewLifecycleOwner) {
+        viewModel.datedTrainings.observe(viewLifecycleOwner) {
             adapter.initData(it)
             adapter.notifyDataSetChanged()
         }

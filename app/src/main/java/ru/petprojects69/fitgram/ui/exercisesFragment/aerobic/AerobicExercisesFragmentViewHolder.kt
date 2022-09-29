@@ -15,7 +15,7 @@ class AerobicExercisesFragmentViewHolder(private val binding: ItemAerobicExercis
         if (exercise.posterCustom != null) {
             binding.itemExerciseImageView.setImageURI(Uri.parse("file://${exercise.posterCustom}"))
         } else {
-            exercise.poster?.let { binding.itemExerciseImageView.setImageResource(it) }
+            exercise.poster.let { binding.itemExerciseImageView.setImageResource(it) }
         }
         itemView.setOnClickListener {
             clickListener.onItemExerciseClick(exercise.id)

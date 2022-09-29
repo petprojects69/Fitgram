@@ -9,7 +9,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import ru.petprojects69.fitgram.domain.usecase.ExerciseRepository
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
-import ru.petprojects69.fitgram.domain.usecase.ExerciseRepository
 
 class TrainingsViewModel(private val repository: ExerciseRepository) : ViewModel() {
 
@@ -18,7 +17,7 @@ class TrainingsViewModel(private val repository: ExerciseRepository) : ViewModel
         repository.getAllTraining().asLiveData()
     }.getCompleted()
 
-    fun removeTraining(id: Int) {
+    fun removeTraining(id: String) {
         viewModelScope.launch {
             repository.removeTrainingForId(id)
         }

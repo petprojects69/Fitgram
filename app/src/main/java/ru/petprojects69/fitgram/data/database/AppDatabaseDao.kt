@@ -54,7 +54,7 @@ interface AppDatabaseDao {
             "exercise_posterCustom = :posterCustom " +
             "WHERE exercise_id = :id")
     suspend fun updateEx(
-        id: Int,
+        id: String,
         name: String,
         type: ExerciseType,
         description: String,
@@ -68,11 +68,11 @@ interface AppDatabaseDao {
     suspend fun deleteAllPowerExercises()
 
     @Query("DELETE FROM exercise_table WHERE exercise_id = :id")
-    suspend fun removeExerciseForId(id: Int)
+    suspend fun removeExerciseForId(id: String)
 
     @Query("DELETE FROM dated_training WHERE datedTrainingId = :id")
-    suspend fun removeDatedTrainingForId(id: Int)
+    suspend fun removeDatedTrainingForId(id: String)
 
     @Query("DELETE FROM training WHERE id = :id")
-    suspend fun removeTrainingForId(id: Int)
+    suspend fun removeTrainingForId(id: String)
 }

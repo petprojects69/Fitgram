@@ -14,12 +14,12 @@ class DetailsExerciseDialogFragmentViewModel(private val repository: ExerciseRep
     ViewModel() {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun getExerciseForId(idExercise: Int): LiveData<ExerciseEntity> =
+    fun getExerciseForId(idExercise: String): LiveData<ExerciseEntity> =
         viewModelScope.async {
             repository.getExerciseForId(idExercise).asLiveData()
         }.getCompleted()
 
-    fun removeExerciseForId(idExercise: Int) {
+    fun removeExerciseForId(idExercise: String) {
         viewModelScope.launch {
             repository.removeExerciseForId(idExercise)
         }

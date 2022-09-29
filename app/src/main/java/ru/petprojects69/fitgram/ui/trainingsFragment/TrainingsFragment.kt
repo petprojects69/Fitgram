@@ -20,7 +20,7 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     private val binding: FragmentTrainingsBinding by viewBinding()
     private val adapter = TrainingsAdapter(
         object : ItemActionCallback {
-            override fun delete(id: Int) {
+            override fun delete(id: String) {
                 viewModel.removeTraining(id)
                 Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
             }
