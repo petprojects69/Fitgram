@@ -51,7 +51,9 @@ class TimeTableAdapter(private val itemActionCallback: ItemActionCallback) :
     }
 
     override fun onItemRemove(position: Int) {
-        itemActionCallback.delete()
+        val id = datedTrainingList[position].first.datedTrainingId
+        itemActionCallback.delete(id)
+
         datedTrainingList.removeAt(position)
         notifyItemRemoved(position)
     }

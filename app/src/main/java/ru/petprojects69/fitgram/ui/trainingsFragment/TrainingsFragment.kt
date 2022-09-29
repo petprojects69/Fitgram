@@ -20,16 +20,19 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     private val binding: FragmentTrainingsBinding by viewBinding()
     private val adapter = TrainingsAdapter(
         object : ItemActionCallback {
-            override fun delete() {
-                deleteTrainingFromStorage()
+            override fun delete(id: Int) {
+                viewModel.removeTraining(id)
+                Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
             }
 
             override fun update() {
-                updateTrainingFromStorage()
+                Toast.makeText(requireContext(), "Тренировка изменена", Toast.LENGTH_SHORT).show()
             }
 
             override fun <T> itemClick(training: T) {
-                onItemClick(training as TrainingEntity)
+                findNavController().navigate(
+                    TrainingsFragmentDirections.toDatingTrainingDialogFragment(training as TrainingEntity)
+                )
             }
         }
     )
@@ -51,22 +54,6 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
         binding.createTrainingFab.setOnClickListener {
             findNavController().navigate(action)
         }
-    }
-
-    // TODO Написать реализацию во viewModel
-    private fun updateTrainingFromStorage() {
-        Toast.makeText(requireContext(), "Тренировка изменена", Toast.LENGTH_SHORT).show()
-    }
-
-    // TODO Написать реализацию во viewModel
-    private fun deleteTrainingFromStorage() {
-        Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun onItemClick(training: TrainingEntity) {
-        findNavController().navigate(
-            TrainingsFragmentDirections.toDatingTrainingDialogFragment(training)
-        )
     }
 
     private fun initAdapter() {

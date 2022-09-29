@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "dated_training")
 data class DatedTrainingEntity(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "number") val number: Int = 0,
+    @ColumnInfo(name = "datedTrainingId") val datedTrainingId: Int = 0,
     @Embedded val training: TrainingEntity,
     @ColumnInfo(name = "date") val date: Long
 )

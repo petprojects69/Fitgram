@@ -59,7 +59,10 @@ class DatingTrainingDialogFragment :
         val day = binding.datePicker.dayOfMonth
 
         val calendar = Calendar.getInstance()
-        calendar.set(year, month, day)
+        calendar.let {
+            it.set(year, month, day, 0, 0, 0)
+            it.set(Calendar.MILLISECOND, 0)
+        }
 
         return calendar.timeInMillis
     }

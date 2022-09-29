@@ -1,6 +1,7 @@
 package ru.petprojects69.fitgram.ui.timeTableFragment
 
 import android.annotation.SuppressLint
+import android.icu.util.Calendar
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -75,6 +76,45 @@ class TimeTableViewHolder(private val binding: ItemTimetableBinding) :
         }
         binding.titleTextView.text = datedTraining.first.training.label.toString()
         binding.dataTextView.text = SimpleDateFormat("dd.MM.yyyy").format(datedTraining.first.date)
+
+        setBackgroundColor(datedTraining.first.date)
+    }
+
+    private fun setBackgroundColor(trainingDate: Long) {
+        val context = binding.root.context
+        val currentDate = Calendar.getInstance().let {
+            it.set(Calendar.HOUR_OF_DAY, 0)
+            it.set(Calendar.MINUTE, 0)
+            it.set(Calendar.SECOND, 0)
+            it.set(Calendar.MILLISECOND, 0)
+            it.timeInMillis
+        }
+        val containerViews = listOf(
+            binding.itemTimetable,
+            binding.trainingContainer,
+        )
+        val textViews = listOf(
+            binding.dataTextView,
+            binding.titleTextView,
+            binding.timeTextView
+        )
+
+        when {
+            trainingDate < currentDate -> {
+                containerViews.forEach { it.setBackgroundColor(context.getColor(R.color.past_training_background_color)) }
+                textViews.forEach { it.setTextColor(context.getColor(R.color.past_training_text_color)) }
+            }
+            trainingDate == currentDate -> {
+                containerViews.forEach {
+                    it.setBackgroundColor(context.getColor(R.color.present_training_background_color))
+                    textViews.forEach { it.setTextColor(context.getColor(R.color.text_color)) }
+                }
+            }
+            trainingDate > currentDate -> {
+                containerViews.forEach { it.setBackgroundColor(context.getColor(R.color.white)) }
+                textViews.forEach { it.setTextColor(context.getColor(R.color.text_color)) }
+            }
+        }
     }
 
     private fun initInnerRecyclerView() {

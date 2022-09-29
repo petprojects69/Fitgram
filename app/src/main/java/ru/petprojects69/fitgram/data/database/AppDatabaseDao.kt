@@ -69,4 +69,10 @@ interface AppDatabaseDao {
 
     @Query("DELETE FROM exercise_table WHERE exercise_id = :id")
     suspend fun removeExerciseForId(id: Int)
+
+    @Query("DELETE FROM dated_training WHERE datedTrainingId = :id")
+    suspend fun removeDatedTrainingForId(id: Int)
+
+    @Query("DELETE FROM training WHERE id = :id")
+    suspend fun removeTrainingForId(id: Int)
 }

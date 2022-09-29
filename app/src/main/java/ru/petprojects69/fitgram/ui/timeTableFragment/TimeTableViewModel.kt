@@ -6,6 +6,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import ru.petprojects69.fitgram.domain.entity.DatedTrainingEntity
 import ru.petprojects69.fitgram.domain.usecase.ExerciseRepository
 
@@ -16,4 +17,7 @@ class TimeTableViewModel(private val repository: ExerciseRepository) : ViewModel
         repository.getDatedTraining().asLiveData()
     }.getCompleted()
 
+    fun removeDatedTraining(id: Int) {
+        viewModelScope.launch { repository.removeDatedTrainingForId(id) }
+    }
 }

@@ -10,7 +10,7 @@ import java.io.Serializable
 @TypeConverters(TypeConverterExerciseList::class)
 class TrainingEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
+    val id: Int = 0,
     val label: String?,
     val exerciseList: MutableList<ExerciseCustomized>?,
 ) : Serializable

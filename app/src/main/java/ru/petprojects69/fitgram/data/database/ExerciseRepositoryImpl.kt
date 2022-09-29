@@ -19,12 +19,20 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     override suspend fun getAllTraining(): Flow<MutableList<TrainingEntity>> =
         appDatabaseDao.getAllTraining()
 
+    override suspend fun removeTrainingForId(id: Int) {
+        appDatabaseDao.removeTrainingForId(id)
+    }
+
     override suspend fun insertDatedTraining(training: DatedTrainingEntity) {
         appDatabaseDao.insertDatedTraining(training)
     }
 
     override suspend fun getDatedTraining(): Flow<MutableList<DatedTrainingEntity>> =
         appDatabaseDao.getDatedTraining()
+
+    override suspend fun removeDatedTrainingForId(id: Int) {
+        appDatabaseDao.removeDatedTrainingForId(id)
+    }
 
     override suspend fun getAllEx(): Flow<MutableList<ExerciseEntity>> =
         appDatabaseDao.getAllEx()
