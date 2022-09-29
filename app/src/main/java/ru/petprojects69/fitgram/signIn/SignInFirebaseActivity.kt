@@ -279,7 +279,7 @@ class SignInFirebaseActivity : AppCompatActivity(), VerifyCodeController,
         startActivity(startIntent)
     }
 
-    private fun saveUserIdWithPreferences(uid: String?){
+    private fun saveUserIdWithPreferences(uid: String?) {
         editor.putString(PREF_USER_ID_KEY, uid).commit()
     }
 

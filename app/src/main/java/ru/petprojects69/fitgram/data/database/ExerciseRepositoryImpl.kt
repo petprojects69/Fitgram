@@ -2,6 +2,7 @@ package ru.petprojects69.fitgram.data.database
 
 import androidx.annotation.WorkerThread
 import kotlinx.coroutines.flow.Flow
+
 import ru.petprojects69.fitgram.domain.entity.DatedTrainingEntity
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
@@ -43,7 +44,7 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     override suspend fun getAllPowerEx(): Flow<MutableList<ExerciseEntity>> =
         appDatabaseDao.getAllPowerEx()
 
-    override suspend fun getExerciseForId(idExercise: Int): Flow<ExerciseEntity> =
+    override suspend fun getExerciseForId(idExercise: String): Flow<ExerciseEntity> =
         appDatabaseDao.getExerciseForId(idExercise)
 
     override suspend fun removeExerciseForId(idExercise: Int) {

@@ -64,18 +64,10 @@ class TrainingConstructorDialogFragment : DialogFragment(R.layout.dialog_trainin
 
     private fun setSaveButtonEnablity() {
 
-        if (binding.trainingLabel.text.toString() == "") {
-            binding.saveButton.isEnabled = false
-        } else {
-            binding.saveButton.isEnabled = true
-        }
+        binding.saveButton.isEnabled = binding.trainingLabel.text.toString() != ""
 
         binding.trainingLabel.addTextChangedListener {
-            if (it.isNullOrBlank()) {
-                binding.saveButton.isEnabled = false
-            } else {
-                binding.saveButton.isEnabled = true
-            }
+            binding.saveButton.isEnabled = !it.isNullOrBlank()
         }
 
     }

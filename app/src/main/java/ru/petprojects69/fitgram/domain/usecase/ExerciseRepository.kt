@@ -25,6 +25,7 @@ interface ExerciseRepository {
 
     suspend fun findExercise(exerciseName: String): Flow<MutableList<ExerciseEntity>>
 
-    suspend fun getExerciseForId(idExercise: Int): Flow<ExerciseEntity>
-    suspend fun removeExerciseForId(idExercise: Int)
+    suspend fun getExerciseForId(idExercise: String): Flow<ExerciseEntity>
+
+    suspend fun removeExerciseForId(idExercise: String)
 }

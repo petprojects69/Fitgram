@@ -16,14 +16,14 @@ class InnerTimeTableViewHolder(private val binding: InnerItemTrainingBinding) :
         when (exercise.exInitial.type) {
             ExerciseType.AEROBIC -> {
                 binding.exerciseTitleTextView.text = exercise.exInitial.name
-                binding.exerciseRepsOrDurationTextView.text = "${exercise.duration?:""}"
+                binding.exerciseRepsOrDurationTextView.text = "${exercise.duration ?: ""}"
                 binding.itemInnerCardView.strokeColor =
                     context.getColor(R.color.item_aerobic_exercise_stroke_color)
             }
             ExerciseType.POWER -> {
                 binding.exerciseTitleTextView.text = exercise.exInitial.name
-                binding.exerciseSetsTextView.text = "${exercise.sets?:""}"
-                binding.exerciseRepsOrDurationTextView.text = "${exercise.reps?:""}"
+                binding.exerciseSetsTextView.text = "${exercise.sets ?: ""}"
+                binding.exerciseRepsOrDurationTextView.text = "${exercise.reps ?: ""}"
 
                 if (exercise.sets != null || exercise.reps != null) {
                     binding.charBetweenSetsAndRepsTextView.text =

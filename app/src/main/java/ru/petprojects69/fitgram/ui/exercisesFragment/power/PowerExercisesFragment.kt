@@ -38,7 +38,7 @@ class PowerExercisesFragment : Fragment(R.layout.fragment_power_exercises),
             adapter.notifyDataSetChanged()
         }
     }
-
+    
     override fun onItemExerciseClick(idExercise: Int) {
         SliderExercisesFragmentDirections.actionExerciseItemToDetailsExerciseDialogFragment(
             idExercise = idExercise).also {

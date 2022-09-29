@@ -67,7 +67,7 @@
                 android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/avatar_imageView" >
+                app:layout_constraintTop_toBottomOf="@id/avatar_imageView">
 
                 <TextView
                     android:id="@+id/sex_hint_textView"
@@ -192,8 +192,8 @@
                 android:layout_marginTop="@dimen/margin_between_view"
                 app:layout_constraintTop_toBottomOf="@id/input_target_layout"
                 app:prefixText="@string/hint_height"
-                app:suffixText="@string/user_height_suffix"
-                app:prefixTextAppearance="@style/ProfileHintStyle">
+                app:prefixTextAppearance="@style/ProfileHintStyle"
+                app:suffixText="@string/user_height_suffix">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_height_editText"
@@ -213,8 +213,8 @@
                 android:layout_marginTop="@dimen/margin_between_view"
                 app:layout_constraintTop_toBottomOf="@id/input_height_layout"
                 app:prefixText="@string/hint_weight"
-                app:suffixText="@string/user_weight_suffix"
-                app:prefixTextAppearance="@style/ProfileHintStyle">
+                app:prefixTextAppearance="@style/ProfileHintStyle"
+                app:suffixText="@string/user_weight_suffix">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_weight_editText"

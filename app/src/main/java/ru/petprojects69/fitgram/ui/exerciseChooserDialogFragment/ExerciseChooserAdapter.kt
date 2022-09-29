@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.databinding.ItemExerciseChooserBinding
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
-import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
 
 class ExerciseChooserAdapter : RecyclerView.Adapter<ExerciseChooserViewHolder>() {
 

@@ -24,12 +24,12 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/exercise_sets_editText"
+            app:layout_constraintHorizontal_weight="4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Упражнение"
-            app:layout_constraintHorizontal_weight="4"/>
+            tools:text="Упражнение" />
 
         <EditText
             android:id="@+id/exercise_sets_editText"
@@ -40,40 +40,40 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:textSize="@dimen/training_constructor_hint_text_size"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/char_between_sets_and_reps_textView"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/exercise_title_textView"
-            tools:text="Подходы"
-            app:layout_constraintHorizontal_weight="1"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Подходы" />
 
         <TextView
             android:id="@+id/char_between_sets_and_reps_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/training_constructor_hint_text_size"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/exercise_reps_or_duration_editText"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/exercise_sets_editText"
-            tools:text="x"
-            app:layout_constraintHorizontal_weight="1"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="x" />
 
         <EditText
             android:id="@+id/exercise_reps_or_duration_editText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/inner_recycler_margin_horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="number"
             android:textSize="@dimen/training_constructor_hint_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/char_between_sets_and_reps_textView"
-            tools:text="Повторы/Длительность"
-            app:layout_constraintHorizontal_weight="1"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Повторы/Длительность" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

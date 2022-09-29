@@ -2,6 +2,7 @@ package ru.petprojects69.fitgram.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import ru.petprojects69.fitgram.ui.MainViewModel
 import ru.petprojects69.fitgram.ui.datingTrainingDialogFragment.DatingTrainingDialogFragmentViewModel
 import ru.petprojects69.fitgram.ui.detailExerciseDialogFragment.DetailsExerciseDialogFragmentViewModel
 import ru.petprojects69.fitgram.ui.exerciseChooserDialogFragment.ExerciseChooserViewModel
@@ -16,7 +17,7 @@ import ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment.TrainingCon
 import ru.petprojects69.fitgram.ui.trainingsFragment.TrainingsViewModel
 
 val viewModelModule = module {
-    viewModel { TimeTableViewModel(repository = get()) }
+    viewModel { TimeTableViewModel() }
     viewModel { TrainingsViewModel(repository = get()) }
     viewModel { AerobicExercisesFragmentViewModel(repository = get()) }
     viewModel { PowerExercisesFragmentViewModel(repository = get()) }
@@ -28,6 +29,8 @@ val viewModelModule = module {
     viewModel { DetailsExerciseDialogFragmentViewModel(repository = get()) }
     viewModel { TrainingConstructorViewModel(repository = get()) }
     viewModel { ExerciseChooserViewModel(repository = get()) }
+
+    viewModel { MainViewModel() }
     viewModel { ExerciseConstructorDialogFragmentViewModel(repository = get()) }
     viewModel { DatingTrainingDialogFragmentViewModel(repository = get()) }
 }

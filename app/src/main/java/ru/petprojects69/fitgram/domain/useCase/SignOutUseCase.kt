@@ -6,7 +6,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import ru.petprojects69.fitgram.ui.MainActivity.Companion.PREF_USER_ID_KEY
 
-class SignOutUseCase: KoinComponent {
+class SignOutUseCase : KoinComponent {
     private val editor: SharedPreferences.Editor by inject()
     fun execute(auth: FirebaseAuth) {
         auth.signOut()

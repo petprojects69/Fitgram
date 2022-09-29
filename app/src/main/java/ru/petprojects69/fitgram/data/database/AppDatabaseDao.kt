@@ -30,7 +30,7 @@ interface AppDatabaseDao {
     fun getAllPowerEx(): Flow<MutableList<ExerciseEntity>>
 
     @Query("SELECT * FROM exercise_table WHERE exercise_id = :id")
-    fun getExerciseForId(id: Int): Flow<ExerciseEntity>
+    fun getExerciseForId(id: String): Flow<ExerciseEntity>
 
     @Query("SELECT * FROM exercise_table WHERE exercise_name LIKE :exerciseName")
     fun findExercise(exerciseName: String): Flow<MutableList<ExerciseEntity>>

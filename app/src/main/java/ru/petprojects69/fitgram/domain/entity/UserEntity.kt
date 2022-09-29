@@ -2,11 +2,12 @@ package ru.petprojects69.fitgram.domain.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ru.petprojects69.fitgram.domain.generateId
 
 @Entity
 data class UserEntity(
     @PrimaryKey
-    val id: String,
+    val id: String = generateId(),
     val email: String = "null",
     val sex: String = "",
     val name: String? = null,

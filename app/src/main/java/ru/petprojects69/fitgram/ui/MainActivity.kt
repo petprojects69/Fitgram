@@ -7,37 +7,32 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.data.database.AppDatabaseDao
 import ru.petprojects69.fitgram.databinding.ActivityMainBinding
-import ru.petprojects69.fitgram.di.PRESET_EXERCISE
-import ru.petprojects69.fitgram.di.PRESET_TRAINING
-import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.ui.initData.InitialDataFragment
 import ru.petprojects69.fitgram.ui.initData.MainActivityController
 import kotlin.properties.Delegates
-
-import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 
 
 class MainActivity : AppCompatActivity(), MainActivityController {
 
     private val binding: ActivityMainBinding by viewBinding()
-
+    private val viewModel: MainViewModel by viewModels()
     private val scope = CoroutineScope(SupervisorJob())
     private var isFilledUserData by Delegates.notNull<Boolean>()
     private var userId: String? = ""
     private val preferences: SharedPreferences by inject()
     private val editor: SharedPreferences.Editor by inject()
+    private val dao: AppDatabaseDao by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +42,9 @@ class MainActivity : AppCompatActivity(), MainActivityController {
         isFilledUserData = preferences.getBoolean(PREF_IS_FILLED_USER_DATA, false)
         checkingFirstLaunch()
         startFragment()
+        viewModel.getTrainingInLocal().observe(this) {
+            viewModel.presetInRemoteStorage(it)
+        }
     }
 
     private fun startFragment() {
@@ -70,18 +68,8 @@ class MainActivity : AppCompatActivity(), MainActivityController {
             editor.putBoolean(FIRST_RUN, true).also {
                 it.apply()
             }
-            scope.launch {
-                dataPreset()
-            }
+            viewModel.presetDataInLocal()
         }
-    }
-
-    private suspend fun dataPreset() {
-        val dao: AppDatabaseDao by inject()
-        val trainingData: List<TrainingEntity> by inject(named(PRESET_TRAINING))
-        val powerExercise: List<ExerciseEntity> by inject(named(PRESET_EXERCISE))
-        dao.presetTraining(trainingData)
-        dao.presetEx(powerExercise)
     }
 
     override fun startMainFragment() {
@@ -126,6 +114,7 @@ class MainActivity : AppCompatActivity(), MainActivityController {
     }
 
     companion object {
+        const val TAG = "MainActivity"
         private const val FIRST_RUN = "firstRun"
         const val PREF_IS_FILLED_USER_DATA = "isFilledUserData"
         const val PREF_USER_ID_KEY = "prefUserKey"

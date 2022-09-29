@@ -29,10 +29,10 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
 
-        <activity android:name=".signIn.SignInFirebaseActivity"
+        <activity
+            android:name=".signIn.SignInFirebaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

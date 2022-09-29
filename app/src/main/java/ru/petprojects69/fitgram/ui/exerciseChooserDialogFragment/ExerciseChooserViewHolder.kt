@@ -22,7 +22,7 @@ class ExerciseChooserViewHolder(
             }
         }
 
-        when (exercise.type){
+        when (exercise.type) {
             ExerciseType.AEROBIC -> binding.exerciseName.setBackgroundColor(context.getColor(R.color.item_aerobic_exercise_background_color))
             ExerciseType.POWER -> binding.exerciseName.setBackgroundColor(context.getColor(R.color.item_power_exercise_background_color))
         }
