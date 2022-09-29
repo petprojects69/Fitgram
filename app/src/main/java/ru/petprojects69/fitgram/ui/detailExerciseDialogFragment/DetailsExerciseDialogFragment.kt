@@ -54,29 +54,39 @@ class DetailsExerciseDialogFragment :
             binding.dialogDescriptionExerciseTextView.text = ex.description
             binding.dialogExerciseImageCardView.strokeColor =
                 when (ex.type) {
-                    ExerciseType.AEROBIC -> getColor(requireContext(),
-                        R.color.item_aerobic_image_card_color)
-                    ExerciseType.POWER -> getColor(requireContext(),
-                        R.color.item_power_image_card_color)
+                    ExerciseType.AEROBIC -> getColor(
+                        requireContext(),
+                        R.color.item_aerobic_image_card_color
+                    )
+                    ExerciseType.POWER -> getColor(
+                        requireContext(),
+                        R.color.item_power_image_card_color
+                    )
                 }
         }
 
         binding.deleteExerciseImageButton.setOnClickListener {
-            File(File(requireContext().filesDir, File.separator + "Images"),
-                "$labelExercise.jpeg").also { it.delete() }
+            File(
+                File(requireContext().filesDir, File.separator + "Images"),
+                "$labelExercise.jpeg"
+            ).also { it.delete() }
             findNavController().popBackStack()
             viewModel.removeExerciseForId(args.idExercise)
 
-            Toast.makeText(requireContext(),
+            Toast.makeText(
+                requireContext(),
                 "Упражнение \"$labelExercise\" удалено",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         binding.editExerciseImageButton.setOnClickListener {
-            DetailsExerciseDialogFragmentDirections.actionDetailsExerciseDialogFragmentToExerciseConstructorDialogFragment(
-                idEditExercise = args.idExercise).also {
-                findNavController().navigate(it)
-            }
+            DetailsExerciseDialogFragmentDirections
+                .actionDetailsExerciseDialogFragmentToExerciseConstructorDialogFragment(
+                    idEditExercise = args.idExercise
+                ).also {
+                    findNavController().navigate(it)
+                }
         }
     }
 }

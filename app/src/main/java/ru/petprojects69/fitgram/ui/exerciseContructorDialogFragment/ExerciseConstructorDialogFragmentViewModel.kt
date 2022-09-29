@@ -18,13 +18,13 @@ class ExerciseConstructorDialogFragmentViewModel(private val repository: Exercis
     }
 
     suspend fun updateExercise(
-        id: Int, name: String, description: String, type: ExerciseType, posterCustom: String?,
+        id: String, name: String, description: String, type: ExerciseType, posterCustom: String?,
     ) {
         repository.updateEx(id, name, description, type, posterCustom)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun getExerciseForId(idExercise: Int): LiveData<ExerciseEntity> =
+    fun getExerciseForId(idExercise: String): LiveData<ExerciseEntity> =
         viewModelScope.async {
             repository.getExerciseForId(idExercise).asLiveData()
         }.getCompleted()

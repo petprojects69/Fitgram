@@ -38,10 +38,11 @@ class PowerExercisesFragment : Fragment(R.layout.fragment_power_exercises),
             adapter.notifyDataSetChanged()
         }
     }
-    
-    override fun onItemExerciseClick(idExercise: Int) {
+
+    override fun onItemExerciseClick(idExercise: String) {
         SliderExercisesFragmentDirections.actionExerciseItemToDetailsExerciseDialogFragment(
-            idExercise = idExercise).also {
+            idExercise = idExercise
+        ).also {
             findNavController().navigate(it)
         }
     }

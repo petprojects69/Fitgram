@@ -20,7 +20,7 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     override suspend fun getAllTraining(): Flow<MutableList<TrainingEntity>> =
         appDatabaseDao.getAllTraining()
 
-    override suspend fun removeTrainingForId(id: Int) {
+    override suspend fun removeTrainingForId(id: String) {
         appDatabaseDao.removeTrainingForId(id)
     }
 
@@ -31,7 +31,7 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     override suspend fun getDatedTraining(): Flow<MutableList<DatedTrainingEntity>> =
         appDatabaseDao.getDatedTraining()
 
-    override suspend fun removeDatedTrainingForId(id: Int) {
+    override suspend fun removeDatedTrainingForId(id: String) {
         appDatabaseDao.removeDatedTrainingForId(id)
     }
 
@@ -47,7 +47,7 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     override suspend fun getExerciseForId(idExercise: String): Flow<ExerciseEntity> =
         appDatabaseDao.getExerciseForId(idExercise)
 
-    override suspend fun removeExerciseForId(idExercise: Int) {
+    override suspend fun removeExerciseForId(idExercise: String) {
         appDatabaseDao.removeExerciseForId(idExercise)
     }
 
@@ -60,7 +60,7 @@ class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : Exerc
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     override suspend fun updateEx(
-        id: Int, name: String, description: String, type: ExerciseType, posterCustom: String?,
+        id: String, name: String, description: String, type: ExerciseType, posterCustom: String?,
     ) {
         appDatabaseDao.updateEx(
             id = id,

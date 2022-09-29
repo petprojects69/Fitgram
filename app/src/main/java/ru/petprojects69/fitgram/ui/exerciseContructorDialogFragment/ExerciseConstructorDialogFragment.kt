@@ -69,7 +69,7 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
     }
 
     private fun initViewEditMode() {
-        if (argsEdit.idEditExercise != -1) {
+        if (argsEdit.idEditExercise != "-1") {
             viewModel.getExerciseForId(argsEdit.idEditExercise).observe(viewLifecycleOwner) { ex ->
                 binding.constructorExerciseLabelEditText.text = ex.name.toEditable()
                 binding.constructorExerciseDescriptionEditText.text = ex.description.toEditable()
@@ -116,14 +116,14 @@ class ExerciseConstructorDialogFragment : DialogFragment(R.layout.dialog_exercis
 
         binding.constructorExerciseSaveButton.setOnClickListener {
             if (selectedImageFlag) {
-                if (argsEdit.idEditExercise != -1) {
+                if (argsEdit.idEditExercise != "-1") {
                     File(File(requireContext().filesDir, File.separator + "Images"),
                         "$labelEditExercise.jpeg").also { it.delete() }
                 }
                 saveExerciseImage()
             }
 
-            if (argsEdit.idEditExercise != -1) {
+            if (argsEdit.idEditExercise != "-1") {
                 viewModel.viewModelScope.launch {
                     viewModel.updateExercise(
                         id = argsEdit.idEditExercise,

@@ -17,7 +17,7 @@ import ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment.TrainingCon
 import ru.petprojects69.fitgram.ui.trainingsFragment.TrainingsViewModel
 
 val viewModelModule = module {
-    viewModel { TimeTableViewModel() }
+    viewModel { TimeTableViewModel(repository = get()) }
     viewModel { TrainingsViewModel(repository = get()) }
     viewModel { AerobicExercisesFragmentViewModel(repository = get()) }
     viewModel { PowerExercisesFragmentViewModel(repository = get()) }

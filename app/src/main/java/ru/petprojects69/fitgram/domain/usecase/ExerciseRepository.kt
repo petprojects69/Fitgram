@@ -9,18 +9,18 @@ import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseType
 interface ExerciseRepository {
     suspend fun insertTraining(training: TrainingEntity)
     suspend fun getAllTraining(): Flow<MutableList<TrainingEntity>>
-    suspend fun removeTrainingForId(id: Int)
+    suspend fun removeTrainingForId(id: String)
 
     suspend fun insertDatedTraining(training: DatedTrainingEntity)
     suspend fun getDatedTraining(): Flow<MutableList<DatedTrainingEntity>>
-    suspend fun removeDatedTrainingForId(id: Int)
+    suspend fun removeDatedTrainingForId(id: String)
 
     suspend fun getAllEx(): Flow<MutableList<ExerciseEntity>>
     suspend fun getAllAerobicEx(): Flow<MutableList<ExerciseEntity>>
     suspend fun getAllPowerEx(): Flow<MutableList<ExerciseEntity>>
     suspend fun insertEx(ex: ExerciseEntity)
     suspend fun updateEx(
-        id: Int, name: String, description: String, type: ExerciseType, posterCustom: String?,
+        id: String, name: String, description: String, type: ExerciseType, posterCustom: String?,
     )
 
     suspend fun findExercise(exerciseName: String): Flow<MutableList<ExerciseEntity>>
