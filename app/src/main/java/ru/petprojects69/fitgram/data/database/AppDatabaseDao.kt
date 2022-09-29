@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
+import ru.petprojects69.fitgram.domain.entity.DatedTrainingEntity
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseType
@@ -15,6 +16,9 @@ interface AppDatabaseDao {
 
     @Query("SELECT * FROM training")
     fun getAllTraining(): Flow<MutableList<TrainingEntity>>
+
+    @Query("SELECT*FROM dated_training ORDER BY date")
+    fun getDatedTraining():Flow<MutableList<DatedTrainingEntity>>
 
     @Query("SELECT * FROM  exercise_table ")
     fun getAllEx(): Flow<MutableList<ExerciseEntity>>
@@ -30,6 +34,9 @@ interface AppDatabaseDao {
 
     @Query("SELECT * FROM exercise_table WHERE exercise_name LIKE :exerciseName")
     fun findExercise(exerciseName: String): Flow<MutableList<ExerciseEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertDatedTraining(training: DatedTrainingEntity)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertTraining(training: TrainingEntity)
@@ -62,4 +69,10 @@ interface AppDatabaseDao {
 
     @Query("DELETE FROM exercise_table WHERE exercise_id = :id")
     suspend fun removeExerciseForId(id: Int)
+
+    @Query("DELETE FROM dated_training WHERE datedTrainingId = :id")
+    suspend fun removeDatedTrainingForId(id: Int)
+
+    @Query("DELETE FROM training WHERE id = :id")
+    suspend fun removeTrainingForId(id: Int)
 }

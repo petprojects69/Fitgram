@@ -2,6 +2,7 @@ package ru.petprojects69.fitgram.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import ru.petprojects69.fitgram.domain.entity.DatedTrainingEntity
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.entity.UserEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
@@ -10,7 +11,9 @@ import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
     entities = [
         TrainingEntity::class,
         UserEntity::class,
-        ExerciseEntity::class],
+        ExerciseEntity::class,
+        DatedTrainingEntity::class,
+    ],
     version = 1, exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
