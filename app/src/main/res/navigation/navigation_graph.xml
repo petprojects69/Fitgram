@@ -9,7 +9,11 @@
         android:id="@+id/timetable_item"
         android:name="ru.petprojects69.fitgram.ui.timeTableFragment.TimeTableFragment"
         android:label="TimeTableFragment"
-        tools:layout="@layout/fragment_timetable" />
+        tools:layout="@layout/fragment_timetable" >
+        <action
+            android:id="@+id/to_training_item"
+            app:destination="@id/training_item" />
+    </fragment>
 
     <fragment
         android:id="@+id/training_item"
@@ -19,6 +23,9 @@
         <action
             android:id="@+id/to_dialog_constructor_training"
             app:destination="@id/dialog_constructor_training" />
+        <action
+            android:id="@+id/to_datingTrainingDialogFragment"
+            app:destination="@id/datingTrainingDialogFragment" />
     </fragment>
 
     <fragment
@@ -59,9 +66,6 @@
         android:name="ru.petprojects69.fitgram.ui.trainingConstructorDialogFragment.TrainingConstructorDialogFragment"
         android:label="TrainingConstructorDialogFragment"
         tools:layout="@layout/dialog_training_constructor">
-        <action
-            android:id="@+id/to_dialog_exercise_chooser"
-            app:destination="@id/dialog_exercise_chooser" />
     </dialog>
 
     <dialog
@@ -81,8 +85,17 @@
             app:argType="integer" />
     </dialog>
 
-    <action
-        android:id="@+id/action_global_timetable_item"
-        app:destination="@id/training_item" />
+    <dialog
+        android:id="@+id/datingTrainingDialogFragment"
+        android:name="ru.petprojects69.fitgram.ui.datingTrainingDialogFragment.DatingTrainingDialogFragment"
+        android:label="dialog_dating_training"
+        tools:layout="@layout/dialog_dating_training" >
+        <argument
+            android:name="training"
+            app:argType="ru.petprojects69.fitgram.domain.entity.TrainingEntity"/>
+        <action
+            android:id="@+id/to_timetable_item"
+            app:destination="@id/timetable_item" />
+    </dialog>
 
 </navigation>

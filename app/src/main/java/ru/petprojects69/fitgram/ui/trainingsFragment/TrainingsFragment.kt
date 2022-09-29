@@ -14,7 +14,6 @@ import ru.petprojects69.fitgram.databinding.FragmentTrainingsBinding
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
-import ru.petprojects69.fitgram.ui.datingTrainingDialogFragment.DatingTrainingDialogFragment
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
@@ -65,13 +64,9 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     }
 
     private fun onItemClick(training: TrainingEntity) {
-        // вызов дилога для проставки даты
-            // кнопка сохранить (логика доступности с конструктора)
-                // сохранить треню с датой в бд в DatedTraining
-                // закрыть диалог
-                // вернуться в timetable
-
-        DatingTrainingDialogFragment(training).show(childFragmentManager, null)
+        findNavController().navigate(
+            TrainingsFragmentDirections.toDatingTrainingDialogFragment(training)
+        )
     }
 
     private fun initAdapter() {

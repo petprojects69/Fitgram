@@ -17,8 +17,4 @@ class TrainingsViewModel(private val repository: ExerciseRepository) : ViewModel
         repository.getAllTraining().asLiveData()
     }.getCompleted()
 
-    suspend fun saveDatedTraining(training: DatedTrainingEntity) {
-        repository.insertDatedTraining(training)
-    }
-
 }

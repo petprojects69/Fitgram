@@ -9,6 +9,7 @@ import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
 import ru.petprojects69.fitgram.domain.entity.DatedTrainingEntity
 import ru.petprojects69.fitgram.ui.innerAdapter.InnerTimeTableAdapter
 import java.lang.ref.WeakReference
+import java.text.SimpleDateFormat
 
 class TimeTableViewHolder(private val binding: ItemTimetableBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -54,8 +55,7 @@ class TimeTableViewHolder(private val binding: ItemTimetableBinding) :
         }
     }
 
-    // TODO innerAdapter.initData()
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompatLoadingForDrawables", "SimpleDateFormat")
     fun bind(datedTraining: Pair<DatedTrainingEntity, Boolean>) {
 
         if (datedTraining.second) {
@@ -74,6 +74,7 @@ class TimeTableViewHolder(private val binding: ItemTimetableBinding) :
             )
         }
         binding.titleTextView.text = datedTraining.first.training.label.toString()
+        binding.dataTextView.text = SimpleDateFormat("dd.MM.yyyy").format(datedTraining.first.date)
     }
 
     private fun initInnerRecyclerView() {
