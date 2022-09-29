@@ -43,19 +43,19 @@
             style="@style/ItemTitleStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_exercise_image_card_view"
             app:layout_constraintTop_toTopOf="@id/item_exercise_image_card_view"
-            app:layout_constraintEnd_toEndOf="parent"
             tools:text="Упражнение пресса №1" />
 
         <TextView
             android:id="@+id/item_exercise_description_text_view"
+            style="@style/ItemDescriptionStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/ItemDescriptionStyle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_exercise_image_card_view"
             app:layout_constraintTop_toBottomOf="@id/item_exercise_title_text_view"
-            app:layout_constraintEnd_toEndOf="parent"
             tools:text="Описание бла-бла-бла бла-бла
             бла-бла
             бла..................вававававава..." />

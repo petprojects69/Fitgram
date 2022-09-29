@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), MainActivityController {
         isFilledUserData = preferences.getBoolean(PREF_IS_FILLED_USER_DATA, false)
         checkingFirstLaunch()
         startFragment()
-        viewModel.getTrainingInLocal().observe(this){
+        viewModel.getTrainingInLocal().observe(this) {
             viewModel.presetInRemoteStorage(it)
         }
     }

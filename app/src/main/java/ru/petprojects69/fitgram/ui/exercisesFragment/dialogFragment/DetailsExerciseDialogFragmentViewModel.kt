@@ -6,8 +6,8 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
-import ru.petprojects69.fitgram.domain.usecase.ExerciseRepository
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
+import ru.petprojects69.fitgram.domain.usecase.ExerciseRepository
 
 class DetailsExerciseDialogFragmentViewModel(private val repository: ExerciseRepository) :
     ViewModel() {

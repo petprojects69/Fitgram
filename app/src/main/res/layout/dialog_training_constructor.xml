@@ -55,8 +55,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/training_constructor_button_margin"
                 android:lines="5"
-                android:textSize="@dimen/constructor_training_helper_text_size"
-                android:text="@string/helper_text"/>
+                android:text="@string/helper_text"
+                android:textSize="@dimen/constructor_training_helper_text_size" />
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton

@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <gradient
         android:angle="270"
-        android:centerY="80%"
         android:centerColor="@color/center_color_avatar_gradient"
+        android:centerY="80%"
         android:endColor="@color/end_color_avatar_gradient"
         android:startColor="@color/transparent"
         android:type="linear" />

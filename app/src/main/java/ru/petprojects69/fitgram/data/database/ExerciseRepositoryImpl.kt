@@ -2,9 +2,9 @@ package ru.petprojects69.fitgram.data.database
 
 import androidx.annotation.WorkerThread
 import kotlinx.coroutines.flow.Flow
-import ru.petprojects69.fitgram.domain.usecase.ExerciseRepository
 import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.entity.exercisesEntity.ExerciseEntity
+import ru.petprojects69.fitgram.domain.usecase.ExerciseRepository
 
 class ExerciseRepositoryImpl(private val appDatabaseDao: AppDatabaseDao) : ExerciseRepository {
 

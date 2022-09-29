@@ -54,6 +54,7 @@
     </style>
 
     // UserProfileFragment UserInformation
+
     <style name="ProfileElementStyle" parent="FitgramTextStyle">
         <item name="android:layout_height">@dimen/height_item_profile_fragment</item>
         <item name="android:layout_marginStart">@dimen/margin_horizontal_profile_fragment</item>
@@ -163,6 +164,7 @@
     </style>
 
     // TabLayout
+
     <style name="CustomTabLayout" parent="Widget.MaterialComponents.TabLayout">
         <item name="android:layout_height">46dp</item>
         <item name="android:background">@drawable/background_element</item>
@@ -177,13 +179,11 @@
         <item name="tabTextColor">@color/grey_500</item>
     </style>
 
-    <style name="AppBottomSheetDialogTheme"
-        parent="Theme.Design.Light.BottomSheetDialog">
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
     </style>
 
-    <style name="AppModalStyle"
-        parent="Widget.Design.BottomSheet.Modal">
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottom_sheet_background</item>
     </style>
 </resources>

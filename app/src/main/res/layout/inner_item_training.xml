@@ -26,7 +26,7 @@
             app:layout_constraintEnd_toStartOf="@+id/exercise_sets_textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Упражнение"/>
+            tools:text="Упражнение" />
 
         <TextView
             android:id="@+id/exercise_sets_textView"
