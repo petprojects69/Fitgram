@@ -76,4 +76,6 @@
     <dimen name="sex_selector_button_height">150dp</dimen>
     <dimen name="sex_selector_margin_vertical">32dp</dimen>
     <dimen name="elevation_sex_selector_item">4dp</dimen>
+    <dimen name="dating_padding">10dp</dimen>
+    <dimen name="date_picker_margin">5dp</dimen>
 </resources>

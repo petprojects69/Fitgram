@@ -11,8 +11,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTrainingsBinding
+import ru.petprojects69.fitgram.domain.entity.TrainingEntity
 import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
 import ru.petprojects69.fitgram.ui.ItemTouchHelperCallback
+import ru.petprojects69.fitgram.ui.datingTrainingDialogFragment.DatingTrainingDialogFragment
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 
@@ -27,8 +29,8 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
                 updateTrainingFromStorage()
             }
 
-            override fun itemClick() {
-                onItemClick()
+            override fun <T> itemClick(training: T) {
+                onItemClick(training as TrainingEntity)
             }
         }
     )
@@ -62,9 +64,14 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
         Toast.makeText(requireContext(), "Тренировка удалена", Toast.LENGTH_SHORT).show()
     }
 
-    private fun onItemClick() {
-        Toast.makeText(requireContext(), "Добавить тренировку в расписание", Toast.LENGTH_SHORT)
-            .show()
+    private fun onItemClick(training: TrainingEntity) {
+        // вызов дилога для проставки даты
+            // кнопка сохранить (логика доступности с конструктора)
+                // сохранить треню с датой в бд в DatedTraining
+                // закрыть диалог
+                // вернуться в timetable
+
+        DatingTrainingDialogFragment(training).show(childFragmentManager, null)
     }
 
     private fun initAdapter() {

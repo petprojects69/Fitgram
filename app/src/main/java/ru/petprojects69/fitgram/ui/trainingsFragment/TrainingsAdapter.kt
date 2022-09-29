@@ -77,6 +77,7 @@ class TrainingsAdapter(private val itemActionCallback: ItemActionCallback) :
     }
 
     override fun onItemClick(position: Int) {
-        itemActionCallback.itemClick()
+        val training = trainingsList[position].first
+        itemActionCallback.itemClick(training)
     }
 }

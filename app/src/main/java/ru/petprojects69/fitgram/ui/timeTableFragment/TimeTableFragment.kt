@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.petprojects69.fitgram.NavigationGraphDirections
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.FragmentTimetableBinding
 import ru.petprojects69.fitgram.domain.usecase.ItemActionCallback
@@ -30,7 +32,7 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
             Toast.makeText(requireContext(), "Тренировка изменена", Toast.LENGTH_SHORT).show()
         }
 
-        override fun itemClick() {
+        override fun <T> itemClick(training: T) {
             Toast.makeText(requireContext(), "Начинаем тренировку", Toast.LENGTH_SHORT).show()
         }
     }
@@ -41,8 +43,13 @@ class TimeTableFragment : Fragment(R.layout.fragment_timetable) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
 
-        viewModel.allTrainings.observe(viewLifecycleOwner) {
+        viewModel.datedTrainings.observe(viewLifecycleOwner) {
             adapter.initData(it)
+        }
+
+        binding.addTrainingFab.setOnClickListener {
+            findNavController().navigate(NavigationGraphDirections.actionGlobalTimetableItem())
+            Toast.makeText(requireContext(), "Выберите тренировку", Toast.LENGTH_SHORT).show()
         }
     }
 

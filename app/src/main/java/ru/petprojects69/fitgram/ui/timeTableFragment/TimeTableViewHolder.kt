@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.petprojects69.fitgram.R
 import ru.petprojects69.fitgram.databinding.ItemTimetableBinding
-import ru.petprojects69.fitgram.domain.entity.TrainingEntity
+import ru.petprojects69.fitgram.domain.entity.DatedTrainingEntity
 import ru.petprojects69.fitgram.ui.innerAdapter.InnerTimeTableAdapter
 import java.lang.ref.WeakReference
 
@@ -56,15 +56,15 @@ class TimeTableViewHolder(private val binding: ItemTimetableBinding) :
 
     // TODO innerAdapter.initData()
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun bind(exercise: Pair<TrainingEntity, Boolean>) {
+    fun bind(datedTraining: Pair<DatedTrainingEntity, Boolean>) {
 
-        if (exercise.second) {
+        if (datedTraining.second) {
             binding.detailsRecyclerView.visibility = View.VISIBLE
             binding.detailsBtnImageView.setImageDrawable(
                 binding.root.context.getDrawable(R.drawable.ic_baseline_expand_less_24)
             )
 
-            exercise.first.exerciseList?.let {
+            datedTraining.first.training.exerciseList?.let {
                 innerAdapter.initData(it)
             }
         } else {
@@ -73,7 +73,7 @@ class TimeTableViewHolder(private val binding: ItemTimetableBinding) :
                 binding.root.context.getDrawable(R.drawable.ic_baseline_expand_more_24)
             )
         }
-        binding.titleTextView.text = exercise.first.label.toString()
+        binding.titleTextView.text = datedTraining.first.training.label.toString()
     }
 
     private fun initInnerRecyclerView() {
