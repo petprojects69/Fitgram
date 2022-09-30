@@ -9,6 +9,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
@@ -27,15 +29,14 @@ class MainActivity : AppCompatActivity(), MainActivityController {
 
     private val binding: ActivityMainBinding by viewBinding()
     private val viewModel: MainViewModel by viewModels()
-    private val scope = CoroutineScope(SupervisorJob())
     private var isFilledUserData by Delegates.notNull<Boolean>()
     private var userId: String? = ""
     private val preferences: SharedPreferences by inject()
     private val editor: SharedPreferences.Editor by inject()
-    private val dao: AppDatabaseDao by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
         setContentView(R.layout.activity_main)
         decorStatusBar()
         userId = preferences.getString(PREF_USER_ID_KEY, null)
