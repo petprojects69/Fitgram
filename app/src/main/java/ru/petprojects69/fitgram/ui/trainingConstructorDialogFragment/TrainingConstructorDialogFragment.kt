@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
@@ -32,7 +33,7 @@ class TrainingConstructorDialogFragment : DialogFragment(R.layout.dialog_trainin
 
         initAdapter()
         setDialogSize()
-        setSaveButtonEnablity()
+        setSaveButtonActiveness()
         setHelperVisibility()
         initClickListeners()
 
@@ -62,12 +63,34 @@ class TrainingConstructorDialogFragment : DialogFragment(R.layout.dialog_trainin
         )
     }
 
-    private fun setSaveButtonEnablity() {
+    private fun setSaveButtonActiveness() {
 
-        binding.saveButton.isEnabled = binding.trainingLabel.text.toString() != ""
+        binding.saveButton.apply {
 
-        binding.trainingLabel.addTextChangedListener {
-            binding.saveButton.isEnabled = !it.isNullOrBlank()
+            isActivated = when (binding.trainingLabel.text.toString()) {
+                "" -> {
+                    setBackgroundColor(requireContext().getColor(R.color.grey_500))
+                    false
+                }
+                else -> {
+                    setBackgroundColor(requireContext().getColor(R.color.primaryColor))
+                    true
+                }
+            }
+
+            binding.trainingLabel.addTextChangedListener {
+                isActivated = when (it.isNullOrBlank()) {
+                    true -> {
+                        setBackgroundColor(requireContext().getColor(R.color.grey_500))
+                        false
+                    }
+                    false -> {
+                        setBackgroundColor(requireContext().getColor(R.color.primaryColor))
+                        true
+                    }
+                }
+            }
+
         }
 
     }
@@ -90,14 +113,20 @@ class TrainingConstructorDialogFragment : DialogFragment(R.layout.dialog_trainin
         }
 
         binding.saveButton.setOnClickListener {
-            val label = binding.trainingLabel.text.toString()
 
-            viewModel.viewModelScope.launch {
-                viewModel.saveTraining(
-                    TrainingEntity(label = label, exerciseList = adapter.exCustomList)
-                )
+            if (it.isActivated) {
+                val label = binding.trainingLabel.text.toString()
+
+                viewModel.viewModelScope.launch {
+                    viewModel.saveTraining(
+                        TrainingEntity(label = label, exerciseList = adapter.exCustomList)
+                    )
+                }
+                dialog?.dismiss()
+            } else {
+                Toast.makeText(requireContext(), "Введите название тренировки", Toast.LENGTH_SHORT)
+                    .show()
             }
-            dialog?.dismiss()
         }
 
         adapter.clickListener = TrainingConstructorAdapter.ChangeEx { position ->
