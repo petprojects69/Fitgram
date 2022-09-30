@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(), MainActivityController {
     private val editor: SharedPreferences.Editor by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
         setContentView(R.layout.activity_main)
