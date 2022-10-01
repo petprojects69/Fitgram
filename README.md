@@ -1,4 +1,7 @@
-<h1 align="center">Fitgram</h1>
+<p align="center">
+ <img src = "./app/src/main/res/drawable/icon_circle.png" alt="icon" width="150" height="150">
+</p>
+
 <h4 align="center">Приложение для Android, созданное в качестве дипломного проекта в онлайн - университете GeekBrains</h4>
 
 ## Над проектом работали: 
