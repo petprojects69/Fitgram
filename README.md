@@ -30,3 +30,4 @@
   - Coil
   - Jetpack Navigation
   - Firebase
+<img src = "./fitgram.gif" alt="fitgram" height="1080">
